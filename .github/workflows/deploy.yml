@@ -28,6 +28,7 @@ jobs:
       - name: Install dependencies
         run: |
           pip install --upgrade pip
+          pip install -r requirements.txt
           pip install jupyter-book ghp-import  # Paquetes básicos
           pip install ipykernel                # Para kernels de Python
           python -m ipykernel install --user   # Registra el kernel
@@ -44,6 +45,8 @@ jobs:
       - name: Deploy to GitHub Pages
         run: |
           ghp-import -n -p -f _build/html  # Flags: -n (nojekyll), -p (push), -f (force)
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}} # ¡Token automatico de Github!
 
       # 7. (Opcional) Forzar actualización de GitHub Pages
       - name: Force GitHub Pages update
