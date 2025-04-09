@@ -1,13 +1,8 @@
-# Book settings
-# Learn more at https://jupyterbook.org/customize/config.html
-
 title: Casos prácticos de Inteligencia Artificial 
 author: Javier Álvarez Osuna
 logo: logo.png
 copyright: "Feeding Systems S.L. - MIT License, 2025"
 
-# Force re-execution of notebooks on each build.
-# See https://jupyterbook.org/content/execute.html
 execute:
   execute_notebooks: force
   kernel_name: python3
@@ -15,58 +10,51 @@ execute:
   allow_errors: false
   cache: ""
 
-# Configuración de construcción
 build:
   build_directory: "_build"
   exclude_patterns: 
     - "**.ipynb_checkpoints"
     - "**/.DS_Store"
-  create_plots: true             # Para visualizaciones
+  create_plots: true
 
-# Define the name of the latex output file for PDF builds
 latex:
   latex_documents:
     targetname: IAbook.tex
   latex_engine: pdflatex
 
-# Add a bibtex file so that we can create citations
 bibtex_bibfiles:
   - references.bib
-sphinx:
-  extra_extensions:
-    - "sphinxcontrib.bibtex"     # Requerido para citas	
 
-# Information about where the book exists on the web
 repository:
-  url: https://github.com/jalosu/FFF-IA-book  # Online location of your book
-  path_to_book: ""  # Optional path to your book, relative to the repository root
-  branch: master  # Which branch of the repository should be used when creating links (optional)
+  url: https://github.com/jalosu/FFF-IA-book
+  path_to_book: ""
+  branch: master
 
-# Add GitHub buttons to your book
-# See https://jupyterbook.org/customize/config.html#add-a-link-to-your-repository
 html:
-  extra_footer: ""               # Texto adicional en footer
+  extra_footer: ""
   use_issues_button: true
   use_repository_button: true
-  use_edit_page_button: false     # Botón "Editar esta página"
-  favicon: logo.png              # Icono en pestaña del navegador
-  baseurl: ""                    # Usa "/tu-repo" si está en subdirectorio
+  use_edit_page_button: false
+  favicon: logo.png
+  baseurl: ""
   analitics:
-    google_analytics_id: ""        # Opcional: "G-XXXXXX" para Analytics
+    google_analytics_id: ""
 
-# Tema visual moderno (recomendado)
-theme:
-  name: sphinx_book_theme        # Alternativa: pydata_sphinx_theme
-  logo_only: false               # Muestra título junto al logo
-  navigation_depth: 4            # Profundidad del menú lateral
-  repository_url: https://github.com/jalosu/FFF-IA-book  # Igual que arriba
-  repository_branch: main
-  
-# Extensiones Sphinx recomendadas
+parse:
+  myst_enable_extensions:
+    - colon_fence
+    - deflist
+    - html_image
+    - dollarmath
+    - amsmath
+
 sphinx:
+  extra_extensions:
+    - sphinxcontrib.bibtex
+    - myst_nb
   config:
-    myst_enable_extensions:
-      - "colon_fence"            # Mejor soporte para Markdown
-      - "deflist"                # Listas de definiciones
-      - "html_image"             # Optimiza imágenes en HTML
-    numfig: true                 # Numeración automática de figuras/tablas
+    numfig: true
+    source_suffix: [".md", ".ipynb"]
+    mathjax3_config:
+      tex:
+        inlineMath: [['$', '$'], ['\(', '\)']]
