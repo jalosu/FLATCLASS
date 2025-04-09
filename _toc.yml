@@ -1,0 +1,14 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: content/intro.md
+parts:
+- caption: FLATCLASS
+  numered: true
+  chapters:
+  - file: content/01/Introduccion.ipynb
+    sections:
+    - file: content/01/Coeficientes.ipynb
+    - file: content/01/Generador.ipynb
+
