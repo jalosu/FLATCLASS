@@ -53,8 +53,12 @@ sphinx:
     - sphinxcontrib.bibtex
     - myst_nb
   config:
+    bibtex_reference_style: author_year  # Fuerza el formato "Autor et al., Año"
+    bibtex_default_style: plain
     numfig: true
     source_suffix: [".md", ".ipynb"]
     mathjax3_config:
       tex:
         inlineMath: [['$', '$'], ['\(', '\)']]
+
+use_jupyterbook_latex: true

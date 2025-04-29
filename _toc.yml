@@ -7,9 +7,11 @@ parts:
 - caption: FLATCLASS
   numered: true
   chapters:
-  - file: content/01/Introduccion.ipynb
-  - file: content/01/Peso.ipynb
-    sections:
-    - file: content/01/Coeficientes.ipynb
-    - file: content/01/Generador.ipynb
+    - file: content/01/Introduccion.ipynb
+    - file: content/01/Peso.ipynb
+      sections:
+        - file: content/01/Coeficientes.ipynb
+        - file: content/01/Optimizacion.ipynb
+        - file: content/01/Generador.ipynb
+
 
