@@ -53,8 +53,6 @@ sphinx:
     - sphinxcontrib.bibtex
     - myst_nb
   config:
-    html_theme_options:
-      nb_download_buttons: false
     bibtex_reference_style: author_year  # Fuerza el formato "Autor et al., Año"
     bibtex_default_style: plain
     numfig: true
