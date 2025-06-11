@@ -13,6 +13,6 @@ parts:
         - file: content/01/Coeficientes.ipynb
         - file: content/01/Analisis.ipynb
         - file: content/01/Modelo.ipynb
-        - file: content/01/Generador.ipynb
+    - file: content/01/Generador.ipynb
 
 
