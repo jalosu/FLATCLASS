@@ -4,7 +4,11 @@
 format: jb-book
 root: content/intro.md
 parts:
-- caption: FLATCLASS
+- caption: PT2: Datasets
+  numered: true
+  chapters:
+    - file: content/01/Generador.ipynb
+- caption: PT3: Modelo de Estimación de Peso
   numered: true
   chapters:
     - file: content/01/Introduccion.ipynb
