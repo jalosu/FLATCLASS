@@ -5,11 +5,11 @@ format: jb-book
 root: content/intro.md
 parts:
 - caption: PT2: Datasets
-  numered: true
+  numbered: true
   chapters:
     - file: content/01/Generador.ipynb
 - caption: PT3: Modelo de Estimación de Peso
-  numered: true
+  numbered: true
   chapters:
     - file: content/01/Introduccion.ipynb
     - file: content/01/Peso.ipynb
@@ -17,6 +17,5 @@ parts:
         - file: content/01/Coeficientes.ipynb
         - file: content/01/Analisis.ipynb
         - file: content/01/Modelo.ipynb
-    - file: content/01/Generador.ipynb
 
 
