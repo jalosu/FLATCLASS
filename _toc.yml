@@ -4,11 +4,11 @@
 format: jb-book
 root: content/intro.md
 parts:
-- caption: PT2: Datasets
+- caption: PT2 - Datasets
   numbered: true
   chapters:
     - file: content/01/Generador.ipynb
-- caption: PT3: Modelo de Estimación de Peso
+- caption: PT3 - Modelo de Estimación de Peso
   numbered: true
   chapters:
     - file: content/01/Introduccion.ipynb
