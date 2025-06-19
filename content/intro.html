@@ -1,0 +1,412 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>FLATCLASS: FLATfish Length and Thickness CLASification System by Artificial Intelligence &#8212; Casos prácticos de Inteligencia Artificial</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]]}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/intro';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="1. Generador datos sintéticos" href="01/Generador.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="#">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/flatclass_logo.png" class="logo__image only-light" alt="Casos prácticos de Inteligencia Artificial - Home"/>
+    <script>document.write(`<img src="../_static/flatclass_logo.png" class="logo__image only-dark" alt="Casos prácticos de Inteligencia Artificial - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">PT2 - Datasets</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01/Generador.html">1. Generador datos sintéticos</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">PT3 - Modelo de Estimación de Peso</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01/Introduccion.html">2. FLATfish Length and Thickness CLASification System by Artificial Intelligence</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="01/Peso.html">3. Predicción del peso del lenguado a partir de variables morfológicas</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="01/Coeficientes.html">3.2. Estudio matemático de las relaciones entre las dimensiones morfológicas y el peso</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01/Analisis.html">3.3. Análisis del modelo alométrico longitud-anchura</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01/Modelo.html">3.4. Algoritmo de inferencia del peso <span class="math notranslate nohighlight">\(W\)</span></a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>FLATCLASS: FLATfish Length and Thickness CLASification System by Artificial Intelligence</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="flatclass-flatfish-length-and-thickness-clasification-system-by-artificial-intelligence">
+<h1>FLATCLASS: FLATfish Length and Thickness CLASification System by Artificial Intelligence<a class="headerlink" href="#flatclass-flatfish-length-and-thickness-clasification-system-by-artificial-intelligence" title="Link to this heading">#</a></h1>
+<p>La acuicultura es uno de los sectores de producción de alimentos de más rápido crecimiento a nivel
+mundial, con un incremento anual del 5.3% en la última década <a class="reference external" href="https://doi.org/10.4060/cd0683en">[FAO, 2024]</a>. Dentro de este sector, la cría de
+peces planos, como el lenguado (<em>Solea solea</em>) y el rodaballo (<em>Scophthalmus maximus</em>), representa un
+nicho importante debido a su alto valor comercial y demanda en mercados gourmet. Sin embargo, la
+producción de estos peces enfrenta desafíos significativos en la fase de alevinaje, donde la clasificación
+de alevines por tamaño y la estimación de su peso son procesos críticos para garantizar un crecimiento
+uniforme y maximizar la supervivencia <a class="reference external" href="https://doi.org/10.1038/s41586-021-03308-6">[Naylor et al., 2021]</a>.</p>
+<p>Una clasificación de alevines precisa permite la agrupación por tamaños homogéneos, lo cual es crucial para optimizar la alimentación, minimizar la competencia intraespecífica y reducir el riesgo de mortalidad por agresión o estés. Éste es un proceso laborioso propenso a errores que también consume tiempo y recursos, lo que reduce la eficiencia operativa y aumenta los costos de producción <a class="reference external" href="https://doi.org/10.1016/S0144-8609(01)00091-7">[Papandroulakis et al., 2002]</a>. En la actualidad la industria está usando sistemas semi-automáticos para la clasificación de alevines, que si bien suponen una clara mejora, aún presentan limitaciones significativas. Uno de los principales problemas es que estos sistemas suelen basarse en un único criterio de clasificación: el peso o la altura del pez. Esta falta de multifactorialidad en el proceso de clasificación (gradding en térmico anglosajón) limita su sensibilidad y precisión. Por ejemplo, un sistema que solo mide el peso puede pasar por alto variaciones importantes en la morfología del pez, como la longitud o el ancho, que también son indicadores clave de su desarrollo y salud. De manera similar, un sistema que solo considera la altura puede no capturar adecuadamente las diferencias en el volumen o la condición corporal de los alevines, lo que puede llevar a una clasificación subóptima.</p>
+<p>Esta dependencia de un único parámetro no solo reduce la eficacia del proceso de clasificación, sino que también puede generar resultados inconsistentes. Por ejemplo, dos peces con el mismo peso podrían tener formas corporales muy diferentes, lo que afectaría su crecimiento futuro y su adaptación a los tanques de engorde. Además, estos sistemas semi-automáticos suelen ser extremadamente invasivos, ya que requieren manipulación física para medir el peso o la altura, lo que aumenta el estrés en los peces y puede elevar las tasas de mortalidad hasta un 15% en algunos casos <a class="reference external" href="https://doi.org/10.1016/j.biosystemseng.2017.10.014">[Føre et al., 2018]</a>. Esta falta de sensibilidad en el proceso de gradding limitan la capacidad de los productores para optimizar el manejo de los alevines, lo que puede resultar en una alta variabilidad en el crecimiento y una reducción en la calidad del producto final. no solo afecta la calidad del producto final, sino que también limita la capacidad de los productores para optimizar el manejo de los alevines y garantizar un crecimiento uniforme.</p>
+<p>La limitación de los sistemas semi-automáticos a un único criterio de clasificación subraya la necesidad de adoptar tecnologías más avanzadas que puedan integrar múltiples parámetros morfométricos en tiempo real. Aquí es donde entra en juego la inteligencia artificial (IA). Tecnologías avanzadas de inteligencia artificial (IA) como el reconocimiento de imágenes (visión por computador) y aprendizaje profundo ofrece una solución prometedora. Las redes neuronales convolucionales (CNN) han demostrado ser herramientas poderosas para tareas de clasificación y segmentación de imágenes en múltiples dominios. Por ejemplo, trabajos recientes han utilizado CNN para la identificación de enfermedades en peces y la estimación de biomasa en sistemas de cultivo [<a class="reference external" href="https://doi.org/10.22075/ijnaa.2022.5839">Hasan et al., 2022</a>, <a class="reference external" href="https://www.researchgate.net/publication/384679490_A_Convolutional_Neural_Network_Approach_for_Precision_Fish_Disease_Detection">Haddad et al., 2024</a>]. Estas tecnologías no solo ofrecen altos niveles de precisión, sino que también permiten el procesamiento en tiempo real, un requisito indispensable en aplicaciones industriales. En el caso específico de la clasificación de alevines, la IA permite combinar precisión en la identificación de tamaños con la estimación de parámetros morfométricos, como longitud, anchura y superficie visible del pez, para estimar su peso sin necesidad de contacto físico.</p>
+<p>La capacidad de estos sistemas para proporcionar los datos en tiempo real sobre las poblaciones de alevines proporciona a los operadores información valiosa para la toma de decisiones estratégicas, como el ajuste de tasas de alimentación o el diseño de planes de transferencia a estanques de engorde, lo que mejora significativamente la eficiencia operativa, reduciendo los costos y aumentando la rentabilidad de las operaciones acuícolas [<a class="reference external" href="https://doi.org/10.3389/fmars.2021.823173">Kandimalia et al., 2022</a>], <a class="reference external" href="https://doi.org/10.1038/s41586-021-03308-6">[Naylor et al., 2021]</a>. Adicionalmente, la implantación de estos sistemas inteligentes de clasificación también contribuye a la sostenibilidad ambiental y económica de las piscifactorías. Al clasificar de forma más precisa y eficiente, se optimizan los recursos alimenticios y se reduce el desperdicio de alimento, que es uno de los costos más significativos en la acuicultura. Mientras que al reducir el estrés y la manipulación de los peces, se minimiza el riesgo de enfermedades y se promueve un crecimiento más saludable y uniforme [<a class="reference external" href="https://doi.org/10.1016/j.applanim.2006.09.001">Ashley., 2007</a>].</p>
+<p><strong>FLATCLASS</strong> es el sistema de clasificación inteligente (gradding) basado en visión artificial y algoritmos de aprendizaje automático desarrollado por FishFarmFeeder (Feeding Systems S.L.). Este sistema optimiza la eficiencia operativa en la industria de la acuicultura al permitir la clasificación precisa y en tiempo real de peces planos en diferentes tamaños, garantizando una integración fluida en las líneas de producción existentes. La implementación de este sistema busca mejorar la productividad, reducir costos operativos y proporcionar datos estadísticos para la optimización del manejo y alimentación de los peces.</p>
+<p>Este sistema se basa en una arquitectura de procesamiento distribuido que integra visión artificial, algoritmos de procesamiento de imágenes y modelos de aprendizaje automático para la clasificación y estimación del peso de los alevines en tiempo real. El flujo operativo se divide en dos fases principales: una fase de muestreo y parametrización, en la que se establecen los criterios de clasificación a partir del análisis estadístico de una muestra representativa, y una fase de operación continua, en la que el sistema ejecuta la clasificación y la estimación de peso de cada pez mientras este atraviesa la línea de producción.</p>
+<figure class="align-center" id="figura-1">
+<a class="reference internal image-reference" href="../_images/Modelo_funcional.png"><img alt="Modelo Funcional" src="../_images/Modelo_funcional.png" style="width: 100%;" />
+</a>
+</figure>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./content"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="right-next"
+       href="01/Generador.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">1. </span>Generador datos sintéticos</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Javier Álvarez Osuna
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright Feeding Systems S.L. - GNU General Public License 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
