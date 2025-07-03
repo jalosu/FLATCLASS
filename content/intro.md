@@ -20,9 +20,11 @@ La capacidad de estos sistemas para proporcionar los datos en tiempo real sobre 
 
 Este sistema se basa en una arquitectura de procesamiento distribuido que integra visión artificial, algoritmos de procesamiento de imágenes y modelos de aprendizaje automático para la clasificación y estimación del peso de los alevines en tiempo real. El flujo operativo se divide en dos fases principales: una fase de muestreo y parametrización, en la que se establecen los criterios de clasificación a partir del análisis estadístico de una muestra representativa, y una fase de operación continua, en la que el sistema ejecuta la clasificación y la estimación de peso de cada pez mientras este atraviesa la línea de producción.
 
-```{figure} ./01/assets/Modelo_funcional.png
+```{figure} ./assets/Modelo_funcional.png
 :name: Figura_1
 :alt: Modelo Funcional
 :width: 100%
 :align: center
 ```
+
+Este libro recopila los resultados científicos y técnicos obtenidos en el marco del proyecto **FLATCLASS**, organizados en capítulos correspondientes a cada paquete de trabajo. A lo largo de sus páginas, se presentan de manera estructurada las investigaciones realizadas, los avances alcanzados y las soluciones desarrolladas, sustentadas en metodologías rigurosas y análisis crítico. Cada apartado puede ser considerado un entregable y ofrece una visión detallada de los hallazgos, contribuciones y lecciones aprendidas, con el fin de servir como referencia para la comunidad académica y profesional. El documento no solo sintetiza el conocimiento generado, sino que también destaca su aplicabilidad y potencial impacto en el ámbito de la IA aplicada al sector de la acuicultura.
