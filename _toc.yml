@@ -9,7 +9,7 @@ parts:
   chapters:
     - file: content/02/Dataset.ipynb
     - file: content/02/Generador.ipynb
-- caption: PT3 - Modelo de Estimación de Peso
+- caption: PT3 - Predicción del Peso
   numbered: true
   chapters:
     - file: content/03/Peso.ipynb
