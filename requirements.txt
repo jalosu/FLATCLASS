@@ -56,7 +56,7 @@ ImageHash==4.3.1
 imagesize==1.4.1
 importlib_metadata==8.6.1
 ipykernel==6.29.5
-ipython==9.4.0
+ipython>=8.0.0
 ipython_pygments_lexers==1.1.1
 ipywidgets==8.1.7
 isoduration==20.11.0
