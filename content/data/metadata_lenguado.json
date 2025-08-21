@@ -1,0 +1,22 @@
+{
+    "tables": {
+        "table": {
+            "columns": {
+                "Peso (g)": {
+                    "sdtype": "numerical"
+                },
+                "Longitud (cm)": {
+                    "sdtype": "numerical"
+                },
+                "Anchura (cm)": {
+                    "sdtype": "numerical"
+                },
+                "Altura (cm)": {
+                    "sdtype": "numerical"
+                }
+            }
+        }
+    },
+    "relationships": [],
+    "METADATA_SPEC_VERSION": "V1"
+}

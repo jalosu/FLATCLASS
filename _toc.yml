@@ -9,6 +9,11 @@ parts:
   chapters:
     - file: content/02/Dataset.ipynb
     - file: content/02/Generador.ipynb
+      sections:
+        - file: content/02/GaussianCopula.ipynb
+        - file: content/02/CTGAN.ipynb
+        - file: content/02/TVAE.ipynb
+        - file: content/02/Conclusion.ipynb
 - caption: PT3 - Predicción del Peso
   numbered: true
   chapters:
