@@ -1,0 +1,26 @@
+@startuml
+title Medición automática de peces planos:\n Vista ejecutiva
+
+start
+:Captura automatizada
+(Trigger barrera/PLC, frame + metadatos);
+
+:Calibración de escala
+(px→mm activo o patrón de referencia);
+
+:Procesado & Segmentación
+(normalización ligera, máscara pez);
+
+:Medición geométrica
+(longitud, anchura, área);
+
+if (QC OK?) then (Sí)
+  :Persistencia & Notificación
+  (DB/FS + evento PLC/MQTT/REST);
+else (No)
+  :Gestión de Rechazos/Incidencias
+  (log motivo, señal a línea);
+endif
+
+stop
+@enduml

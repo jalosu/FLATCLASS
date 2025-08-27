@@ -1,0 +1,87 @@
+@startuml
+title Medición automática de peces planos:\n Pipeline maestro
+
+start
+
+partition "M1 - Captura" {
+  :Disparo por barrera/PLC;
+  :Captura de imagen + metadatos;
+  if (¿Frame válido?) then (Sí)
+    :Imagen_raw;
+  else (No)
+    :Error captura;
+    stop
+  endif
+}
+
+partition "M2 - Calibración de escala" {
+  if (¿Calibración vigente?) then (Sí)
+    :Usar escala px→mm guardada;
+  else (No)
+    :Detectar patrón referencia;
+    if (¿Detectado?) then (Sí)
+      :Calcular escala px→mm;
+    else (No)
+      :Marcar sin_escala;
+    endif
+  endif
+}
+
+partition "M3 - Preprocesado" {
+  :Corrección geométrica (si aplica);
+  :Normalización iluminación (CLAHE);
+  :Filtrado anti-ruido;
+  :Definición ROI (opcional);
+  :Imagen_prep;
+}
+
+partition "M4 - Segmentación" {
+  :Conversión a HSV/LAB;
+  :Semillas / Umbrales;
+  :GrabCut / Umbral + Morfología;
+  :Máscara pez (fg_mask);
+  if (¿Máscara válida?) then (Sí)
+    :Seguir;
+  else (No)
+    :Error segmentación;
+    stop
+  endif
+}
+
+partition "M5 - Selección + QC" {
+  :Buscar contornos/componentes;
+  if (¿Hay candidatos?) then (Sí)
+    :Seleccionar principal (mayor área/ROI);
+    :Verificar QC (área mínima, elongación, posición);
+    if (¿QC OK?) then (Sí)
+      :Contorno principal;
+    else (No)
+      :Rechazo QC;
+      stop
+    endif
+  else (No)
+    :Error sin objeto;
+    stop
+  endif
+}
+
+partition "M6 - Medidas" {
+  :Área_px = contourArea;
+  :Rectángulo mínimo → length_px, width_px;
+  if (¿Escala disponible?) then (Sí)
+    :Convertir a mm/cm;
+  else (No)
+    :Medidas en px;
+  endif
+}
+
+partition "M7 - Salida y persistencia" {
+  :Overlay (contorno + medidas);
+  :Payload {medidas, QC, timestamp};
+  :Guardar en BBDD/FS;
+  :Notificar PLC/MQTT/REST;
+  :Emitir resultado final;
+}
+
+stop
+@enduml
