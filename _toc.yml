@@ -4,6 +4,11 @@
 format: jb-book
 root: content/intro.md
 parts:
+- caption: PT1 - Visión Artificial
+  numbered: true
+  chapters:
+    - file: content/01/Requisitos.ipynb
+    - file: content/01/Imagen.ipynb
 - caption: PT2 - Datasets
   numbered: true
   chapters:
