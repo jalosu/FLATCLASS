@@ -1,0 +1,68 @@
+@startuml
+title M1 - Captura
+
+skinparam activity {
+  ArrowColor #2c3e50
+  BarColor #2c3e50
+  BackgroundColor #ecf0f1
+  BorderColor #34495e
+  StartColor #27ae60
+  EndColor #c0392b
+}
+skinparam partitionBorderColor #7f8c8d
+skinparam partitionBackgroundColor #ffffff
+
+start
+
+partition "OPC-UA Trigger" {
+  :Suscribirse a OPCUA endpoint;
+  :Leer variable booleana "CameraTrigger";
+  if (Trigger = TRUE?) then (Sí)
+    :Generar metadatos captura;
+    :Guardar en cache de flujo\nflow.pendingCapture = capture;
+  else (No)
+    :Esperar siguiente notificación;
+    -[hidden]-> back_to_trigger;
+  endif
+}
+
+partition "Recepción TCP" {
+  :Escuchar TCP (modo server);
+  :Recibir Buffer binario (JPEG) y cerrar socket;
+  :Anexar metadatos desde cache\nflow.pendingCapture → msg.capture;\nflow.pendingCapture = null;
+}
+
+partition "Validación frame" {
+  if (¿Buffer válido?) then (Sí)
+    note right
+      Reglas mínimas:
+      • Tamaño ≥ ~5KB
+      • Cabeceras JPEG: SOI=FFD8, EOI=FFD9
+    end note
+  else (No)
+    :Construir Error_captura;
+    :Publicar MQTT → vision/error_captura;
+    stop
+  endif
+}
+
+partition "Rama A · Persistencia & Publicación" {
+  fork
+  :Guardar archivo en disco\n (filepath= /data/images/tmp/<filename>.jpg);
+  :Construir Imagen_raw\n {filepath, filename, timestamp...};
+  :Publicar MQTT → vision/imagen_raw;
+  :Insertar en MongoDB (images_raw)\n{ filename, filepath,  timestamp_iso, timestamp_ms,\n  size_bytes, image: BinData... };
+  fork again
+  partition "Rama B · Procesado Python" {
+    :Ejecutar python3 /opt/process_image.py <filepath>;
+    :Leer STDOUT (JSON) con resultados;
+    :Construir Imagen_proc {meta + results};
+    :Publicar MQTT → vision/imagen_proc;
+    :Actualizar en MongoDB (images_proc)\n{ metadata  results: {…} };
+  }
+  end fork
+}
+
+stop
+
+@enduml
