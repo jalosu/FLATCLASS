@@ -9,6 +9,10 @@ parts:
   chapters:
     - file: content/01/Requisitos.ipynb
     - file: content/01/Imagen.ipynb
+      sections:
+        - file: content/01/Modulo-1.ipynb
+        - file: content/01/Modulo-2.ipynb
+        - file: content/01/Modulo-3.ipynb
 - caption: PT2 - Datasets
   numbered: true
   chapters:
