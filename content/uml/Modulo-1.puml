@@ -27,7 +27,6 @@ partition "OPC-UA Trigger" {
 }
 
 partition "Recepción TCP" {
-  :Escuchar TCP (modo server);
   :Recibir Buffer binario (JPEG) y cerrar socket;
   :Anexar metadatos desde cache\nflow.pendingCapture → msg.capture;\nflow.pendingCapture = null;
 }

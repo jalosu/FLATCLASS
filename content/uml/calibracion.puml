@@ -1,0 +1,21 @@
+@startuml
+title Módulo de calibración y detección de escala
+
+start
+
+:M1 - IMAGEN CAPTURADA;
+
+
+partition "M2 - CALIBRADO" {
+  if (¿Calibración vigente?) then (Sí)
+    :Usar escala px→mm guardada;
+  else (No)
+    :Detectar patrón referencia;
+    if (¿Detectado?) then (Sí)
+      :Calcular escala px→mm;
+    else (No)
+      :Marcar sin_escala;
+    endif
+  endif
+
+:M3 - PREPROCESADO;
