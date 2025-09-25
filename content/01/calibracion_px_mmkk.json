@@ -1,5 +1,5 @@
 {
-  "mm_per_px": 0.05,
+  "mm_per_px": 0.125,
   "method": "checkerboard",
   "meta": {
     "diagnostics": {
@@ -9,8 +9,8 @@
       "square_mm": 10.0,
       "edges_count": 144,
       "px_per_square_summary": {
-        "mean": 200.0,
-        "median": 200.0,
+        "mean": 80.0,
+        "median": 80.0,
         "std": 0.0
       },
       "aggregation": "median"
