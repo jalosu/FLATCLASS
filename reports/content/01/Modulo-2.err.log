@@ -1,0 +1,55 @@
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.10.18/x64/lib/python3.10/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+    executenb(
+  File "/opt/hostedtoolcache/Python/3.10.18/x64/lib/python3.10/site-packages/nbclient/client.py", line 1319, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/opt/hostedtoolcache/Python/3.10.18/x64/lib/python3.10/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+  File "/opt/hostedtoolcache/Python/3.10.18/x64/lib/python3.10/asyncio/base_events.py", line 649, in run_until_complete
+    return future.result()
+  File "/opt/hostedtoolcache/Python/3.10.18/x64/lib/python3.10/site-packages/nbclient/client.py", line 709, in async_execute
+    await self.async_execute_cell(
+  File "/opt/hostedtoolcache/Python/3.10.18/x64/lib/python3.10/site-packages/nbclient/client.py", line 1062, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/opt/hostedtoolcache/Python/3.10.18/x64/lib/python3.10/site-packages/nbclient/client.py", line 918, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+## IMPORT Y UTILIDAES DE E/S
+
+# Importa librerías y define utilidades para leer/escribir JSON con seguridad.
+
+import json
+from dataclasses import dataclass, asdict
+from pathlib import Path
+from typing import Optional, Dict, Any, Tuple
+
+import numpy as np
+import cv2
+
+def load_json(path: Path) -> Optional[dict]:
+    """Carga un JSON si existe; devuelve None si no existe."""
+    if not path.exists():
+        return None
+    with path.open("r", encoding="utf-8") as f:
+        return json.load(f)
+
+def save_json(path: Path, data: dict) -> None:
+    """Guarda un dict como JSON (UTF-8, con indentado) y crea carpetas si no existen."""
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open("w", encoding="utf-8") as f:
+        json.dump(data, f, indent=2, ensure_ascii=False)
+------------------
+
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mModuleNotFoundError[0m                       Traceback (most recent call last)
+Cell [0;32mIn[2], line 11[0m
+[1;32m      8[0m [38;5;28;01mfrom[39;00m[38;5;250m [39m[38;5;21;01mtyping[39;00m[38;5;250m [39m[38;5;28;01mimport[39;00m Optional, Dict, Any, Tuple
+[1;32m     10[0m [38;5;28;01mimport[39;00m[38;5;250m [39m[38;5;21;01mnumpy[39;00m[38;5;250m [39m[38;5;28;01mas[39;00m[38;5;250m [39m[38;5;21;01mnp[39;00m
+[0;32m---> 11[0m [38;5;28;01mimport[39;00m[38;5;250m [39m[38;5;21;01mcv2[39;00m
+[1;32m     13[0m [38;5;28;01mdef[39;00m[38;5;250m [39m[38;5;21mload_json[39m(path: Path) [38;5;241m-[39m[38;5;241m>[39m Optional[[38;5;28mdict[39m]:
+[1;32m     14[0m [38;5;250m    [39m[38;5;124;03m"""Carga un JSON si existe; devuelve None si no existe."""[39;00m
+
+[0;31mModuleNotFoundError[0m: No module named 'cv2'
+
