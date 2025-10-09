@@ -1,35 +1,13 @@
 @startuml
-title Medición automática de peces planos:\n Pipeline maestro
+title Módulo de imagen (visión artificial)
+
 
 start
 
-partition "M1 - Captura" {
-  :Disparo por barrera/PLC;
-  :Captura de imagen + metadatos;
-  if (¿Frame válido?) then (Sí)
-    :Imagen_raw;
-  else (No)
-    :Error captura;
-    stop
-  endif
-}
+:M2 - CALIBRADO;
 
-partition "M2 - Calibración de escala" {
-  if (¿Calibración vigente?) then (Sí)
-    :Usar escala px→mm guardada;
-  else (No)
-    :Detectar patrón referencia;
-    if (¿Detectado?) then (Sí)
-      :Calcular escala px→mm;
-    else (No)
-      :Marcar sin_escala;
-    endif
-  endif
-}
 
-partition "M3 - Imagen" {
-
-  partition "1) Preprocesado" {
+partition "1) Preprocesado" {
   :Reducción de rudio;
   :Suavizado de bordes;
   :Normalización iluminación (CLAHE);
@@ -75,18 +53,8 @@ partition "4) Medición" {
     :Convertir a mm/cm;
   else (No)
     :Medidas en px;
+    stop
   endif
 }
 
-}
-
-partition "M4 - Salida y persistencia" {
-  :Overlay (contorno + medidas);
-  :Payload {medidas, QC, timestamp};
-  :Guardar en BBDD/FS;
-  :Notificar PLC/MQTT/REST;
-  :Emitir resultado final;
-}
-
-stop
-@enduml
+:M4 - SALIDA Y PERSISTENCIA;
