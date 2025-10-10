@@ -1,0 +1,705 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>4.2. Gaussian Copula &#8212; FLATCLASS - FLATfish Length and Thickness CLASification System by Artificial Intelligence</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]]}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/02/GaussianCopula';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="4.3. Conditional Tabular GAN (CTGAN)" href="CTGAN.html" />
+    <link rel="prev" title="4. Generación de datos sintéticos" href="Generador.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/flatclass_logo.png" class="logo__image only-light" alt="FLATCLASS - FLATfish Length and Thickness CLASification System by Artificial Intelligence - Home"/>
+    <script>document.write(`<img src="../../_static/flatclass_logo.png" class="logo__image only-dark" alt="FLATCLASS - FLATfish Length and Thickness CLASification System by Artificial Intelligence - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">PT1 - Visión Artificial</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../01/Requisitos.html">1. Especificación de requisitos</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../01/Imagen.html">2. Sistema de visión artificial</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../01/Modulo-1.html">2.2. M1 - Captura</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01/Modulo-2.html">2.3. M2 - Calibración</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01/Modulo-3.html">2.4. M3 - Imagen</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">PT2 - Datasets</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Dataset.html">3. Obtención y etiquetado del dataset</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="Generador.html">4. Generación de datos sintéticos</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">4.2. Gaussian Copula</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CTGAN.html">4.3. Conditional Tabular GAN (CTGAN)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TVAE.html">4.4. Tabular Variational Autoencoder (TVAE)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Conclusion.html">4.5. Conclusión</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">PT3 - Predicción del Peso</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../03/Peso.html">5. Desarrollo Experimental de un Modelo de IA para la Estimación del Peso</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../03/Coeficientes.html">5.2. Estudio matemático de las relaciones entre las dimensiones morfológicas y el peso</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03/Analisis.html">5.3. Análisis del modelo alométrico longitud-anchura</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03/Modelo.html">5.4. Algoritmo de inferencia del peso <span class="math notranslate nohighlight">\(W\)</span></a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Gaussian Copula</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="gaussian-copula">
+<h1><span class="section-number">4.2. </span>Gaussian Copula<a class="headerlink" href="#gaussian-copula" title="Link to this heading">#</a></h1>
+<p>El método Gaussian Copula destaca por su capacidad para modelar dependencias multivariadas entre variables, preservando la estructura estadística de los datos originales. Este enfoque se basa en la teoría de <strong>cópulas</strong>, que permite desacoplar las distribuciones marginales de las dependencias entre variables, ofreciendo flexibilidad para generar datos sintéticos realistas [<a class="reference external" href="https://arxiv.org/pdf/2009.09471">Zheng et al., 2020</a>].</p>
+<p>Las <strong>cópulas</strong> son funciones que vinculan distribuciones marginales univariadas para formar una distribución multivariada. El teorema de Sklar (1959) establece que cualquier distribución conjunta <span class="math notranslate nohighlight">\(H\)</span> de variables aleatorias <span class="math notranslate nohighlight">\((X_1,X_2,...,X_d)\)</span> puede expresarse como:</p>
+<div class="math notranslate nohighlight">
+\[H(x_1,x_2,...,x_d)=C(F_1(x_1),F_2(x_2),...,F_d(d_d))\]</div>
+<p>donde <span class="math notranslate nohighlight">\(C\)</span> es la cópula y <span class="math notranslate nohighlight">\(F_i\)</span> son las funciones de distribución marginal. La Gaussian Copula utiliza una cópula derivada de la distribución normal multivariada, definida como:</p>
+<div class="math notranslate nohighlight">
+\[
+C_\Sigma(\mathbf{u}) = \Phi_\Sigma \left( \Phi^{-1}(u_1), \Phi^{-1}(u_2), \dots, \Phi^{-1}(u_d) \right)
+\]</div>
+<p>donde:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\Phi_\Sigma\)</span>: es la función de distribución normal multivariada con matriz de covarianza <span class="math notranslate nohighlight">\(\Sigma\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\Phi^{-1}\)</span>: es la inversa de la distribución normal estándar (quantile function)</p></li>
+<li><p><span class="math notranslate nohighlight">\(u=(u_1,u_2,...,u_d)\)</span>: vector de probabilidades uniformes en <span class="math notranslate nohighlight">\([0,1]\)</span></p></li>
+</ul>
+<p>Los fundamentos matemáticos anteriormente descritos, incluyendo el teorema de Sklar, la transformación al espacio gaussiano mediante funciones inversas <span class="math notranslate nohighlight">\((Φ^{-1)}\)</span>, y el muestreo de datos sintéticos basado en la matriz de covarianza <span class="math notranslate nohighlight">\((Σ)\)</span>, están implementados de forma eficiente y optimizada dentro de la librería <code class="docutils literal notranslate"><span class="pre">SDV</span> <span class="pre">(Synthetic</span> <span class="pre">Data</span> <span class="pre">Vault)</span></code>. En particular, la clase <code class="docutils literal notranslate"><span class="pre">GaussianCopula</span></code> del módulo <code class="docutils literal notranslate"><span class="pre">sdv.tabular</span></code> encapsula estos modelos matemáticos, permitiendo la generación de datos tabulares sintéticos que preservan tanto las distribuciones marginales <span class="math notranslate nohighlight">\((F_i)\)</span> como las dependencias multivariadas <span class="math notranslate nohighlight">\((C_Σ)\)</span> presentes en los datos originales. La librería automatiza procesos clave como:</p>
+<ol class="arabic simple">
+<li><p>La estimación no paramétrica de distribuciones marginales,</p></li>
+<li><p>El cálculo de la matriz de correlación de rangos (rank correlation), y</p></li>
+<li><p>La generación de muestras sintéticas mediante inversión de la cópula <span class="math notranslate nohighlight">\((F_{i}^{-1})\)</span>.</p></li>
+</ol>
+<p>Además, SDV incorpora validaciones internas para garantizar que los datos generados mantengan propiedades estadísticas consistentes, siguiendo las mejores prácticas descritas en la literatura [<a class="reference external" href="https://doi.org/10.1109/DSAA.2016.49">Patki et al., 2016</a>].</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Importar librerías necesarias</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">scipy</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">sdv.single_table</span><span class="w"> </span><span class="kn">import</span> <span class="n">GaussianCopulaSynthesizer</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sdv.metadata</span><span class="w"> </span><span class="kn">import</span> <span class="n">Metadata</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">myst_nb</span><span class="w"> </span><span class="kn">import</span> <span class="n">glue</span>
+
+<span class="n">num_synthetic</span> <span class="o">=</span> <span class="mi">500</span> <span class="c1">#variable para definir el número de registros sintéticos</span>
+
+<span class="c1"># 1. Cargar datos reales</span>
+<span class="c1">#--------------------------</span>
+<span class="n">path_realData</span> <span class="o">=</span> <span class="s1">&#39;.././data/Dimensiones_lenguado.xlsx&#39;</span>  
+<span class="n">real_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="n">path_realData</span><span class="p">)</span>
+
+<span class="c1"># 2. Obtener los metadata del dataset</span>
+<span class="c1">#--------------------------------------</span>
+
+<span class="n">metadata_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;.././data/metadata_lenguado.json&#39;</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">metadata_path</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+    <span class="c1"># Cargar metadatos desde el JSON (evita el warning)</span>
+    <span class="n">metadata</span> <span class="o">=</span> <span class="n">Metadata</span><span class="o">.</span><span class="n">load_from_json</span><span class="p">(</span><span class="n">metadata_path</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Metadatos cargados desde JSON.</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="c1"># Detectar metadatos y guardarlos en JSON para futuras ejecuciones</span>
+    <span class="n">metadata</span> <span class="o">=</span> <span class="n">Metadata</span><span class="o">.</span><span class="n">detect_from_dataframe</span><span class="p">(</span><span class="n">real_data</span><span class="p">)</span>
+    <span class="n">metadata</span><span class="o">.</span><span class="n">save_to_json</span><span class="p">(</span><span class="n">metadata_path</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Metadatos detectados y guardados en JSON.</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># 3. Sintetizar datos</span>
+<span class="c1">#---------------------------------------</span>
+<span class="n">synthesizer</span> <span class="o">=</span> <span class="n">GaussianCopulaSynthesizer</span><span class="p">(</span>
+    <span class="n">metadata</span> <span class="o">=</span> <span class="n">metadata</span><span class="p">,</span>
+    <span class="n">enforce_min_max_values</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="c1"># Forzar datos realísticos</span>
+    <span class="n">enforce_rounding</span> <span class="o">=</span> <span class="kc">True</span> <span class="c1"># Redondeos automáticos</span>
+    <span class="p">)</span>
+
+<span class="n">synthesizer</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">real_data</span><span class="p">)</span>
+<span class="n">synthetic_data</span> <span class="o">=</span> <span class="n">synthesizer</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">num_rows</span><span class="o">=</span> <span class="n">num_synthetic</span><span class="p">);</span>
+<span class="n">display</span><span class="p">(</span><span class="n">synthetic_data</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Se muestran 10 primeros registros sintéticos de un total de </span><span class="si">{</span><span class="n">num_synthetic</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+
+<span class="c1"># 4. Guardar satos sintéticos</span>
+<span class="c1">#-------------------------------------</span>
+<span class="n">path_syntheticData</span> <span class="o">=</span> <span class="s2">&quot;.././data/SyntheticGaussianCopula.xlsx&quot;</span>
+<span class="n">synthetic_data</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="n">path_syntheticData</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">engine</span><span class="o">=</span><span class="s1">&#39;openpyxl&#39;</span><span class="p">)</span>
+
+<span class="c1"># 5. Validación calidad datos sintéticos</span>
+<span class="c1">#----------------------------------------</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sdv.evaluation.single_table</span><span class="w"> </span><span class="kn">import</span> <span class="n">run_diagnostic</span><span class="p">,</span> <span class="n">evaluate_quality</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sdv.evaluation.single_table</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_column_plot</span>
+
+<span class="c1">## Diagnóstico básico</span>
+
+<span class="n">diagnostic</span> <span class="o">=</span> <span class="n">run_diagnostic</span><span class="p">(</span><span class="n">real_data</span><span class="p">,</span> <span class="n">synthetic_data</span><span class="p">,</span> <span class="n">metadata</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span> <span class="c1"># Se ejecuta el diagnóstico sin mostrar en pantalla</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">DIAGNÓSTICO BÁSICO CALIDAD DATOS</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">diagnostic</span><span class="o">.</span><span class="n">get_details</span><span class="p">(</span><span class="n">property_name</span><span class="o">=</span><span class="s1">&#39;Data Validity&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Metadatos cargados desde JSON.
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Peso (g)</th>
+      <th>Longitud (cm)</th>
+      <th>Anchura (cm)</th>
+      <th>Altura (cm)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>8.74</td>
+      <td>9.0</td>
+      <td>3.5</td>
+      <td>0.5</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>7.84</td>
+      <td>8.7</td>
+      <td>3.5</td>
+      <td>0.5</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2.40</td>
+      <td>6.5</td>
+      <td>2.3</td>
+      <td>0.4</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>7.45</td>
+      <td>8.3</td>
+      <td>3.4</td>
+      <td>0.6</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>7.16</td>
+      <td>8.1</td>
+      <td>3.1</td>
+      <td>0.5</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>2.95</td>
+      <td>6.1</td>
+      <td>2.6</td>
+      <td>0.4</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>15.51</td>
+      <td>10.9</td>
+      <td>4.9</td>
+      <td>0.8</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>4.72</td>
+      <td>6.9</td>
+      <td>2.8</td>
+      <td>0.5</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>7.60</td>
+      <td>8.9</td>
+      <td>3.1</td>
+      <td>0.6</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>3.01</td>
+      <td>6.3</td>
+      <td>2.1</td>
+      <td>0.4</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Se muestran 10 primeros registros sintéticos de un total de 500
+
+DIAGNÓSTICO BÁSICO CALIDAD DATOS
+
+          Column             Metric  Score
+0       Peso (g)  BoundaryAdherence    1.0
+1  Longitud (cm)  BoundaryAdherence    1.0
+2   Anchura (cm)  BoundaryAdherence    1.0
+3    Altura (cm)  BoundaryAdherence    1.0
+</pre></div>
+</div>
+</div>
+</div>
+<p>La métrica <code class="docutils literal notranslate"><span class="pre">BoundaryAdherence</span></code> verifica si los valores sintéticos se mantienen dentro de los rangos mínimos y máximos de los datos reales, devolviendo el porcentaje de filas válidas. En las siguientes gráficas podemos visualizar la similitud entre los datos reales y los sintéticos obtenidos mediante Gaussian Copula.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Visualización de datos</span>
+
+<span class="n">columnas</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Peso (g)&quot;</span><span class="p">,</span> <span class="s2">&quot;Longitud (cm)&quot;</span><span class="p">,</span> <span class="s2">&quot;Anchura (cm)&quot;</span><span class="p">,</span> <span class="s2">&quot;Altura (cm)&quot;</span><span class="p">]</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">sdv.evaluation.single_table</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_column_plot</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">col</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">columnas</span><span class="p">):</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="o">//</span><span class="mi">2</span><span class="p">,</span> <span class="n">i</span><span class="o">%</span><span class="k">2</span>]
+    <span class="n">sns</span><span class="o">.</span><span class="n">kdeplot</span><span class="p">(</span><span class="n">real_data</span><span class="p">[</span><span class="n">col</span><span class="p">],</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#1f77b4&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Real&quot;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+    <span class="n">sns</span><span class="o">.</span><span class="n">kdeplot</span><span class="p">(</span><span class="n">synthetic_data</span><span class="p">[</span><span class="n">col</span><span class="p">],</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#2ca02c&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Gaussian Copula&quot;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Distribución de </span><span class="si">{</span><span class="n">col</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;Comparación de datos reales vs. sintéticos Gaussian Copula&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">1.02</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1">## Medidas de similiud estadística</span>
+
+<span class="n">quality_reportGC</span> <span class="o">=</span> <span class="n">evaluate_quality</span><span class="p">(</span><span class="n">real_data</span><span class="p">,</span> <span class="n">synthetic_data</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">real_data</span><span class="p">),</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">),</span> <span class="n">metadata</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="c1">## Obtenemos el valor promedio de la similitud</span>
+<span class="n">overall_score</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">quality_reportGC</span><span class="o">.</span><span class="n">get_score</span><span class="p">()</span><span class="o">*</span><span class="mi">100</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">%&quot;</span>
+<span class="n">glue</span><span class="p">(</span><span class="s2">&quot;scoreGAN&quot;</span><span class="p">,</span> <span class="n">overall_score</span><span class="p">,</span> <span class="n">display</span><span class="o">=</span><span class="kc">False</span><span class="p">);</span> <span class="c1"># Definimos una variable para usar en el texto markdown</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">SIMILITUD ESTADÍSTICA</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Overall score: </span><span class="si">{</span><span class="n">overall_score</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1">## Ajuste por columna de forma individual    </span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Resultados de ajuste real vs. sintético por columna de datos</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">quality_reportGC</span><span class="o">.</span><span class="n">get_details</span><span class="p">(</span><span class="s1">&#39;Column Shapes&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/19e58abced956fe60b6152cf2262e07527a29ce90211654d2556f9ae142e18a1.png" src="../../_images/19e58abced956fe60b6152cf2262e07527a29ce90211654d2556f9ae142e18a1.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>SIMILITUD ESTADÍSTICA
+
+Overall score: 96.26%
+
+
+Resultados de ajuste real vs. sintético por columna de datos
+
+          Column        Metric     Score
+0       Peso (g)  KSComplement  0.928230
+1  Longitud (cm)  KSComplement  0.928230
+2   Anchura (cm)  KSComplement  0.923445
+3    Altura (cm)  KSComplement  0.952153
+</pre></div>
+</div>
+</div>
+</div>
+<p>Los resultados obtenidos indican un alto grado de similitud entre los datos sintéticos y reales, con una adecuación del <span class="output text_plain">‘96.26%’</span>. La métrica <code class="docutils literal notranslate"><span class="pre">KSComplement</span></code> evalúa el grado de similitud individualmente entre cada columna real y su sintética basándose en la forma de sus distribuciones univariadas (forma, media, dispersión). Los valores obtenidos indican un elevado grado de ajuste entre los datos reales y sintéticos, tal y como también se puede apreciar en las gráficas anteriores.</p>
+<p>La siguiente tabla recoge la correlación entre pares de columnas numéricas y determina el grado de similitud entre los datos reales y sintéticos (<code class="docutils literal notranslate"><span class="pre">CorrelationSimilarity</span></code>), comparando específicamente las tendencias en sus distribuciones en 2D. Como se desprende de los valores obtenidos, los porcentajes de correlación son, en la mayoría de los casos, <span class="math notranslate nohighlight">\(\approx 1\)</span>, lo cual garantiza la validad de los datos sintéticos obtenidos</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2"> Correlaciones entre variables real vs. sintética</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">quality_reportGC</span><span class="o">.</span><span class="n">get_details</span><span class="p">(</span><span class="s1">&#39;Column Pair Trends&#39;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> Correlaciones entre variables real vs. sintética
+
+        Column 1       Column 2                 Metric     Score  \
+0       Peso (g)  Longitud (cm)  CorrelationSimilarity  0.995285   
+1       Peso (g)   Anchura (cm)  CorrelationSimilarity  0.998692   
+2       Peso (g)    Altura (cm)  CorrelationSimilarity  0.987694   
+3  Longitud (cm)   Anchura (cm)  CorrelationSimilarity  0.999846   
+4  Longitud (cm)    Altura (cm)  CorrelationSimilarity  0.983536   
+5   Anchura (cm)    Altura (cm)  CorrelationSimilarity  0.987907   
+
+   Real Correlation  Synthetic Correlation  
+0          0.932951               0.942382  
+1          0.942354               0.939738  
+2          0.861768               0.837156  
+3          0.936674               0.936982  
+4          0.870165               0.837236  
+5          0.842673               0.818487  
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./content/02"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Generador.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">4. </span>Generación de datos sintéticos</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="CTGAN.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">4.3. </span>Conditional Tabular GAN (CTGAN)</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Javier Álvarez Osuna
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright Feeding Systems S.L. - GNU General Public License 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

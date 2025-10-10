@@ -1,0 +1,910 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>2.4. M3 - Imagen &#8212; FLATCLASS - FLATfish Length and Thickness CLASification System by Artificial Intelligence</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]]}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/01/Modulo-3';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="3. Obtención y etiquetado del dataset" href="../02/Dataset.html" />
+    <link rel="prev" title="2.3. M2 - Calibración" href="Modulo-2.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/flatclass_logo.png" class="logo__image only-light" alt="FLATCLASS - FLATfish Length and Thickness CLASification System by Artificial Intelligence - Home"/>
+    <script>document.write(`<img src="../../_static/flatclass_logo.png" class="logo__image only-dark" alt="FLATCLASS - FLATfish Length and Thickness CLASification System by Artificial Intelligence - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">PT1 - Visión Artificial</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Requisitos.html">1. Especificación de requisitos</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="Imagen.html">2. Sistema de visión artificial</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Modulo-1.html">2.2. M1 - Captura</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Modulo-2.html">2.3. M2 - Calibración</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">2.4. M3 - Imagen</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">PT2 - Datasets</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../02/Dataset.html">3. Obtención y etiquetado del dataset</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../02/Generador.html">4. Generación de datos sintéticos</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../02/GaussianCopula.html">4.2. Gaussian Copula</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02/CTGAN.html">4.3. Conditional Tabular GAN (CTGAN)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02/TVAE.html">4.4. Tabular Variational Autoencoder (TVAE)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02/Conclusion.html">4.5. Conclusión</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">PT3 - Predicción del Peso</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../03/Peso.html">5. Desarrollo Experimental de un Modelo de IA para la Estimación del Peso</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../03/Coeficientes.html">5.2. Estudio matemático de las relaciones entre las dimensiones morfológicas y el peso</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03/Analisis.html">5.3. Análisis del modelo alométrico longitud-anchura</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03/Modelo.html">5.4. Algoritmo de inferencia del peso <span class="math notranslate nohighlight">\(W\)</span></a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>M3 - Imagen</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#config">2.4.1. CONFIG</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocesado">2.4.2. Preprocesado</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#segmentacion">2.4.3. Segmentación</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#seleccion-y-medicion">2.4.4. Selección y medición</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#otras-funciones">2.4.5. Otras funciones</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="m3-imagen">
+<h1><span class="section-number">2.4. </span>M3 - Imagen<a class="headerlink" href="#m3-imagen" title="Link to this heading">#</a></h1>
+<p>Este módulo es el núcleo del sistema de visión artificial. Operativamente está compuesto por cuatro bloques funcionales que siguen el flujo recogido en la siguiente imagen:</p>
+<figure class="align-center" id="figura-wp1-imagen-6">
+<a class="reference internal image-reference" href="../../_images/Modulo-3.png"><img alt="UML del modúlo de visión artificial" src="../../_images/Modulo-3.png" style="width: 25%;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 2.6 </span><span class="caption-text">Bloques funcionales del módulo de imagen (visión artificial)</span><a class="headerlink" href="#figura-wp1-imagen-6" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>El motor de este módulo se sustenta sobre el algoritmo GrabCut. GrabCut es un método semiautomático para segmentar objetos en una imagen, es decir, para separar una región de interés del resto de la escena. Fue propuesto en 2004 por Rother, Kolmogorov y Blake [<a class="reference external" href="https://doi.org/10.1145/1015706.1015720">Rother et al., 2004</a>], y se ha convertido en una herramienta clásica en visión por computadora debido a su equilibrio entre precisión y facilidad de uso.</p>
+<p>En su planteamiento original, el algoritmo necesita una pequeña intervención del usuario para trazar un rectángulo que contenga aproximadamente el objeto que se desea extraer. A partir de ahí, GrabCut trabaja de forma iterativa para refinar la segmentación sin necesidad de más entradas, aunque también permite correcciones manuales si es necesario.</p>
+<p>Matemáticamente, GrabCut modela los colores del objeto (primer plano o foreground) y del entorno (fondo o background) mediante modelos de mezcla gaussiana (GMM, por sus siglas en inglés)[<a class="reference external" href="https://doi.org/10.1007/978-1-4615-7566-5">Bishop, 2006</a>]. Estos modelos permiten representar distribuciones complejas de color como la combinación de varias campanas gaussianas, cada una capturando un tono o textura característica. Así, en lugar de asumir que todos los píxeles del objeto tienen el mismo color, el GMM reconoce que pueden existir múltiples modos (o grupos) de colores dentro de la misma región.</p>
+<p>Además del color, GrabCut también considera la estructura espacial de la imagen: píxeles cercanos tienden a pertenecer a la misma clase. Esta idea se modela mediante un campo aleatorio de Markov (MRF), que penaliza soluciones en las que píxeles vecinos tienen etiquetas muy diferentes sin una justificación clara en los datos (por ejemplo, un cambio brusco de color). De esta forma, se evitan segmentaciones irregulares o con ruido [<a class="reference external" href="https://doi.org/10.1007/978-1-84882-437-9">Li, 2009</a>].</p>
+<p>Todo esto se combina en una función de energía que mide lo “buena” que es una segmentación propuesta. Minimizar esta energía equivale a encontrar la máscara que mejor explica los colores observados (usando los GMMs) y que, al mismo tiempo, sea espacialmente coherente (gracias al MRF).</p>
+<p>En el contexto de FLATCLASS este algoritmo se ha adaptado para no contar con intervención humana inicial. Para aislar el objeto de interés (lenguado) se ha usado una cinta transportadora de color azul, cuyo tono varía ligeramente debido a iluminación escasa, no homogénea, sombras, presencia de gotas de agua o textura del material. Dado que el objeto y el fondo tienen colores claramente distintos, y aún asumiendo que el fondo no es uniforme, se puede indicar al algoritmo que el fondo es predominantemente azul y que el objeto (lenguado) ocupa aproximadamente el centro de la imagen.</p>
+<figure class="align-center" id="figura-wp1-imagen-7">
+<a class="reference internal image-reference" href="../../_images/P22C-ML_0_calibrated.png"><img alt="Captura de lenguado" src="../../_images/P22C-ML_0_calibrated.png" style="width: 25%;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 2.7 </span><span class="caption-text">Imagen real de lenguado obtenida con el sistema de captura</span><a class="headerlink" href="#figura-wp1-imagen-7" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Esta diferenciación colorimétrica nos permite inicializar automáticamente la máscara GrabCut, etiquetando como “probable fondo” los bordes de la imagen y como “probable primer plano” la región central, al tiempo que se definen en el código tonos de azul como semillas reforzadas para GrabCut.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># </span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Pipeline de segmentación (OpenCV + GrabCut) y metrología de lenguado.</span>
+<span class="sd">Incluye:</span>
+<span class="sd">  - Prefiltrado (NLMeans + bilateral + CLAHE)</span>
+<span class="sd">  - Umbral dinámico del azul (HSV) para detectar la cinta y anclar la ROI</span>
+<span class="sd">  - Semillas reforzadas para GrabCut (BG seguro = azul; PR_FG = no-azul dilatado;</span>
+<span class="sd">    FG seguro = alto contraste H/S respecto al azul + distance transform)</span>
+<span class="sd">  - Postproceso morfológico orientado (cierre/apertura)</span>
+<span class="sd">  - Medición por PCA (longitud, anchura) y área desde el contorno</span>
+<span class="sd">  - Modo debug (guarda artefactos intermedios)</span>
+<span class="sd">  - Conversión opcional a mm (get_mm_per_px() o scale.json)</span>
+
+<span class="sd">Referencias clave (DOI):</span>
+<span class="sd">- GrabCut / Graph Cuts: Rother et al. 2004 (10.1145/1015706.1015720), Boykov &amp; Jolly 2001 (10.1109/ICCV.2001.937505)</span>
+<span class="sd">- NLMeans: Buades et al. 2005 (10.1109/CVPR.2005.38)</span>
+<span class="sd">- Bilateral: Tomasi &amp; Manduchi 1998 (10.1109/ICCV.1998.710815)</span>
+<span class="sd">- CLAHE: Zuiderveld 1994 (10.1016/B978-0-12-336156-1.50061-6)</span>
+<span class="sd">- PCA: Jolliffe &amp; Cadima 2016 (10.1098/rsta.2015.0202)</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">cv2</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+
+<span class="c1"># =========================</span>
+<span class="c1"># Configuración del pipeline</span>
+<span class="c1"># =========================</span>
+<span class="n">CONFIG</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;img_path&quot;</span><span class="p">:</span> <span class="s2">&quot;./P22C-ML_0_calibrated.png&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;out_prefix&quot;</span><span class="p">:</span> <span class="s2">&quot;./out/sole_&quot;</span><span class="p">,</span>     <span class="c1"># prefijo para salidas (debug/overlay/máscara/csv)</span>
+    <span class="s2">&quot;pad_roi&quot;</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span>                       <span class="c1"># padding de la ROI (px)</span>
+    <span class="c1"># Prefiltrado</span>
+    <span class="s2">&quot;nlmeans_h&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+    <span class="s2">&quot;bilateral_d&quot;</span><span class="p">:</span> <span class="mi">9</span><span class="p">,</span> <span class="s2">&quot;bilateral_sigmaC&quot;</span><span class="p">:</span> <span class="mi">50</span><span class="p">,</span> <span class="s2">&quot;bilateral_sigmaS&quot;</span><span class="p">:</span> <span class="mi">50</span><span class="p">,</span>
+    <span class="s2">&quot;clahe_clip&quot;</span><span class="p">:</span> <span class="mf">2.0</span><span class="p">,</span> <span class="s2">&quot;clahe_tiles&quot;</span><span class="p">:</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span>
+    <span class="c1"># Umbral dinámico azul</span>
+    <span class="s2">&quot;blue_sat_min&quot;</span><span class="p">:</span> <span class="mi">80</span><span class="p">,</span>       <span class="c1"># mínimo S para estimar el pico de H</span>
+    <span class="s2">&quot;blue_half_window&quot;</span><span class="p">:</span> <span class="mi">15</span><span class="p">,</span>   <span class="c1"># ±ΔH alrededor del pico de H</span>
+    <span class="c1"># Semillas</span>
+    <span class="s2">&quot;pr_fg_kernel&quot;</span><span class="p">:</span> <span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">19</span><span class="p">),</span>          <span class="c1"># dilatación anisotrópica (W,H) para PR_FG</span>
+    <span class="s2">&quot;sure_fg_pct_contrast&quot;</span><span class="p">:</span> <span class="mi">70</span><span class="p">,</span>       <span class="c1"># percentil del mapa de contraste H/S</span>
+    <span class="s2">&quot;sure_fg_pct_dt&quot;</span><span class="p">:</span> <span class="mi">60</span><span class="p">,</span>             <span class="c1"># percentil de distance transform para reforzar FG</span>
+    <span class="s2">&quot;gc_iters&quot;</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span>                   <span class="c1"># iteraciones de GrabCut</span>
+    <span class="c1"># Postproceso</span>
+    <span class="s2">&quot;post_close_kernel&quot;</span><span class="p">:</span> <span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">13</span><span class="p">),</span>
+    <span class="c1"># Métrica (opcional)</span>
+    <span class="s2">&quot;scale_json&quot;</span><span class="p">:</span> <span class="s2">&quot;./calibracion_px_mm.json&quot;</span><span class="p">,</span>  <span class="c1"># {&quot;mm_per_px&quot;: 0.1234}</span>
+    <span class="c1"># Debug</span>
+    <span class="s2">&quot;debug&quot;</span><span class="p">:</span> <span class="kc">True</span>
+<span class="p">}</span>
+
+<span class="c1"># =========================</span>
+<span class="c1"># Utilidades</span>
+<span class="c1"># =========================</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">save_img</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">img</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Guarda una imagen (BGR o 1 canal) con el prefijo de salida y devuelve su ruta.&quot;&quot;&quot;</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">CONFIG</span><span class="p">[</span><span class="s2">&quot;out_prefix&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">name</span>
+    <span class="k">if</span> <span class="n">img</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>  <span class="c1"># gris</span>
+        <span class="n">cv2</span><span class="o">.</span><span class="n">imwrite</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">img</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">cv2</span><span class="o">.</span><span class="n">imwrite</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">img</span> <span class="k">if</span> <span class="n">img</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="mi">3</span> <span class="k">else</span> <span class="n">img</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="p">:</span><span class="mi">3</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">p</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">get_scale_mm_per_px</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Intenta obtener mm/px desde:</span>
+<span class="sd">    1) función get_mm_per_px() del usuario (si existe),</span>
+<span class="sd">    2) archivo JSON CONFIG[&#39;scale_json&#39;] con {&quot;mm_per_px&quot;: valor}.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># 1) Función del usuario</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">get_mm_per_px</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_mm_per_px</span>  <span class="c1"># type: ignore</span>
+        <span class="n">val</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">get_mm_per_px</span><span class="p">())</span>
+        <span class="k">if</span> <span class="n">val</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">val</span>
+    <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+        <span class="k">pass</span>
+    <span class="c1"># 2) JSON</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">CONFIG</span><span class="p">[</span><span class="s2">&quot;scale_json&quot;</span><span class="p">])</span>
+    <span class="k">if</span> <span class="n">p</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">read_text</span><span class="p">())</span>
+            <span class="n">val</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;mm_per_px&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+            <span class="k">if</span> <span class="n">val</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">val</span>
+        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+            <span class="k">pass</span>
+    <span class="k">return</span> <span class="kc">None</span>
+
+<span class="c1"># =========================</span>
+<span class="c1"># Bloques del pipeline</span>
+<span class="c1"># =========================</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">prefilter</span><span class="p">(</span><span class="n">bgr</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;NLMeans + bilateral + CLAHE(V) → BGR prefiltrado.&quot;&quot;&quot;</span>
+    <span class="n">den</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">fastNlMeansDenoisingColored</span><span class="p">(</span>
+        <span class="n">bgr</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">h</span><span class="o">=</span><span class="n">CONFIG</span><span class="p">[</span><span class="s2">&quot;nlmeans_h&quot;</span><span class="p">],</span> <span class="n">hColor</span><span class="o">=</span><span class="n">CONFIG</span><span class="p">[</span><span class="s2">&quot;nlmeans_h&quot;</span><span class="p">],</span>
+        <span class="n">templateWindowSize</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">searchWindowSize</span><span class="o">=</span><span class="mi">21</span>
+    <span class="p">)</span>
+    <span class="n">den</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">bilateralFilter</span><span class="p">(</span>
+        <span class="n">den</span><span class="p">,</span> <span class="n">d</span><span class="o">=</span><span class="n">CONFIG</span><span class="p">[</span><span class="s2">&quot;bilateral_d&quot;</span><span class="p">],</span>
+        <span class="n">sigmaColor</span><span class="o">=</span><span class="n">CONFIG</span><span class="p">[</span><span class="s2">&quot;bilateral_sigmaC&quot;</span><span class="p">],</span> <span class="n">sigmaSpace</span><span class="o">=</span><span class="n">CONFIG</span><span class="p">[</span><span class="s2">&quot;bilateral_sigmaS&quot;</span><span class="p">]</span>
+    <span class="p">)</span>
+    <span class="n">hsv</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">den</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">COLOR_BGR2HSV</span><span class="p">)</span>
+    <span class="n">h</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">v</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">hsv</span><span class="p">)</span>
+    <span class="n">clahe</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">createCLAHE</span><span class="p">(</span><span class="n">CONFIG</span><span class="p">[</span><span class="s2">&quot;clahe_clip&quot;</span><span class="p">],</span> <span class="n">CONFIG</span><span class="p">[</span><span class="s2">&quot;clahe_tiles&quot;</span><span class="p">])</span>
+    <span class="n">v</span> <span class="o">=</span> <span class="n">clahe</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">cv2</span><span class="o">.</span><span class="n">merge</span><span class="p">([</span><span class="n">h</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">v</span><span class="p">]),</span> <span class="n">cv2</span><span class="o">.</span><span class="n">COLOR_HSV2BGR</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">CONFIG</span><span class="p">[</span><span class="s2">&quot;debug&quot;</span><span class="p">]:</span>
+        <span class="n">save_img</span><span class="p">(</span><span class="s2">&quot;01_prefilter.png&quot;</span><span class="p">,</span> <span class="n">out</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">out</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">dynamic_blue_threshold</span><span class="p">(</span><span class="n">hsv</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Calcula [lower, upper] HSV del azul a partir del pico de H en banda central con S&gt;umbral.&quot;&quot;&quot;</span>
+    <span class="n">H</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">hsv</span><span class="p">)</span>
+    <span class="n">Hh</span><span class="p">,</span> <span class="n">Wh</span> <span class="o">=</span> <span class="n">H</span><span class="o">.</span><span class="n">shape</span>
+    <span class="n">x1</span><span class="p">,</span> <span class="n">x2</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">Wh</span> <span class="o">*</span> <span class="mf">0.32</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">Wh</span> <span class="o">*</span> <span class="mf">0.68</span><span class="p">)</span>  <span class="c1"># banda central para evitar bordes metálicos</span>
+    <span class="n">band</span> <span class="o">=</span> <span class="n">H</span><span class="p">[:,</span> <span class="n">x1</span><span class="p">:</span><span class="n">x2</span><span class="p">]</span>
+    <span class="n">band_s</span> <span class="o">=</span> <span class="n">S</span><span class="p">[:,</span> <span class="n">x1</span><span class="p">:</span><span class="n">x2</span><span class="p">]</span>
+    <span class="n">mask_sat</span> <span class="o">=</span> <span class="n">band_s</span> <span class="o">&gt;</span> <span class="n">CONFIG</span><span class="p">[</span><span class="s2">&quot;blue_sat_min&quot;</span><span class="p">]</span>
+    <span class="n">hh</span> <span class="o">=</span> <span class="n">band</span><span class="p">[</span><span class="n">mask_sat</span><span class="p">]</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">hh</span><span class="o">.</span><span class="n">size</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">lower</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">95</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">30</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+        <span class="n">upper</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">125</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">hist</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">calcHist</span><span class="p">([</span><span class="n">hh</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)],</span> <span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="kc">None</span><span class="p">,</span> <span class="p">[</span><span class="mi">180</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">180</span><span class="p">])</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+        <span class="n">peak</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">hist</span><span class="p">))</span>
+        <span class="n">hw</span> <span class="o">=</span> <span class="n">CONFIG</span><span class="p">[</span><span class="s2">&quot;blue_half_window&quot;</span><span class="p">]</span>
+        <span class="n">lower</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">peak</span> <span class="o">-</span> <span class="n">hw</span><span class="p">),</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">30</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+        <span class="n">upper</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="nb">min</span><span class="p">(</span><span class="mi">179</span><span class="p">,</span> <span class="n">peak</span> <span class="o">+</span> <span class="n">hw</span><span class="p">),</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">lower</span><span class="p">,</span> <span class="n">upper</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">belt_roi_from_blue</span><span class="p">(</span><span class="n">hsv</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">lower</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">upper</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span><span class="nb">int</span><span class="p">,</span><span class="nb">int</span><span class="p">,</span><span class="nb">int</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Umbraliza el azul, limpia (open/close) y devuelve (x,y,w,h) de la mayor componente + máscara azul.&quot;&quot;&quot;</span>
+    <span class="n">blue</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">inRange</span><span class="p">(</span><span class="n">hsv</span><span class="p">,</span> <span class="n">lower</span><span class="p">,</span> <span class="n">upper</span><span class="p">)</span>
+    <span class="n">k</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">getStructuringElement</span><span class="p">(</span><span class="n">cv2</span><span class="o">.</span><span class="n">MORPH_RECT</span><span class="p">,</span> <span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span>
+    <span class="n">blue</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">morphologyEx</span><span class="p">(</span><span class="n">blue</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">MORPH_OPEN</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">iterations</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">blue</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">morphologyEx</span><span class="p">(</span><span class="n">blue</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">MORPH_CLOSE</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">iterations</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">cnts</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">findContours</span><span class="p">(</span><span class="n">blue</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">RETR_EXTERNAL</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">CHAIN_APPROX_SIMPLE</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">cnts</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;No se detectó la cinta azul&quot;</span><span class="p">)</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">cnts</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">cv2</span><span class="o">.</span><span class="n">contourArea</span><span class="p">)</span>
+    <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">boundingRect</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+    <span class="n">H</span><span class="p">,</span> <span class="n">W</span> <span class="o">=</span> <span class="n">blue</span><span class="o">.</span><span class="n">shape</span>
+    <span class="n">pad</span> <span class="o">=</span> <span class="n">CONFIG</span><span class="p">[</span><span class="s2">&quot;pad_roi&quot;</span><span class="p">]</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">x</span> <span class="o">-</span> <span class="n">pad</span><span class="p">);</span> <span class="n">y</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">y</span> <span class="o">-</span> <span class="n">pad</span><span class="p">)</span>
+    <span class="n">w</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">W</span> <span class="o">-</span> <span class="n">x</span><span class="p">,</span> <span class="n">w</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">pad</span><span class="p">);</span> <span class="n">h</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">H</span> <span class="o">-</span> <span class="n">y</span><span class="p">,</span> <span class="n">h</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">pad</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">CONFIG</span><span class="p">[</span><span class="s2">&quot;debug&quot;</span><span class="p">]:</span>
+        <span class="n">save_img</span><span class="p">(</span><span class="s2">&quot;02_blue_mask.png&quot;</span><span class="p">,</span> <span class="n">blue</span><span class="p">)</span>
+        <span class="n">dbg</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">hsv</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">COLOR_HSV2BGR</span><span class="p">)</span>
+        <span class="n">cv2</span><span class="o">.</span><span class="n">rectangle</span><span class="p">(</span><span class="n">dbg</span><span class="p">,</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">w</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="n">h</span><span class="p">),</span> <span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">),</span> <span class="mi">3</span><span class="p">)</span>
+        <span class="n">save_img</span><span class="p">(</span><span class="s2">&quot;03_roi_debug.png&quot;</span><span class="p">,</span> <span class="n">dbg</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">),</span> <span class="n">blue</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">seeds_in_roi</span><span class="p">(</span><span class="n">bgr_roi</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">lower</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">upper</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Genera máscara de estados para GrabCut (gc_mask):</span>
+<span class="sd">      - BG seguro: azul.</span>
+<span class="sd">      - PR_FG: no-azul dilatado anisotrópicamente (conectar cabeza/cola).</span>
+<span class="sd">      - FG seguro: no-azul con alto contraste H/S respecto al azul + refuerzo por DT.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">hsv</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">bgr_roi</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">COLOR_BGR2HSV</span><span class="p">)</span>
+    <span class="n">blue</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">inRange</span><span class="p">(</span><span class="n">hsv</span><span class="p">,</span> <span class="n">lower</span><span class="p">,</span> <span class="n">upper</span><span class="p">)</span>
+    <span class="n">not_blue</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">bitwise_not</span><span class="p">(</span><span class="n">blue</span><span class="p">)</span>
+
+    <span class="c1"># PR_FG (no-azul dilatado verticalmente)</span>
+    <span class="n">k_vert</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">getStructuringElement</span><span class="p">(</span><span class="n">cv2</span><span class="o">.</span><span class="n">MORPH_ELLIPSE</span><span class="p">,</span> <span class="n">CONFIG</span><span class="p">[</span><span class="s2">&quot;pr_fg_kernel&quot;</span><span class="p">])</span>
+    <span class="n">pr_fg</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">dilate</span><span class="p">(</span><span class="n">not_blue</span><span class="p">,</span> <span class="n">k_vert</span><span class="p">,</span> <span class="n">iterations</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="c1"># FG seguro: contraste H/S + distance transform</span>
+    <span class="n">h</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">hsv</span><span class="p">)</span>
+    <span class="n">belt_h</span> <span class="o">=</span> <span class="n">h</span><span class="p">[</span><span class="n">blue</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+    <span class="n">belt_s</span> <span class="o">=</span> <span class="n">s</span><span class="p">[</span><span class="n">blue</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">belt_h</span><span class="o">.</span><span class="n">size</span><span class="p">:</span>
+        <span class="n">mu_h</span><span class="p">,</span> <span class="n">mu_s</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">belt_h</span><span class="p">)),</span> <span class="nb">float</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">belt_s</span><span class="p">))</span>
+        <span class="n">dh</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">absdiff</span><span class="p">(</span><span class="n">h</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int16</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">full_like</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">mu_h</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">int16</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+        <span class="n">ds</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">absdiff</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int16</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">full_like</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">mu_s</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">int16</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+        <span class="n">contrast</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">addWeighted</span><span class="p">(</span><span class="n">dh</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="n">ds</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">thr</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">contrast</span><span class="p">,</span> <span class="n">CONFIG</span><span class="p">[</span><span class="s2">&quot;sure_fg_pct_contrast&quot;</span><span class="p">]))</span>
+        <span class="n">_</span><span class="p">,</span> <span class="n">hi</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">threshold</span><span class="p">(</span><span class="n">contrast</span><span class="p">,</span> <span class="n">thr</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">THRESH_BINARY</span><span class="p">)</span>
+        <span class="n">sure_fg</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">bitwise_and</span><span class="p">(</span><span class="n">hi</span><span class="p">,</span> <span class="n">not_blue</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">CONFIG</span><span class="p">[</span><span class="s2">&quot;debug&quot;</span><span class="p">]:</span>
+            <span class="n">norm_c</span> <span class="o">=</span> <span class="n">contrast</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+            <span class="n">cv2</span><span class="o">.</span><span class="n">normalize</span><span class="p">(</span><span class="n">norm_c</span><span class="p">,</span> <span class="n">norm_c</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">NORM_MINMAX</span><span class="p">)</span>
+            <span class="n">save_img</span><span class="p">(</span><span class="s2">&quot;07_contrast.png&quot;</span><span class="p">,</span> <span class="n">norm_c</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">sure_fg</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">erode</span><span class="p">(</span><span class="n">pr_fg</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">getStructuringElement</span><span class="p">(</span><span class="n">cv2</span><span class="o">.</span><span class="n">MORPH_ELLIPSE</span><span class="p">,</span> <span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">)),</span> <span class="mi">1</span><span class="p">)</span>
+
+    <span class="n">dist</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">distanceTransform</span><span class="p">((</span><span class="n">pr_fg</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">),</span> <span class="n">cv2</span><span class="o">.</span><span class="n">DIST_L2</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">dist</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">):</span>
+        <span class="n">th</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">dist</span><span class="p">[</span><span class="n">dist</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">],</span> <span class="n">CONFIG</span><span class="p">[</span><span class="s2">&quot;sure_fg_pct_dt&quot;</span><span class="p">])</span>
+        <span class="n">sure_fg</span> <span class="o">|=</span> <span class="p">(</span><span class="n">dist</span> <span class="o">&gt;</span> <span class="n">th</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span> <span class="o">*</span> <span class="mi">255</span>
+
+    <span class="c1"># Montaje de gc_mask</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="mi">6</span>  <span class="c1"># borde ROI como BG</span>
+    <span class="n">gc_mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="n">blue</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">GC_PR_BGD</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+    <span class="n">gc_mask</span><span class="p">[</span><span class="n">blue</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">GC_BGD</span>
+    <span class="n">gc_mask</span><span class="p">[</span><span class="n">pr_fg</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">GC_PR_FGD</span>
+    <span class="n">gc_mask</span><span class="p">[</span><span class="n">sure_fg</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">GC_FGD</span>
+    <span class="n">gc_mask</span><span class="p">[:</span><span class="n">m</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">GC_BGD</span><span class="p">;</span> <span class="n">gc_mask</span><span class="p">[</span><span class="o">-</span><span class="n">m</span><span class="p">:,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">GC_BGD</span>
+    <span class="n">gc_mask</span><span class="p">[:,</span> <span class="p">:</span><span class="n">m</span><span class="p">]</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">GC_BGD</span><span class="p">;</span> <span class="n">gc_mask</span><span class="p">[:,</span> <span class="o">-</span><span class="n">m</span><span class="p">:]</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">GC_BGD</span>
+
+    <span class="k">if</span> <span class="n">CONFIG</span><span class="p">[</span><span class="s2">&quot;debug&quot;</span><span class="p">]:</span>
+        <span class="n">save_img</span><span class="p">(</span><span class="s2">&quot;04_pr_fg.png&quot;</span><span class="p">,</span> <span class="n">pr_fg</span><span class="p">)</span>
+        <span class="n">save_img</span><span class="p">(</span><span class="s2">&quot;05_sure_fg.png&quot;</span><span class="p">,</span> <span class="n">sure_fg</span><span class="p">)</span>
+        <span class="n">save_img</span><span class="p">(</span><span class="s2">&quot;06_not_blue.png&quot;</span><span class="p">,</span> <span class="n">not_blue</span><span class="p">)</span>
+        <span class="n">save_img</span><span class="p">(</span><span class="s2">&quot;08_gc_seeds.png&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">gc_mask</span> <span class="o">*</span> <span class="p">(</span><span class="mi">255</span> <span class="o">//</span> <span class="mi">3</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">gc_mask</span>
+
+<span class="c1"># =========================</span>
+<span class="c1"># Orquestador</span>
+<span class="c1"># =========================</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">extractor</span><span class="p">():</span>
+    <span class="n">IMG_PATH</span> <span class="o">=</span> <span class="n">CONFIG</span><span class="p">[</span><span class="s2">&quot;img_path&quot;</span><span class="p">]</span>
+    <span class="n">OUT_OVERLAY</span> <span class="o">=</span> <span class="n">CONFIG</span><span class="p">[</span><span class="s2">&quot;out_prefix&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;overlay_debug.png&quot;</span>
+    <span class="n">OUT_MASK</span> <span class="o">=</span> <span class="n">CONFIG</span><span class="p">[</span><span class="s2">&quot;out_prefix&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;mask_debug.png&quot;</span>
+    <span class="n">OUT_CSV</span> <span class="o">=</span> <span class="n">CONFIG</span><span class="p">[</span><span class="s2">&quot;out_prefix&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;measurements_debug.csv&quot;</span>
+
+    <span class="c1"># 1) Carga + prefiltrado</span>
+    <span class="n">bgr0</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">IMG_PATH</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">IMREAD_COLOR</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">bgr0</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">FileNotFoundError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;No se pudo leer la imagen: </span><span class="si">{</span><span class="n">IMG_PATH</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">bgr</span> <span class="o">=</span> <span class="n">prefilter</span><span class="p">(</span><span class="n">bgr0</span><span class="p">)</span>
+
+    <span class="c1"># 2) Umbral azul dinámico y ROI de la cinta</span>
+    <span class="n">hsv</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">bgr</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">COLOR_BGR2HSV</span><span class="p">)</span>
+    <span class="n">lower</span><span class="p">,</span> <span class="n">upper</span> <span class="o">=</span> <span class="n">dynamic_blue_threshold</span><span class="p">(</span><span class="n">hsv</span><span class="p">)</span>
+    <span class="n">roi</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">belt_roi_from_blue</span><span class="p">(</span><span class="n">hsv</span><span class="p">,</span> <span class="n">lower</span><span class="p">,</span> <span class="n">upper</span><span class="p">)</span>
+    <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span> <span class="o">=</span> <span class="n">roi</span>
+    <span class="n">crop</span> <span class="o">=</span> <span class="n">bgr</span><span class="p">[</span><span class="n">y</span><span class="p">:</span><span class="n">y</span><span class="o">+</span><span class="n">h</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span><span class="n">x</span><span class="o">+</span><span class="n">w</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+    <span class="c1"># 3) Semillas + GrabCut + postproceso</span>
+    <span class="n">gc_mask</span> <span class="o">=</span> <span class="n">seeds_in_roi</span><span class="p">(</span><span class="n">crop</span><span class="p">,</span> <span class="n">lower</span><span class="p">,</span> <span class="n">upper</span><span class="p">)</span>
+    <span class="n">bg_model</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">65</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+    <span class="n">fg_model</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">65</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+    <span class="n">cv2</span><span class="o">.</span><span class="n">grabCut</span><span class="p">(</span><span class="n">crop</span><span class="p">,</span> <span class="n">gc_mask</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">bg_model</span><span class="p">,</span> <span class="n">fg_model</span><span class="p">,</span> <span class="n">CONFIG</span><span class="p">[</span><span class="s2">&quot;gc_iters&quot;</span><span class="p">],</span> <span class="n">cv2</span><span class="o">.</span><span class="n">GC_INIT_WITH_MASK</span><span class="p">)</span>
+    <span class="n">mask_roi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">((</span><span class="n">gc_mask</span> <span class="o">==</span> <span class="n">cv2</span><span class="o">.</span><span class="n">GC_FGD</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">gc_mask</span> <span class="o">==</span> <span class="n">cv2</span><span class="o">.</span><span class="n">GC_PR_FGD</span><span class="p">),</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">CONFIG</span><span class="p">[</span><span class="s2">&quot;debug&quot;</span><span class="p">]:</span>
+        <span class="n">save_img</span><span class="p">(</span><span class="s2">&quot;09_mask_roi_raw.png&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">mask_roi</span> <span class="o">*</span> <span class="mi">255</span><span class="p">))</span>
+
+    <span class="n">k</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">getStructuringElement</span><span class="p">(</span><span class="n">cv2</span><span class="o">.</span><span class="n">MORPH_ELLIPSE</span><span class="p">,</span> <span class="n">CONFIG</span><span class="p">[</span><span class="s2">&quot;post_close_kernel&quot;</span><span class="p">])</span>
+    <span class="n">mask_roi</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">morphologyEx</span><span class="p">(</span><span class="n">mask_roi</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">MORPH_CLOSE</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">iterations</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">mask_roi</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">morphologyEx</span><span class="p">(</span><span class="n">mask_roi</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">MORPH_OPEN</span><span class="p">,</span>
+                                <span class="n">cv2</span><span class="o">.</span><span class="n">getStructuringElement</span><span class="p">(</span><span class="n">cv2</span><span class="o">.</span><span class="n">MORPH_ELLIPSE</span><span class="p">,</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">)),</span> <span class="n">iterations</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="n">full</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">bgr</span><span class="o">.</span><span class="n">shape</span><span class="p">[:</span><span class="mi">2</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+    <span class="n">full</span><span class="p">[</span><span class="n">y</span><span class="p">:</span><span class="n">y</span><span class="o">+</span><span class="n">h</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span><span class="n">x</span><span class="o">+</span><span class="n">w</span><span class="p">]</span> <span class="o">=</span> <span class="n">mask_roi</span>
+
+    <span class="c1"># 4) Selección de contorno del pez (área + alargamiento)</span>
+    <span class="n">cnts</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">findContours</span><span class="p">((</span><span class="n">full</span> <span class="o">*</span> <span class="mi">255</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">),</span> <span class="n">cv2</span><span class="o">.</span><span class="n">RETR_EXTERNAL</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">CHAIN_APPROX_NONE</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">cnts</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;No contornos tras segmentación.&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">score</span><span class="p">(</span><span class="n">c</span><span class="p">):</span>
+        <span class="n">area</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">contourArea</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">area</span> <span class="o">&lt;</span> <span class="mi">1500</span><span class="p">:</span>
+            <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
+        <span class="p">(</span><span class="n">w_</span><span class="p">,</span> <span class="n">h_</span><span class="p">)</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">minAreaRect</span><span class="p">(</span><span class="n">c</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">w_</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">h_</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
+        <span class="n">aspect</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">w_</span><span class="p">,</span> <span class="n">h_</span><span class="p">)</span> <span class="o">/</span> <span class="nb">max</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="nb">min</span><span class="p">(</span><span class="n">w_</span><span class="p">,</span> <span class="n">h_</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">area</span> <span class="o">+</span> <span class="mf">3500.0</span> <span class="o">*</span> <span class="nb">max</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">aspect</span> <span class="o">-</span> <span class="mf">1.3</span><span class="p">)</span>
+
+    <span class="n">cnt</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">cnts</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">score</span><span class="p">)</span>
+
+    <span class="c1"># 5) Medición por PCA + área</span>
+    <span class="n">pts</span> <span class="o">=</span> <span class="n">cnt</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+    <span class="n">mean</span><span class="p">,</span> <span class="n">eigvecs</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">PCACompute2</span><span class="p">(</span><span class="n">pts</span><span class="p">,</span> <span class="n">mean</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+    <span class="n">mean</span> <span class="o">=</span> <span class="n">mean</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+    <span class="n">R</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">eigvecs</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+    <span class="n">pts_c</span> <span class="o">=</span> <span class="n">pts</span> <span class="o">-</span> <span class="n">mean</span>
+    <span class="n">pts_r</span> <span class="o">=</span> <span class="n">pts_c</span> <span class="o">@</span> <span class="n">R</span><span class="o">.</span><span class="n">T</span>
+    <span class="n">min_x</span><span class="p">,</span> <span class="n">max_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">pts_r</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]),</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">pts_r</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">])</span>
+    <span class="n">min_y</span><span class="p">,</span> <span class="n">max_y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">pts_r</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]),</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">pts_r</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">])</span>
+    <span class="n">length_px</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">max_x</span> <span class="o">-</span> <span class="n">min_x</span><span class="p">)</span>
+    <span class="n">width_px</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">max_y</span> <span class="o">-</span> <span class="n">min_y</span><span class="p">)</span>
+    <span class="n">area_px2</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">cv2</span><span class="o">.</span><span class="n">contourArea</span><span class="p">(</span><span class="n">cnt</span><span class="p">))</span>
+
+    <span class="c1"># 6) Overlay (perímetro + caja PCA + eje mayor + ROI)</span>
+    <span class="n">rgb</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">bgr0</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">COLOR_BGR2RGB</span><span class="p">)</span>
+    <span class="n">overlay</span> <span class="o">=</span> <span class="n">rgb</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">box_r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">min_x</span><span class="p">,</span> <span class="n">min_y</span><span class="p">],</span> <span class="p">[</span><span class="n">max_x</span><span class="p">,</span> <span class="n">min_y</span><span class="p">],</span> <span class="p">[</span><span class="n">max_x</span><span class="p">,</span> <span class="n">max_y</span><span class="p">],</span> <span class="p">[</span><span class="n">min_x</span><span class="p">,</span> <span class="n">max_y</span><span class="p">]],</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+    <span class="n">box_img</span> <span class="o">=</span> <span class="p">(</span><span class="n">box_r</span> <span class="o">@</span> <span class="n">R</span><span class="p">)</span> <span class="o">+</span> <span class="n">mean</span>
+    <span class="n">box_img</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">(</span><span class="n">box_img</span><span class="p">)</span>
+    <span class="n">cv2</span><span class="o">.</span><span class="n">drawContours</span><span class="p">(</span><span class="n">overlay</span><span class="p">,</span> <span class="p">[</span><span class="n">cnt</span><span class="p">],</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="mi">3</span><span class="p">)</span>
+    <span class="n">cv2</span><span class="o">.</span><span class="n">polylines</span><span class="p">(</span><span class="n">overlay</span><span class="p">,</span> <span class="p">[</span><span class="n">box_img</span><span class="p">],</span> <span class="kc">True</span><span class="p">,</span> <span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">i_max</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">pts_r</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]);</span> <span class="n">i_min</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">pts_r</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">])</span>
+    <span class="n">p1</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">pts_r</span><span class="p">[</span><span class="n">i_min</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="mf">0.0</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span> <span class="o">@</span> <span class="n">R</span><span class="p">)</span> <span class="o">+</span> <span class="n">mean</span>
+    <span class="n">p2</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">pts_r</span><span class="p">[</span><span class="n">i_max</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="mf">0.0</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span> <span class="o">@</span> <span class="n">R</span><span class="p">)</span> <span class="o">+</span> <span class="n">mean</span>
+    <span class="n">cv2</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">overlay</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">(</span><span class="n">p1</span><span class="p">)),</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">(</span><span class="n">p2</span><span class="p">)),</span> <span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">cv2</span><span class="o">.</span><span class="n">rectangle</span><span class="p">(</span><span class="n">overlay</span><span class="p">,</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">w</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="n">h</span><span class="p">),</span> <span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span>
+
+    <span class="c1"># 7) Conversión opcional a mm</span>
+    <span class="n">mm_per_px</span> <span class="o">=</span> <span class="n">get_scale_mm_per_px</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">mm_per_px</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">mm_per_px</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">length_mm</span> <span class="o">=</span> <span class="n">length_px</span> <span class="o">*</span> <span class="n">mm_per_px</span>
+        <span class="n">width_mm</span> <span class="o">=</span> <span class="n">width_px</span> <span class="o">*</span> <span class="n">mm_per_px</span>
+        <span class="n">area_mm2</span> <span class="o">=</span> <span class="n">area_px2</span> <span class="o">*</span> <span class="p">(</span><span class="n">mm_per_px</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">length_mm</span> <span class="o">=</span> <span class="n">width_mm</span> <span class="o">=</span> <span class="n">area_mm2</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s2">&quot;nan&quot;</span><span class="p">)</span>
+
+    <span class="c1"># 8) Guardado de salidas</span>
+    <span class="n">mask_path</span> <span class="o">=</span> <span class="n">save_img</span><span class="p">(</span><span class="s2">&quot;mask_debug.png&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">full</span> <span class="o">*</span> <span class="mi">255</span><span class="p">))</span>
+    <span class="n">overlay_path</span> <span class="o">=</span> <span class="n">save_img</span><span class="p">(</span><span class="s2">&quot;overlay_debug.png&quot;</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">overlay</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">COLOR_RGB2BGR</span><span class="p">))</span>
+
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([{</span>
+        <span class="s2">&quot;image_path&quot;</span><span class="p">:</span> <span class="n">IMG_PATH</span><span class="p">,</span>
+        <span class="s2">&quot;roi_x&quot;</span><span class="p">:</span> <span class="n">x</span><span class="p">,</span> <span class="s2">&quot;roi_y&quot;</span><span class="p">:</span> <span class="n">y</span><span class="p">,</span> <span class="s2">&quot;roi_w&quot;</span><span class="p">:</span> <span class="n">w</span><span class="p">,</span> <span class="s2">&quot;roi_h&quot;</span><span class="p">:</span> <span class="n">h</span><span class="p">,</span>
+        <span class="s2">&quot;length_px&quot;</span><span class="p">:</span> <span class="n">length_px</span><span class="p">,</span> <span class="s2">&quot;width_px&quot;</span><span class="p">:</span> <span class="n">width_px</span><span class="p">,</span> <span class="s2">&quot;area_px2&quot;</span><span class="p">:</span> <span class="n">area_px2</span><span class="p">,</span>
+        <span class="s2">&quot;mm_per_px&quot;</span><span class="p">:</span> <span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">mm_per_px</span><span class="p">)</span> <span class="k">if</span> <span class="n">mm_per_px</span> <span class="k">else</span> <span class="nb">float</span><span class="p">(</span><span class="s2">&quot;nan&quot;</span><span class="p">)),</span>
+        <span class="s2">&quot;length_mm&quot;</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">length_mm</span><span class="p">),</span> <span class="s2">&quot;width_mm&quot;</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">width_mm</span><span class="p">),</span> <span class="s2">&quot;area_mm2&quot;</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">area_mm2</span><span class="p">)</span>
+    <span class="p">}])</span>
+    <span class="n">csv_path</span> <span class="o">=</span> <span class="n">CONFIG</span><span class="p">[</span><span class="s2">&quot;out_prefix&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;measurements_debug.csv&quot;</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">csv_path</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">overlay_path</span><span class="p">,</span> <span class="n">mask_path</span><span class="p">,</span> <span class="n">csv_path</span><span class="p">,</span> <span class="n">length_px</span><span class="p">,</span> <span class="n">width_px</span><span class="p">,</span> <span class="n">area_px2</span><span class="p">,</span> <span class="n">mm_per_px</span><span class="p">,</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>El algoritmo de visión desarrollado se sustenta sobre una seria de funciones, cada una responsable de resolver el bloque operativo definido en la figura <a class="reference internal" href="#figura-wp1-imagen-6"><span class="std std-numref">Fig. 2.6</span></a>.</p>
+<section id="config">
+<h2><span class="section-number">2.4.1. </span>CONFIG<a class="headerlink" href="#config" title="Link to this heading">#</a></h2>
+<p>Este algoritmo los siguientes parámetros de configuración:</p>
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">img_path</span></code> (str).</strong> Ruta absoluta o relativa de la imagen BGR a procesar. Es la fuente de datos del pipeline; debe apuntar a un fichero legible por OpenCV (<code class="docutils literal notranslate"><span class="pre">cv2.imread</span></code>).</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">out_prefix</span></code> (str).</strong> Prefijo de salida para todos los artefactos generados (p. ej., <em>overlay</em>, máscara, CSV y, en modo <em>debug</em>, máscaras intermedias). Tiene que apuntar a una crapeta física en el sistema de ficheros y permite controlar la organización en disco y evitar colisiones de nombres en ejecuciones sucesivas.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">pad_roi</span></code> (int, px).</strong> Margen de expansión (<em>padding</em>) aplicado al <em>bounding box</em> de la cinta detectada en HSV. Aumentarlo garantiza que la ROI cubra totalmente la banda (banda a banda) y pequeñas desalineaciones; valores altos agrandan la región de búsqueda pero pueden introducir más fondo y elevar la complejidad del corte.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">nlmeans_h</span></code> (float).</strong> Amplitud del término de atenuación en <strong>fast NLMeans</strong>; controla cuánta variación radiométrica se elimina (denoising) sin borrar texturas relevantes. Valores mayores reducen ruido pero pueden suavizar detalles finos del contorno.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">bilateral_d</span></code> (int), <code class="docutils literal notranslate"><span class="pre">bilateral_sigmaC</span></code> (float), <code class="docutils literal notranslate"><span class="pre">bilateral_sigmaS</span></code> (float).</strong> Parámetros del filtro <strong>bilateral</strong>: diámetro del vecindario (<code class="docutils literal notranslate"><span class="pre">d</span></code>) y desviaciones estándar radiométrica (<span class="math notranslate nohighlight">\(\sigma_{\text{Color}}\)</span>) y espacial (<span class="math notranslate nohighlight">\(\sigma_\text{Space}\)</span>). La mayor <span class="math notranslate nohighlight">\(\sigma_\text{Color}\)</span> homogeniza intensidades dentro de vecindarios; la mayor <span class="math notranslate nohighlight">\(\sigma_\text{Space}\)</span>` amplía el soporte espacial. Su efecto es preservar bordes (transiciones pez/fondo) a la vez que suaviza ruido de alta frecuencia.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">clahe_clip</span></code> (float), <code class="docutils literal notranslate"><span class="pre">clahe_tiles</span></code> (tuple[int,int]).</strong> Parámetros de <strong>CLAHE</strong> sobre el canal V (HSV): el <em>clip limit</em> controla la redistribución de histograma (evita sobre-amplificar ruido), y el tamaño de teselas define la granularidad del realce de contraste local. Un <code class="docutils literal notranslate"><span class="pre">clip</span></code> alto realza detalles pero puede introducir artefactos si el SNR es bajo.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">blue_sat_min</span></code> (int).</strong> Umbral mínimo de saturación (S) para seleccionar píxeles válidos al estimar el pico de H del azul de la cinta. Filtra zonas con baja cromaticidad (sombras/brillos), estabilizando la detección del modo cromático de fondo.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">blue_half_window</span></code> (int, grados H).</strong> Semiancho <span class="math notranslate nohighlight">\(\Delta H\)</span> alrededor del pico de H estimado para construir el rango HSV dinámico del azul:<br />
+<span class="math notranslate nohighlight">\([H_0-\Delta H,\; H_0+\Delta H]\)</span>. Valores mayores toleran variaciones de tono entre cámaras/iluminaciones; excesos pueden incluir azules no deseados y degradar las semillas de fondo.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">pr_fg_kernel</span></code> (tuple[int,int]).</strong> Tamaño (ancho, alto) del elemento estructurante elíptico para <strong>dilatación anisotrópica</strong> de la máscara <em>no-azul</em> (primer plano probable). Un kernel más alto conecta estructuras alargadas en la dirección longitudinal del pez (cabeza/cola), reduciendo cortes en extremos finos; demasiado grande puede unir falsos positivos.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">sure_fg_pct_contrast</span></code> (int, %).</strong> Percentil aplicado al mapa de contraste cromático (combinación ponderada de distancias en H y S respecto al modo azul) para definir primer plano seguro. Formalmente, el umbral se fija como:
+<span class="math notranslate nohighlight">\(
+T \;=\; \operatorname{perc}_p\!\big(C\big),
+\)</span>
+donde <span class="math notranslate nohighlight">\(C\)</span> es el mapa de contraste y <span class="math notranslate nohighlight">\(p\)</span> es el percentil configurado.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">sure_fg_pct_dt</span></code> (int, %).</strong> Percentil sobre la transformada de distancia del primer plano probable para reforzar el núcleo del pez (píxeles más alejados del fondo). Subirlo prioriza regiones centrales sólidas, útil cuando la cola aparece fragmentada; bajarlo expande el refuerzo hacia periferia con mayor riesgo de fugas.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">gc_iters</span></code> (int).</strong> Número de iteraciones de GrabCut (ciclos de reestimación GMM + <em>min-cut</em>). Más iteraciones permiten convergencia más estable de la energía, a costa de tiempo de cómputo:
+<span class="math notranslate nohighlight">\(
+E(L,\theta)\;=\;\sum_i D(\mathbf{x}_i\mid L_i,\theta)\;+\;\lambda\sum_{(i,j)\in\mathcal{N}}V(L_i,L_j).
+\)</span></p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">post_close_kernel</span></code> (tuple[int,int]).</strong> Tamaño del elemento estructurante elíptico para el cierre morfológico posterior a GrabCut (seguido de una apertura ligera). Un kernel más largo ayuda a sellar discontinuidades a lo largo del eje del pez (especialmente en la cola); si es excesivo, puede engordar el contorno.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">scale_json</span></code> (str).</strong> Ruta al fichero opcional <code class="docutils literal notranslate"><span class="pre">calibration_px_mm.json</span></code> con <code class="docutils literal notranslate"><span class="pre">{&quot;mm_per_px&quot;:</span> <span class="pre">valor}</span></code> para realizar la conversión métrica.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">debug</span></code> (bool).</strong> Activa el <em>modo diagnóstico</em>: guarda en disco los pasos intermedios (prefiltrado, máscara azul, ROI, semillas BG/PR_FG/FG, contraste H/S, máscara <em>raw</em> de GrabCut y máscara final), además del <em>overlay</em> y el CSV. Es clave para trazabilidad y <em>fine-tuning</em> de hiperparámetros aunque debería desactivarse en producción para minimizar E/S.</p></li>
+</ul>
+</section>
+<section id="preprocesado">
+<h2><span class="section-number">2.4.2. </span>Preprocesado<a class="headerlink" href="#preprocesado" title="Link to this heading">#</a></h2>
+<p>Este bloque funcional se sustenta sobre las siguientes funciones:</p>
+<ul class="simple">
+<li><p><strong>prefilter(bgr).</strong> Toma como entrada una imagen BGR (<code class="docutils literal notranslate"><span class="pre">np.ndarray</span></code>) y devuelve una versión prefiltrada en BGR tras aplicar NLMeans (reducción de ruido no local), filtro bilateral (suavizado que preserva bordes) y CLAHE en el canal V (HSV). Su utilidad es mejorar la relación señal-ruido y homogeneizar la iluminación antes de la segmentación, estabilizando los modelos de apariencia usados por GrabCut y reduciendo artefactos de borde; en términos prácticos, atenúa alta frecuencia sin degradar discontinuidades relevantes (cabeza/cola del pez frente a la cinta).</p></li>
+<li><p><strong>dynamic_blue_threshold(hsv).</strong> Recibe una imagen en HSV y retorna dos vectores <code class="docutils literal notranslate"><span class="pre">lower</span></code> y <code class="docutils literal notranslate"><span class="pre">upper</span></code> (umbrales HSV) que acotan dinámicamente el color azul de la cinta. Estima el pico del histograma del canal H en una franja vertical central (filtrada por saturación mínima) y construye un intervalo <span class="math notranslate nohighlight">\([\,H_0\pm\Delta H\,]\)</span>. Su utilidad es adaptar la detección del fondo (cinta) a cambios de cámara/iluminación, reforzando la separación fondo (azul) / no-fondo para las semillas de GrabCut.</p></li>
+</ul>
+</section>
+<section id="segmentacion">
+<h2><span class="section-number">2.4.3. </span>Segmentación<a class="headerlink" href="#segmentacion" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>belt_roi_from_blue(hsv, lower, upper).</strong> Recibe la imagen HSV y los umbrales <code class="docutils literal notranslate"><span class="pre">lower/upper</span></code>; devuelve la ROI de la cinta como tupla <code class="docutils literal notranslate"><span class="pre">(x,</span> <span class="pre">y,</span> <span class="pre">w,</span> <span class="pre">h)</span></code> y la máscara binaria <code class="docutils literal notranslate"><span class="pre">blue</span></code>. Umbraliza el azul, limpia con operaciones morfológicas (apertura/cierre) y toma el <em>bounding box</em> de la mayor componente conexa, expandiéndolo con <em>padding</em>. Su utilidad es anclar espacialmente el problema: restringe la segmentación a la banda transportadora (banda a banda), evitando que estructuras ajenas (p. ej., metálicas) perturben la optimización.</p></li>
+<li><p><strong>seeds_in_roi(bgr_roi, lower, upper).</strong> Recibe el recorte BGR de la ROI y los umbrales HSV; devuelve <code class="docutils literal notranslate"><span class="pre">gc_mask</span></code>, una máscara de estados entera con etiquetas de GrabCut {BG seguro, PR_BG, PR_FG, FG}. Construye las semillas así: (i) <strong>BG seguro</strong> = píxeles azules; (ii) <strong>PR_FG</strong> = no-azul dilatado con kernel anisotrópico (alto y estrecho) para conectar zonas finas (cola/cabeza); (iii) <strong>FG seguro</strong> = no-azul con alto contraste cromático respecto al azul (combinación de distancias en H y S umbraladas por percentil), reforzado mediante <strong>distance transform</strong> sobre PR_FG; además fija el borde de la ROI como BG. Su utilidad es condicionar favorablemente la minimización de la energía de GrabCut (término de datos GMM + término de suavidad por corte en grafo), reduciendo fugas y pérdidas en extremos.</p></li>
+</ul>
+</section>
+<section id="seleccion-y-medicion">
+<h2><span class="section-number">2.4.4. </span>Selección y medición<a class="headerlink" href="#seleccion-y-medicion" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>extractor().</strong> No recibe argumentos y devuelve: <code class="docutils literal notranslate"><span class="pre">overlay_path</span></code>, <code class="docutils literal notranslate"><span class="pre">mask_path</span></code>, <code class="docutils literal notranslate"><span class="pre">csv_path</span></code> (rutas), <code class="docutils literal notranslate"><span class="pre">length_px</span></code>, <code class="docutils literal notranslate"><span class="pre">width_px</span></code>, <code class="docutils literal notranslate"><span class="pre">area_px2</span></code> (magnitudes en píxeles), <code class="docutils literal notranslate"><span class="pre">mm_per_px</span></code> (si existe) y la <code class="docutils literal notranslate"><span class="pre">roi</span></code> empleada. Orquesta todo el pipeline: carga y prefiltra la imagen; estima el umbral azul dinámico y extrae la ROI de la cinta; genera semillas y ejecuta GrabCut con iteraciones configurables; aplica postproceso morfológico (cierre/apertura); selecciona el contorno del pez por área + alargamiento; calcula <strong>longitud</strong> y <strong>anchura</strong> proyectando el contorno sobre los autovectores de la <strong>PCA</strong> (extensión <span class="math notranslate nohighlight">\(\max-\min\)</span> en cada eje) y el <strong>área</strong> con <code class="docutils literal notranslate"><span class="pre">cv2.contourArea</span></code>; finalmente guarda las salidas (overlay, máscara y CSV) y convierte a unidades métricas si hay factor de escala disponible.</p></li>
+</ul>
+</section>
+<section id="otras-funciones">
+<h2><span class="section-number">2.4.5. </span>Otras funciones<a class="headerlink" href="#otras-funciones" title="Link to this heading">#</a></h2>
+<p>El pipeline también proporciona algunas funciones auxiliares como:</p>
+<ul class="simple">
+<li><p><strong>save_img(name, img).</strong> Recibe como entrada un nombre de archivo (<code class="docutils literal notranslate"><span class="pre">name</span></code>, cadena) y una imagen (<code class="docutils literal notranslate"><span class="pre">img</span></code>, <code class="docutils literal notranslate"><span class="pre">np.ndarray</span></code> en BGR o escala de grises); devuelve la ruta (cadena) del fichero grabado en disco bajo el prefijo de salida. Su utilidad es persistir artefactos intermedios y finales —p. ej., máscaras, semillas, overlay— cuando el modo <em>debug</em> está activo, proporcionando trazabilidad experimental del pipeline y facilitando la inspección post-hoc de fallos de segmentación o ajustes de parámetros.</p></li>
+<li><p><strong>get_scale_mm_per_px().</strong> No recibe argumentos y devuelve el factor escalar <code class="docutils literal notranslate"><span class="pre">mm_per_px</span></code> (flotante) o <code class="docutils literal notranslate"><span class="pre">None</span></code> si no está disponible. Internamente busca primero una función externa del usuario <code class="docutils literal notranslate"><span class="pre">get_mm_per_px()</span></code> y, en su defecto, un fichero <code class="docutils literal notranslate"><span class="pre">calibracion_px_mm.json</span></code> con la clave <code class="docutils literal notranslate"><span class="pre">&quot;mm_per_px&quot;</span></code>, que debería existir tras haber realizado una calibración. Su utilidad es habilitar la conversión métrica de las magnitudes geométricas estimadas en píxeles —longitud, anchura y área.</p></li>
+</ul>
+<p>Para ejecutar el pipeline basta con:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># === Ejecutar ===</span>
+<span class="n">overlay_p</span><span class="p">,</span> <span class="n">mask_p</span><span class="p">,</span> <span class="n">csv_p</span><span class="p">,</span> <span class="n">Lpx</span><span class="p">,</span> <span class="n">Wpx</span><span class="p">,</span> <span class="n">Apx2</span><span class="p">,</span> <span class="n">mmpp</span><span class="p">,</span> <span class="n">roi</span> <span class="o">=</span> <span class="n">extractor</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[Áreade interés] ROI: </span><span class="si">{</span><span class="n">roi</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[Medidas detectadas] L=</span><span class="si">{</span><span class="n">Lpx</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">px  W=</span><span class="si">{</span><span class="n">Wpx</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">px  A=</span><span class="si">{</span><span class="n">Apx2</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">px^2&quot;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">mmpp</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[medidas reales] mm/px=</span><span class="si">{</span><span class="n">mmpp</span><span class="si">}</span><span class="s2">  L=</span><span class="si">{</span><span class="n">Lpx</span><span class="o">*</span><span class="n">mmpp</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> mm  W=</span><span class="si">{</span><span class="n">Wpx</span><span class="o">*</span><span class="n">mmpp</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> mm  A=</span><span class="si">{</span><span class="n">Apx2</span><span class="o">*</span><span class="p">(</span><span class="n">mmpp</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> mm^2&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Overlay:   </span><span class="si">{</span><span class="n">overlay_p</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Máscara:   </span><span class="si">{</span><span class="n">mask_p</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;CSV:       </span><span class="si">{</span><span class="n">csv_p</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Áreade interés] ROI: (9, 0, 1119, 1080)
+[Medidas detectadas] L=745.1px  W=294.4px  A=152195.5px^2
+[medidas reales] mm/px=0.05  L=37.25 mm  W=14.72 mm  A=380.49 mm^2
+Overlay:   ./out/sole_overlay_debug.png
+Máscara:   ./out/sole_mask_debug.png
+CSV:       ./out/sole_measurements_debug.csv
+</pre></div>
+</div>
+</div>
+</div>
+<p>En las siguientes imágenes se pueden ver las máscaras aplicadas y el resultado final de detección de la imagen </p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="c1"># Cargamos desde las rutas devueltas por run()</span>
+<span class="n">mask_img</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">mask_p</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">IMREAD_GRAYSCALE</span><span class="p">)</span>
+<span class="n">overlay_bgr</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">overlay_p</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">IMREAD_COLOR</span><span class="p">)</span>
+<span class="n">overlay_rgb</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">overlay_bgr</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">COLOR_BGR2RGB</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">mask_img</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Máscara final (sole_mask_debug)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">overlay_rgb</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Overlay final (sole_overlay_debug)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/2ea6d311cb9c8e335f907a2a2d2a39745736d9a57472edd15e80e0ec948e54b8.png" src="../../_images/2ea6d311cb9c8e335f907a2a2d2a39745736d9a57472edd15e80e0ec948e54b8.png" />
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./content/01"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Modulo-2.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">2.3. </span>M2 - Calibración</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../02/Dataset.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">3. </span>Obtención y etiquetado del dataset</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#config">2.4.1. CONFIG</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocesado">2.4.2. Preprocesado</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#segmentacion">2.4.3. Segmentación</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#seleccion-y-medicion">2.4.4. Selección y medición</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#otras-funciones">2.4.5. Otras funciones</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Javier Álvarez Osuna
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright Feeding Systems S.L. - GNU General Public License 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
