@@ -11,8 +11,7 @@ partition "1) Preprocesado" {
   :Reducción de rudio;
   :Suavizado de bordes;
   :Normalización iluminación (CLAHE);
-  :Conversión a HSV
-  :Definición ROI (opcional);
+  :Conversión a HSV;
   }
 
   partition "2) Segmentación" {
