@@ -70,6 +70,7 @@ partition "M3 - Imagen" {
 partition "4) Medición" {
   :PCA sobre puntos de controno;
   :Construir caja PCA y eje mayor;
+  :Overlay (contorno + medidas);
   :Obtener dimensiones;
   if (¿Escala disponible?) then (Sí)
     :Convertir a mm/cm;
@@ -81,11 +82,9 @@ partition "4) Medición" {
 }
 
 partition "M4 - Salida y persistencia" {
-  :Overlay (contorno + medidas);
   :Payload {medidas, QC, timestamp};
   :Guardar en BBDD/FS;
   :Notificar PLC/MQTT/REST;
-  :Emitir resultado final;
 }
 
 stop
