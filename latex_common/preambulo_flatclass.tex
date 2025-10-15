@@ -1,0 +1,82 @@
+%% === PREÁMBULO FLATCLASS - JupyterBook personalizado ===
+
+\def\sphinxdocclass{jupyterBook}
+\documentclass[a4paper,10pt,english]{jupyterBook}
+
+\ifdefined\pdfpxdimen
+\let\sphinxpxdimen\pdfpxdimen\else\newdimen\sphinxpxdimen
+\fi
+\sphinxpxdimen=.75bp\relax
+\ifdefined\pdfimageresolution
+\pdfimageresolution= \numexpr \dimexpr1in\relax/\sphinxpxdimen\relax
+\fi
+
+\PassOptionsToPackage{bookmarksdepth=5}{hyperref}
+\PassOptionsToPackage{hyperindex=false}{hyperref}
+\makeatletter\@ifclassloaded{memoir}
+{\ifdefined\memhyperindexfalse\memhyperindexfalse\fi}{}\makeatother
+\PassOptionsToPackage{booktabs}{sphinx}
+\PassOptionsToPackage{colorrows}{sphinx}
+\PassOptionsToPackage{warn}{textcomp}
+
+\catcode`^^^^00a0\active\protected\def^^^^00a0{\leavevmode\nobreak\ }
+\usepackage{cmap}
+\usepackage{fontspec}
+\defaultfontfeatures[\rmfamily,\sffamily,\ttfamily]{}
+\usepackage{amsmath,amssymb,amstext}
+\usepackage{polyglossia}
+\setmainlanguage{spanish}
+
+\setmainfont{FreeSerif}[
+Extension=.otf,
+UprightFont=*,
+ItalicFont=*Italic,
+BoldFont=*Bold,
+BoldItalicFont=*BoldItalic
+]
+\setsansfont{FreeSans}[
+Extension=.otf,
+UprightFont=*,
+ItalicFont=*Oblique,
+BoldFont=*Bold,
+BoldItalicFont=*BoldOblique,
+]
+\setmonofont{FreeMono}[
+Extension=.otf,
+UprightFont=*,
+ItalicFont=*Oblique,
+BoldFont=*Bold,
+BoldItalicFont=*BoldOblique,
+]
+
+\usepackage[Bjarne]{fncychap}
+\usepackage[,numfigreset=1,mathnumfig]{sphinx}
+\fvset{fontsize=\footnotesize}
+\usepackage[a4paper,margin=25mm]{geometry}
+\usepackage{hyperref}
+\usepackage{hypcap}
+\urlstyle{same}
+\addto\captionsenglish{\renewcommand{\contentsname}{PT1 - Visión Artificial}}
+\usepackage{sphinxmessages}
+\usepackage[Latin,Greek]{ucharclasses}
+\usepackage{unicode-math}
+\addto\captionsenglish{\renewcommand{\contentsname}{Contents}}
+\hypersetup{pdfencoding=auto,psdextra}
+
+% === Parche de idioma y numeración ===
+\AtBeginDocument{%
+	\addto\captionsenglish{%
+		\renewcommand{\partname}{Paquete de Trabajo}%
+		\renewcommand{\chaptername}{Capítulo}%
+		\renewcommand{\figurename}{Figura}%
+		\renewcommand{\tablename}{Tabla}%
+	}%
+	\makeatletter
+	\providecommand{\sphinxnumstr}[1]{#1}%
+	\renewcommand{\sphinxnumstr}[1]{#1}%
+	\renewcommand{\thepart}{\arabic{part}}%
+	\renewcommand{\thechapter}{\arabic{chapter}}%
+	\makeatother
+}
+
+\input{fff-background.tex}

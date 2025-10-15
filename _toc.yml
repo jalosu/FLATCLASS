@@ -13,6 +13,7 @@ parts:
         - file: content/01/Modulo-1.ipynb
         - file: content/01/Modulo-2.ipynb
         - file: content/01/Modulo-3.ipynb
+        - file: content/01/Modulo-4.ipynb
 - caption: PT2 - Datasets
   numbered: true
   chapters:
