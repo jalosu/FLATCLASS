@@ -1,0 +1,2474 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>5.3. Análisis del modelo alométrico longitud-anchura &#8212; FLATCLASS - FLATfish Length and Thickness CLASification System by Artificial Intelligence</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]]}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/03/Analisis';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="5.4. Algoritmo de inferencia del peso \(W\)" href="Modelo.html" />
+    <link rel="prev" title="5.2. Estudio matemático de las relaciones entre las dimensiones morfológicas y el peso" href="Coeficientes.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/flatclass_logo.png" class="logo__image only-light" alt="FLATCLASS - FLATfish Length and Thickness CLASification System by Artificial Intelligence - Home"/>
+    <script>document.write(`<img src="../../_static/flatclass_logo.png" class="logo__image only-dark" alt="FLATCLASS - FLATfish Length and Thickness CLASification System by Artificial Intelligence - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">PT1 - Visión Artificial</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../01/Requisitos.html">1. Especificación de requisitos</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../01/Imagen.html">2. Sistema de visión artificial</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../01/Modulo-1.html">2.2. M1 - Captura</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01/Modulo-2.html">2.3. M2 - Calibración</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01/Modulo-3.html">2.4. M3 - Imagen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01/Modulo-4.html">2.5. M4 - Salida y persistencia</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">PT2 - Datasets</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../02/Dataset.html">3. Obtención y etiquetado del dataset</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../02/Generador.html">4. Generación de datos sintéticos</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../02/GaussianCopula.html">4.2. Gaussian Copula</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02/CTGAN.html">4.3. Conditional Tabular GAN (CTGAN)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02/TVAE.html">4.4. Tabular Variational Autoencoder (TVAE)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02/Conclusion.html">4.5. Conclusión</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">PT3 - Predicción del Peso</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="Peso.html">5. Desarrollo Experimental de un Modelo de IA para la Estimación del Peso</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Coeficientes.html">5.2. Estudio matemático de las relaciones entre las dimensiones morfológicas y el peso</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">5.3. Análisis del modelo alométrico longitud-anchura</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Modelo.html">5.4. Algoritmo de inferencia del peso <span class="math notranslate nohighlight">\(W\)</span></a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Análisis del modelo alométrico longitud-anchura</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preanalisis-exploratorio-eda">5.3.1. Preanálisis exploratorio (EDA)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizacion-de-outliers">5.3.2. Visualización de <em>outliers</em></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#metodos-univariados-deteccion-en-una-dimension">5.3.2.1. Métodos univariados (detección en una dimensión)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#metodos-multivariados">5.3.2.2. Métodos multivariados</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transformada-logaritmica">5.3.3. Transformada logarítmica</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="analisis-del-modelo-alometrico-longitud-anchura">
+<h1><span class="section-number">5.3. </span>Análisis del modelo alométrico longitud-anchura<a class="headerlink" href="#analisis-del-modelo-alometrico-longitud-anchura" title="Link to this heading">#</a></h1>
+<p>Para profundizar en el modelo alométrico definido por la expresión matemática <a class="reference internal" href="Coeficientes.html#equation-eq-peso-longitud-anchura">(5.4)</a> es preciso adoptar una estrategia rigurosamente secuencial que combine diagnóstico estadístico exhaustivo, exploración de formas funcionales alternativas y validación externa. A lo largo de este capítulo analizaremos cada uno de estas fases de forma pormenorizada.</p>
+<section id="preanalisis-exploratorio-eda">
+<h2><span class="section-number">5.3.1. </span>Preanálisis exploratorio (EDA)<a class="headerlink" href="#preanalisis-exploratorio-eda" title="Link to this heading">#</a></h2>
+<p>Un primer análisis preliminar ya se realizó en el entregable E2.1 relativo a la <a class="reference internal" href="../02/Dataset.html"><span class="std std-doc">“Obtención y etiquetado del dataset”</span></a>. El análisis de la matriz de correlación indicó que, en el lenguado, el peso está fuertemente asociado con la longitud y la anchura (r≈0,94), mientras que su asociación con la altura (espesor corporal) es claramente menor (r≈0,86). En términos de varianza explicada, longitud y anchura individualmente capturan ~88% del comportamiento del peso (r²≈0,8836), frente a ~74% para la altura (r²≈0,7396). Esto es coherente con la biomecánica del pez plano: el peso depende del volumen, pero en especies deprimidas dorsoventralmente la variabilidad del área proyectada (aprox. longitud×anchura) domina sobre la variación del espesor. La correlación igualmente alta entre longitud y anchura (r≈0,94) sugiere una morfología con proporciones relativamente estables durante el crecimiento (isometría planiforme) o, al menos, una fuerte covariación de ambas dimensiones; en la práctica, esto implica multicolinealidad si se usan juntas en regresión. La correlación más baja de peso con la altura indica que el espesor es más variable entre individuos (condición corporal, estado nutricional, maduración gonadal), aportando información menos estable sobre el peso que las dimensiones planas. En conjunto, estas correlaciones significan que la masa del lenguado está principalmente determinada por su extensión superficial y que la altura añade variabilidad más idiosincrática.</p>
+<p>Para poder comprender mejor la relación entre estas tres variables: peso <span class="math notranslate nohighlight">\((W)\)</span>, longitud <span class="math notranslate nohighlight">\((L)\)</span> y anchura <span class="math notranslate nohighlight">\((A)\)</span> realizamos la correspondiente gráfica.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+
+<span class="c1"># Leer el dataset</span>
+<span class="n">file_path</span> <span class="o">=</span> <span class="s1">&#39;.././data/Dimensiones_lenguado.xlsx&#39;</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>
+
+<span class="c1"># SCATTER 3D PESO–LONGITUD–ANCHURA</span>
+<span class="c1"># --------------------------------</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span> 
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="s1">&#39;3d&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Longitud (cm)&#39;</span><span class="p">],</span>
+           <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Anchura (cm)&#39;</span><span class="p">],</span>
+           <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Peso (g)&#39;</span><span class="p">],</span>
+           <span class="n">s</span><span class="o">=</span><span class="mi">18</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Longitud (cm)&#39;</span><span class="p">,</span> <span class="n">labelpad</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Anchura (cm)&#39;</span><span class="p">,</span> <span class="n">labelpad</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_zlabel</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="c1"># vaciamos el z-label “normal”</span>
+
+<span class="c1"># Colocamos el texto como overlay 2-D para que no se recorte</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.94</span><span class="p">,</span> <span class="mf">0.52</span><span class="p">,</span> <span class="s1">&#39;Peso (g)&#39;</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">,</span>
+         <span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Relación Peso-Longitud-Anchura&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_box_aspect</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">])</span>  
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">0.95</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">0.90</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/9ac1a6e466aef64a6913e6b3de5e1d70ff696a303a465906554c6de63017b8f6.png" src="../../_images/9ac1a6e466aef64a6913e6b3de5e1d70ff696a303a465906554c6de63017b8f6.png" />
+</div>
+</div>
+<p>El diagrama de dispersión tridimensional muestra que los datos se distribuyen sobre una superficie típica de crecimiento alométrico: el peso (<span class="math notranslate nohighlight">\(W\)</span>) aumenta de forma supralineal con la longitud (<span class="math notranslate nohighlight">\(L\)</span>) y la anchura (<span class="math notranslate nohighlight">\(A\)</span>). Esta curvatura descarta cualquier ajuste plano clásico y avala la fórmula <a class="reference internal" href="Coeficientes.html#equation-eq-peso-longitud-anchura">(5.4)</a>; en coordenadas logarítmicas la nube se comprimiría prácticamente en un plano, lo que simplifica la estimación de <span class="math notranslate nohighlight">\(a\)</span>, <span class="math notranslate nohighlight">\(b\)</span> y <span class="math notranslate nohighlight">\(k\)</span> mediante regresión lineal múltiple sobre <span class="math notranslate nohighlight">\(\ln W\)</span>.</p>
+<p>La sección horizontal del gráfico exhibe una correlación positiva marcada entre <span class="math notranslate nohighlight">\(L\)</span> y <span class="math notranslate nohighlight">\(A\)</span>; sin embargo, la dispersión transversal confirma que la anchura aporta información independiente — es decir, <span class="math notranslate nohighlight">\(b\)</span> no resulta redundante respecto a <span class="math notranslate nohighlight">\(a\)</span>. Además, la amplitud de la nube crece con el tamaño, evidenciando heterocedasticidad: los ejemplares grandes presentan mayor variabilidad relativa de peso. Este patrón exige, o bien la transformación log–log previa al ajuste, o bien el empleo de estimadores ponderados o robustos para preservar la validez inferencial.</p>
+<p>En la proyección vertical se identifican varios individuos que se separan netamente de la masa principal: unos pocos muy pesados para su talla y uno o dos sorprendentemente livianos. Estos casos coinciden con los atípicos y deben revisarse individualmente —pudiendo tratarse de errores de registro, diferencias de condición corporal o etapas ontogénicas poco representadas.</p>
+<p><strong>En conclusión, el análisis gráfico corrobora la idoneidad de un modelo alométrico en <span class="math notranslate nohighlight">\(L\)</span> y <span class="math notranslate nohighlight">\(A\)</span>, subraya la necesidad de transformar logarítmicamente los datos o emplear métodos robustos y pone de relieve la importancia de manejar adecuadamente los valores atípicos para obtener estimaciones fiables de los parámetros biológicos.</strong></p>
+</section>
+<section id="visualizacion-de-outliers">
+<h2><span class="section-number">5.3.2. </span>Visualización de <em>outliers</em><a class="headerlink" href="#visualizacion-de-outliers" title="Link to this heading">#</a></h2>
+<p>En el análisis exploratorio se ha comprobado la existencia de <em>outliers</em> y su visualización es fundamental para comprender su impacto en la construcción del modelo predictivo. Estos valores atípicos pueden surgir por errores en la medición, variabilidad natural en la población o condiciones excepcionales, y su presencia puede distorsionar los parámetros estadísticos y sesgar el modelo de regresión. Al representar gráficamente los <em>outliers</em> se facilita la identificación de observaciones aberrantes que podrían afectar la linealidad, homocedasticidad o normalidad de los residuos. Además, su visualización permite evaluar si deben ser tratados mediante estrategias como winsorización, eliminación o imputación robusta, optimizando así la generalización del modelo.</p>
+<p>Para contabilizar y visualizar estos <em>outliers</em> vamos a emplear primeramente un enfoque univariado (detección en una dimensión) para después aplicar un enfoque multivariado que permite la detección en múltiples variables.</p>
+<section id="metodos-univariados-deteccion-en-una-dimension">
+<h3><span class="section-number">5.3.2.1. </span>Métodos univariados (detección en una dimensión)<a class="headerlink" href="#metodos-univariados-deteccion-en-una-dimension" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Rango intercuartílico (IQR)</strong> se define como la amplitud <span class="math notranslate nohighlight">\(Q_{3}-Q_{1}\)</span>, donde <span class="math notranslate nohighlight">\(Q_{1}\)</span> y <span class="math notranslate nohighlight">\(Q_{3}\)</span> son, respectivamente, los percentiles 25% y 75% de la distribución ordenada de una variable aleatoria continua. Constituye una medida robusta de dispersión, insensible a colas pesadas o valores aberrantes, pues encapsula el 50% central de las observaciones. En procedimientos de depuración de datos, el criterio aplicable considera atípica toda observación <span class="math notranslate nohighlight">\(x\)</span> que verifique <span class="math notranslate nohighlight">\(x &lt; Q_{1}-k\cdot \text{IQR}\)</span> o <span class="math notranslate nohighlight">\(x &gt; Q_{3}+k\cdot \text{IQR}\)</span>, con <span class="math notranslate nohighlight">\(k=1.5\)</span> como valor convencional. Este umbral utiliza el IQR como escala de variabilidad intrínseca y permite identificar <em>outliers</em> sin asumir normalidad ni recurrir a momentos de orden superior, favoreciendo diagnósticos estadísticos robustos en muestras heterogéneas.</p></li>
+<li><p><strong>El Z-score</strong>, o puntuación estándar, es una métrica estadística que cuantifica cuántas desviaciones estándar se aleja una observación del valor medio de la distribución, expresado como <span class="math notranslate nohighlight">\(Z=\dfrac{X−μ}{σ}\)</span>, donde <span class="math notranslate nohighlight">\(X\)</span> es el valor observado, <span class="math notranslate nohighlight">\(μ\)</span> la media poblacional y <span class="math notranslate nohighlight">\(σ\)</span> la desviación estándar. Este método es particularmente útil para identificar <em>outliers</em> en distribuciones normales o aproximadamente normales, considerándose valores atípicos aquellos con <span class="math notranslate nohighlight">\(∣Z∣&gt;3\)</span> (umbral que abarca el 99.7% de los datos bajo la curva gaussiana). Sin embargo, su eficacia disminuye en distribuciones sesgadas o con colas pesadas, ya que la media y la desviación estándar son sensibles a valores extremos.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># -------------------------------------------------</span>
+<span class="c1">#    METODOS UNIVARIADOS</span>
+<span class="c1"># -------------------------------------------------</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">iqr_mask</span><span class="p">(</span><span class="n">series</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mf">1.5</span><span class="p">):</span>
+    <span class="n">q1</span><span class="p">,</span> <span class="n">q3</span> <span class="o">=</span> <span class="n">series</span><span class="o">.</span><span class="n">quantile</span><span class="p">([</span><span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">])</span>
+    <span class="n">iqr</span> <span class="o">=</span> <span class="n">q3</span> <span class="o">-</span> <span class="n">q1</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">series</span> <span class="o">&lt;</span> <span class="n">q1</span> <span class="o">-</span> <span class="n">k</span><span class="o">*</span><span class="n">iqr</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">series</span> <span class="o">&gt;</span> <span class="n">q3</span> <span class="o">+</span> <span class="n">k</span><span class="o">*</span><span class="n">iqr</span><span class="p">)</span>
+
+<span class="c1"># ********************************</span>
+<span class="c1">#    IQR sobre cada variable</span>
+<span class="c1"># ********************************</span>
+<span class="n">mask_iqr</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">iqr_mask</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Peso (g)&#39;</span><span class="p">])</span> <span class="o">|</span>
+    <span class="n">iqr_mask</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Longitud (cm)&#39;</span><span class="p">])</span> <span class="o">|</span>
+    <span class="n">iqr_mask</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Anchura (cm)&#39;</span><span class="p">])</span>
+<span class="p">)</span>
+
+<span class="c1"># Generamos una copia del data frame original</span>
+<span class="n">df_outliers</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+<span class="c1"># Añadimos los outliers detectados</span>
+<span class="n">df_outliers</span><span class="p">[</span><span class="s1">&#39;out_IQR&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">mask_iqr</span>
+
+
+<span class="c1"># Filtrar outliers y añadir columnas de diagnóstico</span>
+<span class="n">outliers_iqr</span> <span class="o">=</span> <span class="n">df_outliers</span><span class="p">[</span><span class="n">mask_iqr</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">outliers_iqr</span><span class="p">[</span><span class="s1">&#39;Razón_outlier&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+
+<span class="c1"># Identificar qué variables contribuyeron</span>
+
+<span class="k">if</span> <span class="s1">&#39;Longitud (cm)&#39;</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+    <span class="n">outliers_iqr</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">iqr_mask</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Longitud (cm)&#39;</span><span class="p">])[</span><span class="n">mask_iqr</span><span class="p">],</span> <span class="s1">&#39;Razón_outlier&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="s2">&quot;Longitud; &quot;</span>
+<span class="k">if</span> <span class="s1">&#39;Anchura (cm)&#39;</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+    <span class="n">outliers_iqr</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">iqr_mask</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Anchura (cm)&#39;</span><span class="p">])[</span><span class="n">mask_iqr</span><span class="p">],</span> <span class="s1">&#39;Razón_outlier&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="s2">&quot;Anchura; &quot;</span>
+<span class="k">if</span> <span class="s1">&#39;Peso (g)&#39;</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+    <span class="n">outliers_iqr</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">iqr_mask</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Peso (g)&#39;</span><span class="p">])[</span><span class="n">mask_iqr</span><span class="p">],</span> <span class="s1">&#39;Razón_outlier&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="s2">&quot;Peso; &quot;</span>
+
+<span class="c1"># Mostrar resultado</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;IQR: Número de outliers detectados IQR: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">outliers_iqr</span><span class="p">)</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">outliers_iqr</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">outliers_iqr</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>IQR: Número de outliers detectados IQR: 11
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Peso (g)</th>
+      <th>Longitud (cm)</th>
+      <th>Anchura (cm)</th>
+      <th>Altura (cm)</th>
+      <th>out_IQR</th>
+      <th>Razón_outlier</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>194</th>
+      <td>13.45</td>
+      <td>9.7</td>
+      <td>4.0</td>
+      <td>0.6</td>
+      <td>True</td>
+      <td>Peso;</td>
+    </tr>
+    <tr>
+      <th>197</th>
+      <td>13.56</td>
+      <td>9.7</td>
+      <td>4.1</td>
+      <td>0.6</td>
+      <td>True</td>
+      <td>Peso;</td>
+    </tr>
+    <tr>
+      <th>200</th>
+      <td>14.13</td>
+      <td>10.1</td>
+      <td>4.1</td>
+      <td>0.7</td>
+      <td>True</td>
+      <td>Peso;</td>
+    </tr>
+    <tr>
+      <th>201</th>
+      <td>14.04</td>
+      <td>10.5</td>
+      <td>4.1</td>
+      <td>0.7</td>
+      <td>True</td>
+      <td>Peso;</td>
+    </tr>
+    <tr>
+      <th>202</th>
+      <td>14.67</td>
+      <td>10.7</td>
+      <td>4.2</td>
+      <td>0.7</td>
+      <td>True</td>
+      <td>Peso;</td>
+    </tr>
+    <tr>
+      <th>203</th>
+      <td>15.65</td>
+      <td>10.7</td>
+      <td>4.5</td>
+      <td>0.6</td>
+      <td>True</td>
+      <td>Peso;</td>
+    </tr>
+    <tr>
+      <th>204</th>
+      <td>14.50</td>
+      <td>10.8</td>
+      <td>4.5</td>
+      <td>0.6</td>
+      <td>True</td>
+      <td>Peso;</td>
+    </tr>
+    <tr>
+      <th>205</th>
+      <td>19.88</td>
+      <td>11.4</td>
+      <td>4.4</td>
+      <td>0.9</td>
+      <td>True</td>
+      <td>Peso;</td>
+    </tr>
+    <tr>
+      <th>206</th>
+      <td>16.47</td>
+      <td>11.0</td>
+      <td>4.6</td>
+      <td>0.7</td>
+      <td>True</td>
+      <td>Peso;</td>
+    </tr>
+    <tr>
+      <th>207</th>
+      <td>17.04</td>
+      <td>10.6</td>
+      <td>4.8</td>
+      <td>0.7</td>
+      <td>True</td>
+      <td>Peso;</td>
+    </tr>
+    <tr>
+      <th>208</th>
+      <td>21.98</td>
+      <td>10.6</td>
+      <td>5.2</td>
+      <td>0.8</td>
+      <td>True</td>
+      <td>Anchura; Peso;</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ********************************</span>
+<span class="c1">#    Z-SCORE sobre cada variable</span>
+<span class="c1"># ********************************</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.stats</span><span class="w"> </span><span class="kn">import</span> <span class="n">zscore</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">zscore_mask</span><span class="p">(</span><span class="n">series</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mi">3</span><span class="p">):</span>
+    <span class="n">z_scores</span> <span class="o">=</span> <span class="n">zscore</span><span class="p">(</span><span class="n">series</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">abs</span><span class="p">(</span><span class="n">z_scores</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">threshold</span>
+
+<span class="n">mask_zscore</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">zscore_mask</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Peso (g)&#39;</span><span class="p">])</span> <span class="o">|</span>
+    <span class="n">zscore_mask</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Longitud (cm)&#39;</span><span class="p">])</span> <span class="o">|</span>
+    <span class="n">zscore_mask</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Anchura (cm)&#39;</span><span class="p">])</span>
+<span class="p">)</span>
+<span class="c1"># Introducimos los outliers en el dataframe correspondiente</span>
+<span class="n">df_outliers</span><span class="p">[</span><span class="s2">&quot;out_ZScore&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">mask_zscore</span>
+
+<span class="c1"># Filtrar outliers y añadir columnas de diagnóstico</span>
+<span class="n">outliers_zscore</span> <span class="o">=</span> <span class="n">df_outliers</span><span class="p">[</span><span class="n">mask_zscore</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">outliers_zscore</span><span class="p">[</span><span class="s1">&#39;Razón_outlier&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+
+<span class="c1"># Añadir Z-scores para cada variable</span>
+<span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;Peso (g)&#39;</span><span class="p">,</span> <span class="s1">&#39;Longitud (cm)&#39;</span><span class="p">,</span> <span class="s1">&#39;Anchura (cm)&#39;</span><span class="p">]:</span>
+    <span class="k">if</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+        <span class="n">outliers_zscore</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;Z_</span><span class="si">{</span><span class="n">col</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">zscore</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">])[</span><span class="n">mask_zscore</span><span class="p">]</span>
+
+<span class="c1"># Identificar qué variables contribuyeron</span>
+<span class="k">if</span> <span class="s1">&#39;Longitud (cm)&#39;</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+    <span class="n">outliers_zscore</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">zscore_mask</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Longitud (cm)&#39;</span><span class="p">])[</span><span class="n">mask_zscore</span><span class="p">],</span> <span class="s1">&#39;Razón_outlier&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="s2">&quot;Longitud; &quot;</span>
+<span class="k">if</span> <span class="s1">&#39;Anchura (cm)&#39;</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+    <span class="n">outliers_zscore</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">zscore_mask</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Anchura (cm)&#39;</span><span class="p">])[</span><span class="n">mask_zscore</span><span class="p">],</span> <span class="s1">&#39;Razón_outlier&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="s2">&quot;Anchura; &quot;</span>
+<span class="k">if</span> <span class="s1">&#39;Peso (g)&#39;</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+    <span class="n">outliers_zscore</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">zscore_mask</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Peso (g)&#39;</span><span class="p">])[</span><span class="n">mask_zscore</span><span class="p">],</span> <span class="s1">&#39;Razón_outlier&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="s2">&quot;Peso; &quot;</span>
+
+<span class="c1"># Mostrar resultado</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Z-Score: Número de outliers detectados (|Z| &gt; 3): </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">outliers_zscore</span><span class="p">)</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">outliers_zscore</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">format</span><span class="p">({</span><span class="sa">f</span><span class="s1">&#39;Z_</span><span class="si">{</span><span class="n">col</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">:</span> <span class="s2">&quot;</span><span class="si">{:.2f}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;Peso (g)&#39;</span><span class="p">,</span> <span class="s1">&#39;Longitud (cm)&#39;</span><span class="p">,</span> <span class="s1">&#39;Anchura (cm)&#39;</span><span class="p">]</span> <span class="k">if</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">}))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Z-Score: Número de outliers detectados (|Z| &gt; 3): 4
+</pre></div>
+</div>
+<div class="output text_html"><style type="text/css">
+</style>
+<table id="T_6931c">
+  <thead>
+    <tr>
+      <th class="blank level0" >&nbsp;</th>
+      <th id="T_6931c_level0_col0" class="col_heading level0 col0" >Peso (g)</th>
+      <th id="T_6931c_level0_col1" class="col_heading level0 col1" >Longitud (cm)</th>
+      <th id="T_6931c_level0_col2" class="col_heading level0 col2" >Anchura (cm)</th>
+      <th id="T_6931c_level0_col3" class="col_heading level0 col3" >Altura (cm)</th>
+      <th id="T_6931c_level0_col4" class="col_heading level0 col4" >out_IQR</th>
+      <th id="T_6931c_level0_col5" class="col_heading level0 col5" >out_ZScore</th>
+      <th id="T_6931c_level0_col6" class="col_heading level0 col6" >Razón_outlier</th>
+      <th id="T_6931c_level0_col7" class="col_heading level0 col7" >Z_Peso (g)</th>
+      <th id="T_6931c_level0_col8" class="col_heading level0 col8" >Z_Longitud (cm)</th>
+      <th id="T_6931c_level0_col9" class="col_heading level0 col9" >Z_Anchura (cm)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th id="T_6931c_level0_row0" class="row_heading level0 row0" >205</th>
+      <td id="T_6931c_row0_col0" class="data row0 col0" >19.880000</td>
+      <td id="T_6931c_row0_col1" class="data row0 col1" >11.400000</td>
+      <td id="T_6931c_row0_col2" class="data row0 col2" >4.400000</td>
+      <td id="T_6931c_row0_col3" class="data row0 col3" >0.900000</td>
+      <td id="T_6931c_row0_col4" class="data row0 col4" >True</td>
+      <td id="T_6931c_row0_col5" class="data row0 col5" >True</td>
+      <td id="T_6931c_row0_col6" class="data row0 col6" >Peso; </td>
+      <td id="T_6931c_row0_col7" class="data row0 col7" >4.01</td>
+      <td id="T_6931c_row0_col8" class="data row0 col8" >2.77</td>
+      <td id="T_6931c_row0_col9" class="data row0 col9" >2.31</td>
+    </tr>
+    <tr>
+      <th id="T_6931c_level0_row1" class="row_heading level0 row1" >206</th>
+      <td id="T_6931c_row1_col0" class="data row1 col0" >16.470000</td>
+      <td id="T_6931c_row1_col1" class="data row1 col1" >11.000000</td>
+      <td id="T_6931c_row1_col2" class="data row1 col2" >4.600000</td>
+      <td id="T_6931c_row1_col3" class="data row1 col3" >0.700000</td>
+      <td id="T_6931c_row1_col4" class="data row1 col4" >True</td>
+      <td id="T_6931c_row1_col5" class="data row1 col5" >True</td>
+      <td id="T_6931c_row1_col6" class="data row1 col6" >Peso; </td>
+      <td id="T_6931c_row1_col7" class="data row1 col7" >3.07</td>
+      <td id="T_6931c_row1_col8" class="data row1 col8" >2.50</td>
+      <td id="T_6931c_row1_col9" class="data row1 col9" >2.60</td>
+    </tr>
+    <tr>
+      <th id="T_6931c_level0_row2" class="row_heading level0 row2" >207</th>
+      <td id="T_6931c_row2_col0" class="data row2 col0" >17.040000</td>
+      <td id="T_6931c_row2_col1" class="data row2 col1" >10.600000</td>
+      <td id="T_6931c_row2_col2" class="data row2 col2" >4.800000</td>
+      <td id="T_6931c_row2_col3" class="data row2 col3" >0.700000</td>
+      <td id="T_6931c_row2_col4" class="data row2 col4" >True</td>
+      <td id="T_6931c_row2_col5" class="data row2 col5" >True</td>
+      <td id="T_6931c_row2_col6" class="data row2 col6" >Peso; </td>
+      <td id="T_6931c_row2_col7" class="data row2 col7" >3.22</td>
+      <td id="T_6931c_row2_col8" class="data row2 col8" >2.23</td>
+      <td id="T_6931c_row2_col9" class="data row2 col9" >2.89</td>
+    </tr>
+    <tr>
+      <th id="T_6931c_level0_row3" class="row_heading level0 row3" >208</th>
+      <td id="T_6931c_row3_col0" class="data row3 col0" >21.980000</td>
+      <td id="T_6931c_row3_col1" class="data row3 col1" >10.600000</td>
+      <td id="T_6931c_row3_col2" class="data row3 col2" >5.200000</td>
+      <td id="T_6931c_row3_col3" class="data row3 col3" >0.800000</td>
+      <td id="T_6931c_row3_col4" class="data row3 col4" >True</td>
+      <td id="T_6931c_row3_col5" class="data row3 col5" >True</td>
+      <td id="T_6931c_row3_col6" class="data row3 col6" >Anchura; Peso; </td>
+      <td id="T_6931c_row3_col7" class="data row3 col7" >4.59</td>
+      <td id="T_6931c_row3_col8" class="data row3 col8" >2.23</td>
+      <td id="T_6931c_row3_col9" class="data row3 col9" >3.46</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+</section>
+<section id="metodos-multivariados">
+<h3><span class="section-number">5.3.2.2. </span>Métodos multivariados<a class="headerlink" href="#metodos-multivariados" title="Link to this heading">#</a></h3>
+<p><strong>Isolation Forest</strong> es un algoritmo de detección de anomalías no supervisado basado en el principio de particiones aleatorias. A partir de un conjunto de <span class="math notranslate nohighlight">\(n\)</span> observaciones <span class="math notranslate nohighlight">\(\{\mathbf{x}{i}\}{i=1}^{n}\subset\mathbb{R}^{p}\)</span>, se construye un bosque de <span class="math notranslate nohighlight">\(t\)</span> árboles binarios denominados <em>iTrees</em>; cada <em>iTree</em> se genera seleccionando recursivamente, de forma aleatoria, (i) una característica <span class="math notranslate nohighlight">\(j\in\{1,\dots,p\}\)</span> y (ii) un valor de corte <span class="math notranslate nohighlight">\(\theta\)</span> comprendido entre los valores mínimo y máximo de la característica en el subconjunto actual. El proceso continúa hasta que la partición contiene un único punto o alcanza una profundidad máxima <span class="math notranslate nohighlight">\(h_{\max}\)</span>. La idea fundamental es que las observaciones anómalas, al hallarse escasamente representadas y en regiones periféricas del espacio de características, tienden a quedar aisladas tras un número bajo de divisiones. Para cada muestra <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> se define una profundidad promedio <span class="math notranslate nohighlight">\(E[h(\mathbf{x})]\)</span> —promediada sobre los <span class="math notranslate nohighlight">\(t\)</span> árboles— y de ella se deduce la puntuación de anomalía</p>
+<div class="math notranslate nohighlight" id="equation-eq-iforest-1">
+<span class="eqno">(5.6)<a class="headerlink" href="#equation-eq-iforest-1" title="Link to this equation">#</a></span>\[s(\mathbf{x}) = 2^{-\frac{E[h(\mathbf{x})]}{c(n)}},
+\qquad
+c(n) = H_{n-1}-\frac{2(n-1)}{n},\]</div>
+<p>donde <span class="math notranslate nohighlight">\(H_{n}\)</span> es el <span class="math notranslate nohighlight">\(n\)</span>-ésimo número armónico. Los valores de <span class="math notranslate nohighlight">\(s(\mathbf{x})\)</span> se normalizan en <span class="math notranslate nohighlight">\([0,1]\)</span>; puntuaciones próximas a 1 indican observaciones susceptibles de ser outliers. El esquema evita suposiciones paramétricas sobre la forma de la distribución, es eficiente en alta dimensionalidad <span class="math notranslate nohighlight">\((O(t\,n\log n))\)</span> y permite fijar <em>a priori</em> la proporción esperada de anomalías mediante el parámetro <code class="docutils literal notranslate"><span class="pre">contamination</span></code>, lo que lo hace idóneo para depuración robusta de conjuntos de datos complejos.</p>
+<p>Para abordar este algoritmo eliminamos de nuestro <em>dataset</em> la variable <code class="docutils literal notranslate"><span class="pre">Altura</span></code> porque como ya concluimos anteriormente su exclusión no produce pérmida fundamental de información y sí podria afectar a los resultados. Previamente a la aplicacion del algoritmo es necesario normalizar (estandarizar) las columnas seleccionadas para garantizar la efectividad del algoritmo en la detección de anomalías. Al estandarizar las variables mediante la transformación <span class="math notranslate nohighlight">\(\dfrac{X−μ}{σ}\)</span>, se homogenizan las escalas de todas las características, evitando que aquellas con magnitudes mayores dominen artificialmente el cálculo de anomalías. Este paso es esencial porque <em>Isolation Forest</em>, al basarse en particiones aleatorias del espacio de características, puede generar sesgos en conjuntos de datos con variables en escalas heterogéneas. La estandarización no solo mejora la sensibilidad del modelo a patrones multivariados de <em>outliers</em>, sino que también facilita la interpretación de los <em>scores</em> de anomalía al operar en un espacio métrico coherente. Adicionalmente, al fijar la media en 0 y la varianza en 1, se optimiza el rendimiento computacional del algoritmo, ya que las distancias utilizadas en las particiones aleatorias de los árboles reflejan contribuciones equilibradas de todas las variables.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ********************************</span>
+<span class="c1">#  ISOLATION FOREST MULTIVARIABLE</span>
+<span class="c1"># ********************************</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.ensemble</span><span class="w"> </span><span class="kn">import</span> <span class="n">IsolationForest</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">StandardScaler</span>
+
+<span class="n">iso</span> <span class="o">=</span> <span class="n">IsolationForest</span><span class="p">(</span><span class="n">contamination</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="c1"># Eliminamos la columna altura del dataset</span>
+<span class="n">iso_cols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Peso (g)&#39;</span><span class="p">,</span> <span class="s1">&#39;Longitud (cm)&#39;</span><span class="p">,</span> <span class="s1">&#39;Anchura (cm)&#39;</span><span class="p">]</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">iso_cols</span><span class="p">]</span>
+
+<span class="c1"># Normalizamos los datos</span>
+<span class="n">scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+<span class="n">X_scaled</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+
+<span class="n">labels_iso</span> <span class="o">=</span> <span class="n">iso</span><span class="o">.</span><span class="n">fit_predict</span><span class="p">(</span><span class="n">X_scaled</span><span class="p">)</span>
+<span class="n">mask_iso</span> <span class="o">=</span> <span class="n">labels_iso</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span>
+
+<span class="c1"># Guardamos los ouliers en el dataframe</span>
+<span class="n">df_outliers</span><span class="p">[</span><span class="s2">&quot;out_iso&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">mask_iso</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Nº de outliers detectados: </span><span class="si">{</span><span class="n">df_outliers</span><span class="p">[</span><span class="s1">&#39;out_iso&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">df_outliers</span><span class="p">[</span><span class="s2">&quot;out_iso&quot;</span><span class="p">]])</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+
+<span class="c1"># Gráfica 1</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df_outliers</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;Longitud (cm)&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Peso (g)&#39;</span><span class="p">,</span>
+                <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;out_iso&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax1</span><span class="p">,</span>
+                <span class="n">palette</span><span class="o">=</span><span class="p">{</span><span class="kc">False</span><span class="p">:</span> <span class="s2">&quot;#2b7bba&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">:</span> <span class="s2">&quot;#d62728&quot;</span><span class="p">},</span>
+                <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">40</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Peso vs Longitud – outliers resaltados&quot;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Outlier&quot;</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper left&quot;</span><span class="p">)</span>
+
+<span class="c1"># Gráfica 2</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df_outliers</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;Anchura (cm)&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Peso (g)&#39;</span><span class="p">,</span>
+                <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;out_iso&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax2</span><span class="p">,</span>
+                <span class="n">palette</span><span class="o">=</span><span class="p">{</span><span class="kc">False</span><span class="p">:</span> <span class="s2">&quot;#2b7bba&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">:</span> <span class="s2">&quot;#d62728&quot;</span><span class="p">},</span>
+                <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">40</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Peso vs Anchura – outliers resaltados&quot;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Outlier&quot;</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper left&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Nº de outliers detectados: 36
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Peso (g)</th>
+      <th>Longitud (cm)</th>
+      <th>Anchura (cm)</th>
+      <th>Altura (cm)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.46</td>
+      <td>3.3</td>
+      <td>1.3</td>
+      <td>0.2</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1.08</td>
+      <td>4.5</td>
+      <td>1.1</td>
+      <td>0.3</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.67</td>
+      <td>3.9</td>
+      <td>1.5</td>
+      <td>0.2</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.98</td>
+      <td>4.4</td>
+      <td>1.7</td>
+      <td>0.3</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.93</td>
+      <td>4.2</td>
+      <td>1.8</td>
+      <td>0.3</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>1.89</td>
+      <td>4.5</td>
+      <td>2.0</td>
+      <td>0.4</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>1.60</td>
+      <td>5.1</td>
+      <td>1.8</td>
+      <td>0.3</td>
+    </tr>
+    <tr>
+      <th>92</th>
+      <td>3.06</td>
+      <td>6.0</td>
+      <td>2.9</td>
+      <td>0.4</td>
+    </tr>
+    <tr>
+      <th>141</th>
+      <td>6.96</td>
+      <td>7.2</td>
+      <td>3.3</td>
+      <td>0.5</td>
+    </tr>
+    <tr>
+      <th>153</th>
+      <td>3.40</td>
+      <td>6.8</td>
+      <td>3.9</td>
+      <td>0.4</td>
+    </tr>
+    <tr>
+      <th>156</th>
+      <td>4.50</td>
+      <td>7.4</td>
+      <td>3.7</td>
+      <td>0.4</td>
+    </tr>
+    <tr>
+      <th>183</th>
+      <td>10.08</td>
+      <td>7.8</td>
+      <td>4.2</td>
+      <td>0.7</td>
+    </tr>
+    <tr>
+      <th>185</th>
+      <td>9.79</td>
+      <td>9.7</td>
+      <td>3.5</td>
+      <td>0.6</td>
+    </tr>
+    <tr>
+      <th>186</th>
+      <td>10.10</td>
+      <td>9.7</td>
+      <td>3.5</td>
+      <td>0.6</td>
+    </tr>
+    <tr>
+      <th>187</th>
+      <td>9.28</td>
+      <td>9.5</td>
+      <td>3.6</td>
+      <td>0.6</td>
+    </tr>
+    <tr>
+      <th>188</th>
+      <td>9.51</td>
+      <td>9.4</td>
+      <td>3.7</td>
+      <td>0.6</td>
+    </tr>
+    <tr>
+      <th>189</th>
+      <td>10.18</td>
+      <td>9.1</td>
+      <td>3.9</td>
+      <td>0.5</td>
+    </tr>
+    <tr>
+      <th>190</th>
+      <td>10.38</td>
+      <td>9.3</td>
+      <td>3.9</td>
+      <td>0.6</td>
+    </tr>
+    <tr>
+      <th>191</th>
+      <td>9.82</td>
+      <td>9.7</td>
+      <td>3.8</td>
+      <td>0.6</td>
+    </tr>
+    <tr>
+      <th>192</th>
+      <td>11.35</td>
+      <td>9.7</td>
+      <td>4.0</td>
+      <td>0.6</td>
+    </tr>
+    <tr>
+      <th>193</th>
+      <td>12.70</td>
+      <td>9.7</td>
+      <td>4.0</td>
+      <td>0.7</td>
+    </tr>
+    <tr>
+      <th>194</th>
+      <td>13.45</td>
+      <td>9.7</td>
+      <td>4.0</td>
+      <td>0.6</td>
+    </tr>
+    <tr>
+      <th>195</th>
+      <td>11.22</td>
+      <td>10.1</td>
+      <td>3.9</td>
+      <td>0.6</td>
+    </tr>
+    <tr>
+      <th>196</th>
+      <td>12.37</td>
+      <td>9.7</td>
+      <td>4.1</td>
+      <td>0.6</td>
+    </tr>
+    <tr>
+      <th>197</th>
+      <td>13.56</td>
+      <td>9.7</td>
+      <td>4.1</td>
+      <td>0.6</td>
+    </tr>
+    <tr>
+      <th>198</th>
+      <td>11.28</td>
+      <td>10.0</td>
+      <td>4.0</td>
+      <td>0.6</td>
+    </tr>
+    <tr>
+      <th>199</th>
+      <td>12.91</td>
+      <td>10.1</td>
+      <td>4.0</td>
+      <td>0.6</td>
+    </tr>
+    <tr>
+      <th>200</th>
+      <td>14.13</td>
+      <td>10.1</td>
+      <td>4.1</td>
+      <td>0.7</td>
+    </tr>
+    <tr>
+      <th>201</th>
+      <td>14.04</td>
+      <td>10.5</td>
+      <td>4.1</td>
+      <td>0.7</td>
+    </tr>
+    <tr>
+      <th>202</th>
+      <td>14.67</td>
+      <td>10.7</td>
+      <td>4.2</td>
+      <td>0.7</td>
+    </tr>
+    <tr>
+      <th>203</th>
+      <td>15.65</td>
+      <td>10.7</td>
+      <td>4.5</td>
+      <td>0.6</td>
+    </tr>
+    <tr>
+      <th>204</th>
+      <td>14.50</td>
+      <td>10.8</td>
+      <td>4.5</td>
+      <td>0.6</td>
+    </tr>
+    <tr>
+      <th>205</th>
+      <td>19.88</td>
+      <td>11.4</td>
+      <td>4.4</td>
+      <td>0.9</td>
+    </tr>
+    <tr>
+      <th>206</th>
+      <td>16.47</td>
+      <td>11.0</td>
+      <td>4.6</td>
+      <td>0.7</td>
+    </tr>
+    <tr>
+      <th>207</th>
+      <td>17.04</td>
+      <td>10.6</td>
+      <td>4.8</td>
+      <td>0.7</td>
+    </tr>
+    <tr>
+      <th>208</th>
+      <td>21.98</td>
+      <td>10.6</td>
+      <td>5.2</td>
+      <td>0.8</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><img alt="../../_images/de0809de0af60fad36b1b15be244afa17c3dba036a966a1237f7e58501581c13.png" src="../../_images/de0809de0af60fad36b1b15be244afa17c3dba036a966a1237f7e58501581c13.png" />
+</div>
+</div>
+<p>Los tres métodos empelados para encontrar outliers presentan diferentes números de <em>outliers</em>. Dado que cada algoritmo de detección de <em>outliers</em> se fundamenta en marcos estadísticos divergentes —el método del rango intercuartílico (IQR) opera bajo un enfoque univariante robusto basado en cuantiles, pero carece de sensibilidad para capturar relaciones multivariadas; el Z-score presupone una distribución cuasi-normal y cuantifica desviaciones en unidades de escala estándar; mientras que Isolation Forest implementa un paradigma no paramétrico que aisla observaciones atípicas en espacios p-dimensionales mediante hiperplanos aleatorios—, se deriva como consecuencia teórica que los conjuntos de anomalías identificados presentarán necesariamente solapamientos parciales.</p>
+<p>Un análisis de conjuntos (operaciones de intersección y diferencia) puede ser una metodología adecuada para: a) discriminar entre outliers de alta consistencia (aquellos que simultáneamente exceden los umbrales de dispersión no paramétrica, violan los supuestos de normalidad y manifiestan rareza en la topología multivariante), y b) identificar observaciones cuya clasificación como atípicas es artefactual, dependiente de los supuestos específicos de cada modelo. Este protocolo de validación cruzada minimiza los errores de Tipo I (falsos positivos), incrementa la validez del preprocesamiento estadístico y permite así una cuantificación formal del sesgo metodológico inherente a cada técnica.</p>
+<p>El objetivo de este análisis de conjuntos es delimitar aquellas observaciones que son identificadas como <em>outliers</em> por al menos dos métodos independientes, estableciendo así un criterio de consenso que refuerza la fiabilidad de la detección. Cuando un mismo dato es marcado como anómalo por múltiples técnicas —cada una basada en supuestos estadísticos distintos (p. ej., dispersión robusta, normalidad, o rareza multivariante)—, la probabilidad de que se trate de un verdadero valor aberrante, y no de un artefacto metodológico, aumenta significativamente.</p>
+<p>Por tanto, estos <em>outliers</em> multimodales deben considerarse como observaciones genuinamente anómalas, ya sea debido a errores de medición o comportamientos sistémicos atípicos, y su exclusión o tratamiento se justifica para garantizar la validez inferencial de los análisis posteriores.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Conjuntos y solapamientos</span>
+<span class="n">set_iqr</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">df_outliers</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="n">df_outliers</span><span class="p">[</span><span class="s1">&#39;out_IQR&#39;</span><span class="p">]])</span>
+<span class="n">set_zscore</span>   <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">df_outliers</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="n">df_outliers</span><span class="p">[</span><span class="s1">&#39;out_ZScore&#39;</span><span class="p">]])</span>
+<span class="n">set_if</span>  <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">df_outliers</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="n">df_outliers</span><span class="p">[</span><span class="s1">&#39;out_iso&#39;</span><span class="p">]])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;─ Outliers por método ─</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;IQR                : </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">set_iqr</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Z-Score |z| &gt; 3    : </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">set_zscore</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Isolation Forest   : </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">set_if</span><span class="p">)</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">idx_common</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+    <span class="nb">sorted</span><span class="p">(</span><span class="n">set_iqr</span> <span class="o">&amp;</span> <span class="n">set_zscore</span><span class="p">),</span>
+    <span class="nb">sorted</span><span class="p">(</span><span class="n">set_iqr</span> <span class="o">&amp;</span> <span class="n">set_if</span><span class="p">),</span>
+    <span class="nb">sorted</span><span class="p">(</span><span class="n">set_zscore</span> <span class="o">&amp;</span> <span class="n">set_if</span><span class="p">),</span>
+    <span class="nb">sorted</span><span class="p">(</span><span class="n">set_iqr</span> <span class="o">&amp;</span> <span class="n">set_zscore</span> <span class="o">&amp;</span> <span class="n">set_if</span><span class="p">)</span>
+    <span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">object</span><span class="p">)</span> <span class="c1"># dtype=object para listas de distinto tamaño</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;─ Intersecciones ─</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;IQR ∩ Z-Score: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">set_iqr</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">set_zscore</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">outliers_common</span> <span class="o">=</span> <span class="n">df_outliers</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idx_common</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> 
+<span class="n">display</span><span class="p">(</span><span class="n">outliers_common</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;IQR ∩ Isolation Forest     : </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">set_iqr</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">set_if</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">df_outliers</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idx_common</span><span class="p">[</span><span class="mi">1</span><span class="p">]])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Z-Score ∩ Isolation Forest : </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">set_zscore</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">set_if</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">df_outliers</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idx_common</span><span class="p">[</span><span class="mi">2</span><span class="p">]])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;IQR ∩ Z-Score ∩ IF         : </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">set_iqr</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">set_zscore</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">set_if</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">df_outliers</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idx_common</span><span class="p">[</span><span class="mi">3</span><span class="p">]])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>─ Outliers por método ─
+
+IQR                : 11
+Z-Score |z| &gt; 3    : 4
+Isolation Forest   : 36
+
+─ Intersecciones ─
+
+IQR ∩ Z-Score: 4
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Peso (g)</th>
+      <th>Longitud (cm)</th>
+      <th>Anchura (cm)</th>
+      <th>Altura (cm)</th>
+      <th>out_IQR</th>
+      <th>out_ZScore</th>
+      <th>out_iso</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>205</th>
+      <td>19.88</td>
+      <td>11.4</td>
+      <td>4.4</td>
+      <td>0.9</td>
+      <td>True</td>
+      <td>True</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>206</th>
+      <td>16.47</td>
+      <td>11.0</td>
+      <td>4.6</td>
+      <td>0.7</td>
+      <td>True</td>
+      <td>True</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>207</th>
+      <td>17.04</td>
+      <td>10.6</td>
+      <td>4.8</td>
+      <td>0.7</td>
+      <td>True</td>
+      <td>True</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>208</th>
+      <td>21.98</td>
+      <td>10.6</td>
+      <td>5.2</td>
+      <td>0.8</td>
+      <td>True</td>
+      <td>True</td>
+      <td>True</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>IQR ∩ Isolation Forest     : 11
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Peso (g)</th>
+      <th>Longitud (cm)</th>
+      <th>Anchura (cm)</th>
+      <th>Altura (cm)</th>
+      <th>out_IQR</th>
+      <th>out_ZScore</th>
+      <th>out_iso</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>194</th>
+      <td>13.45</td>
+      <td>9.7</td>
+      <td>4.0</td>
+      <td>0.6</td>
+      <td>True</td>
+      <td>False</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>197</th>
+      <td>13.56</td>
+      <td>9.7</td>
+      <td>4.1</td>
+      <td>0.6</td>
+      <td>True</td>
+      <td>False</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>200</th>
+      <td>14.13</td>
+      <td>10.1</td>
+      <td>4.1</td>
+      <td>0.7</td>
+      <td>True</td>
+      <td>False</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>201</th>
+      <td>14.04</td>
+      <td>10.5</td>
+      <td>4.1</td>
+      <td>0.7</td>
+      <td>True</td>
+      <td>False</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>202</th>
+      <td>14.67</td>
+      <td>10.7</td>
+      <td>4.2</td>
+      <td>0.7</td>
+      <td>True</td>
+      <td>False</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>203</th>
+      <td>15.65</td>
+      <td>10.7</td>
+      <td>4.5</td>
+      <td>0.6</td>
+      <td>True</td>
+      <td>False</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>204</th>
+      <td>14.50</td>
+      <td>10.8</td>
+      <td>4.5</td>
+      <td>0.6</td>
+      <td>True</td>
+      <td>False</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>205</th>
+      <td>19.88</td>
+      <td>11.4</td>
+      <td>4.4</td>
+      <td>0.9</td>
+      <td>True</td>
+      <td>True</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>206</th>
+      <td>16.47</td>
+      <td>11.0</td>
+      <td>4.6</td>
+      <td>0.7</td>
+      <td>True</td>
+      <td>True</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>207</th>
+      <td>17.04</td>
+      <td>10.6</td>
+      <td>4.8</td>
+      <td>0.7</td>
+      <td>True</td>
+      <td>True</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>208</th>
+      <td>21.98</td>
+      <td>10.6</td>
+      <td>5.2</td>
+      <td>0.8</td>
+      <td>True</td>
+      <td>True</td>
+      <td>True</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Z-Score ∩ Isolation Forest : 4
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Peso (g)</th>
+      <th>Longitud (cm)</th>
+      <th>Anchura (cm)</th>
+      <th>Altura (cm)</th>
+      <th>out_IQR</th>
+      <th>out_ZScore</th>
+      <th>out_iso</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>205</th>
+      <td>19.88</td>
+      <td>11.4</td>
+      <td>4.4</td>
+      <td>0.9</td>
+      <td>True</td>
+      <td>True</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>206</th>
+      <td>16.47</td>
+      <td>11.0</td>
+      <td>4.6</td>
+      <td>0.7</td>
+      <td>True</td>
+      <td>True</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>207</th>
+      <td>17.04</td>
+      <td>10.6</td>
+      <td>4.8</td>
+      <td>0.7</td>
+      <td>True</td>
+      <td>True</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>208</th>
+      <td>21.98</td>
+      <td>10.6</td>
+      <td>5.2</td>
+      <td>0.8</td>
+      <td>True</td>
+      <td>True</td>
+      <td>True</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>IQR ∩ Z-Score ∩ IF         : 4
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Peso (g)</th>
+      <th>Longitud (cm)</th>
+      <th>Anchura (cm)</th>
+      <th>Altura (cm)</th>
+      <th>out_IQR</th>
+      <th>out_ZScore</th>
+      <th>out_iso</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>205</th>
+      <td>19.88</td>
+      <td>11.4</td>
+      <td>4.4</td>
+      <td>0.9</td>
+      <td>True</td>
+      <td>True</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>206</th>
+      <td>16.47</td>
+      <td>11.0</td>
+      <td>4.6</td>
+      <td>0.7</td>
+      <td>True</td>
+      <td>True</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>207</th>
+      <td>17.04</td>
+      <td>10.6</td>
+      <td>4.8</td>
+      <td>0.7</td>
+      <td>True</td>
+      <td>True</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>208</th>
+      <td>21.98</td>
+      <td>10.6</td>
+      <td>5.2</td>
+      <td>0.8</td>
+      <td>True</td>
+      <td>True</td>
+      <td>True</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Los tres métodos usados coinciden en señalar los cuatros registros 205 - 208 como <em>outliers</em> lo cual es indicativo de posibles errores o individuos excepcionales en nuestro dataset y deberían no ser considerados en una mejora del modelo alométrico inferido. Por otro lado los registros 194-204 detectados como valores anómalos por los métodos IRQ e Isolation Forest pueden representar sesgo de muestreo, diferencias de condición o simple variabilidad natural.</p>
+<p>La relación empírica <span class="math notranslate nohighlight">\(𝑊=𝑘 \cdot L^a \cdot A^b\)</span> es, por naturaleza, multiplicativa; de ella se deriva que la varianza de <span class="math notranslate nohighlight">\(𝑊\)</span> crece proporcionalmente a <span class="math notranslate nohighlight">\(𝐿\)</span> y <span class="math notranslate nohighlight">\(A\)</span>. Este comportamiento genera heterocedasticidad: los residuos asociados a los ejemplares grandes presentan una dispersión mucho mayor que los de los de menor tramaño, Bajo esta condición, las métricas univariantes (IQR, desviaciones 𝑧) y los algoritmos multivariantes (Isolation Forest) operan con escalas que “inflan” artificialmente la distancia de los ejemplares grandes y “comprimen” la de los pequeños, sesgando la detección de valores atípicos. Aplicar una <strong>transformación logarítmica</strong> <span class="math notranslate nohighlight">\(ln(⋅)\)</span>
+convierte esa relación de potencia en un modelo lineal aditivo y estabiliza la varianza, de modo que la dispersión residual es aproximadamente homocedástica y más simétrica. Los trabajos de <a class="reference external" href="https://doi.org/10.1111/bij.12038">Packart (2013)</a> y posteriormente de  <a class="reference external" href="https://doi.org/10.1177/00045632211050531">West (2022)</a> han demostrado que, tras la aplicacón de una transformada logarítmica, las colas asimétricas se reducen y las pruebas basadas en desviación estándar recuperan su tasa nominal de error I, recomendando explícitamente esta práctica previa a cualquier inferencia paramétrica.</p>
+<p>En estudios ictiológicos recientes la práctica se ha consolidado como estándar. <a class="reference external" href="https://doi.org/10.3390/fishes8050222">Rodríguez-García et al. (2023)</a> aplican la transformación logarítmica antes de filtrar anomalías en más de 40 especies descartadas por la flota del golfo de Cádiz y resaltan que, tras el log, sólo persiste un subconjunto mínimo de registros verdaderamente aberrantes, mientras que la mayoría de los <em>outliers</em> iniciales se explican por la escala multiplicativa del crecimiento. <a class="reference external" href="https://doi.org/10.1016/j.ejar.2022.07.005">Xia et al. (2022)</a> en seis especies del Yangtsé— siguen este protocolo: estiman los parámetros en escala log y evalúan la calidad de ajuste y los residuos sobre los datos transformados, obteniendo un filtrado de anomalías significativamente más fiable.</p>
+<div class="tip admonition">
+<p class="admonition-title">Conclusión</p>
+<p>En nuestro caso, transformar a <span class="math notranslate nohighlight">\(ln\)</span> permitirá redefinir los umbrales de IQR y Z-score sobre distribuciones casi simétricas y comparables, validar la relevancia biológica de los registros 205–208 —ahora <em>outliers</em> unánimes— y re-evaluar los casos 194–204 en un entorno de varianza estabilizada, evitando expulsar datos válidos que sólo parecían extremos por efecto de escala.</p>
+</div>
+</section>
+</section>
+<section id="transformada-logaritmica">
+<h2><span class="section-number">5.3.3. </span>Transformada logarítmica<a class="headerlink" href="#transformada-logaritmica" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ===============================================================</span>
+<span class="c1">#     Transformación logarítmica, visualización preliminar</span>
+<span class="c1">#          y re-detección de outliers</span>
+<span class="c1"># ===============================================================</span>
+
+<span class="c1"># ---------------------------------------------------------------</span>
+<span class="c1"># 1.  Seleccionar y depurar variables numéricas</span>
+<span class="c1"># ---------------------------------------------------------------</span>
+<span class="n">numeric_cols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Peso (g)&#39;</span><span class="p">,</span> <span class="s1">&#39;Longitud (cm)&#39;</span><span class="p">,</span> <span class="s1">&#39;Anchura (cm)&#39;</span><span class="p">]</span>
+
+<span class="c1">#eps = 1e-6                                 # evita log(0)</span>
+<span class="c1">#df[numeric_cols] = df[numeric_cols].clip(lower=eps)</span>
+
+<span class="c1"># ---------------------------------------------------------------</span>
+<span class="c1"># 2.  Transformación log-natural</span>
+<span class="c1"># ---------------------------------------------------------------</span>
+<span class="n">df_log</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">numeric_cols</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">df_log</span> <span class="o">=</span> <span class="n">df_log</span><span class="p">[</span><span class="n">df_log</span><span class="p">[</span><span class="s1">&#39;Peso (g)&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span>
+
+<span class="n">df_log</span><span class="p">[</span><span class="s1">&#39;log_Peso&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">df_log</span><span class="p">[</span><span class="s1">&#39;Peso (g)&#39;</span><span class="p">])</span>
+<span class="n">df_log</span><span class="p">[</span><span class="s1">&#39;log_Longitud&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">df_log</span><span class="p">[</span><span class="s1">&#39;Longitud (cm)&#39;</span><span class="p">])</span>
+<span class="n">df_log</span><span class="p">[</span><span class="s1">&#39;log_Anchura&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">df_log</span><span class="p">[</span><span class="s1">&#39;Anchura (cm)&#39;</span><span class="p">])</span>
+
+<span class="c1"># ---------------------------------------------------------------</span>
+<span class="c1"># 3.  Visualizar efecto de la transformación</span>
+<span class="c1"># ---------------------------------------------------------------</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s2">&quot;ticks&quot;</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="s2">&quot;talk&quot;</span><span class="p">)</span>
+
+<span class="c1">## 3-a. Histogramas Peso: original vs ln</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Peso (g)&#39;</span><span class="p">],</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">kde</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Distribución Peso (g) original&quot;</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">df_log</span><span class="p">[</span><span class="s1">&#39;log_Peso&#39;</span><span class="p">],</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">kde</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#ff7f0e&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Distribución ln Peso&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1">## 3-b. Scatter Peso–Longitud: lineal vs log-log</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;Longitud (cm)&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Peso (g)&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Peso vs Longitud (escala lineal)&quot;</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">df_log</span><span class="p">[</span><span class="s1">&#39;log_Longitud&#39;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">df_log</span><span class="p">[</span><span class="s1">&#39;log_Peso&#39;</span><span class="p">],</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#ff7f0e&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;ln Peso vs ln Longitud&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+
+<span class="c1">## 3-c. Scatter Peso–Anchura: lineal vs log-log</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span>
+                <span class="n">x</span><span class="o">=</span><span class="s1">&#39;Anchura (cm)&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Peso (g)&#39;</span><span class="p">,</span>
+                <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Peso vs Anchura (escala lineal)&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Anchura (cm)&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Peso (g)&quot;</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">df_log</span><span class="p">[</span><span class="s1">&#39;log_Anchura&#39;</span><span class="p">],</span>
+                <span class="n">y</span><span class="o">=</span><span class="n">df_log</span><span class="p">[</span><span class="s1">&#39;log_Peso&#39;</span><span class="p">],</span>
+                <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#ff7f0e&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;ln Peso vs ln Anchura&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;ln Anchura (cm)&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;ln Peso (g)&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/59cc697ba7a8e2c367fbff07344232059f46a160ddb6b9dbe990e7154917bd9c.png" src="../../_images/59cc697ba7a8e2c367fbff07344232059f46a160ddb6b9dbe990e7154917bd9c.png" />
+<img alt="../../_images/c6328487ce7ed841bb5681d61de01a5e78f5b597fdfaf751b74b5c7ff1c64b79.png" src="../../_images/c6328487ce7ed841bb5681d61de01a5e78f5b597fdfaf751b74b5c7ff1c64b79.png" />
+<img alt="../../_images/85f0c4146ae082adac0b7c756ff99eb7d704ec3e43220d1c4f258d120c2fb700.png" src="../../_images/85f0c4146ae082adac0b7c756ff99eb7d704ec3e43220d1c4f258d120c2fb700.png" />
+</div>
+</div>
+<p>Como se puede apreciar en las gráficas obtenidas, el uso de la transformada logarítmica produce una normalización de la distribución sesgada del peso y una linealización de las relaciones exponenciales de Peso vs. Longitud y Peso vs. Anchura. En el primer caso, normalizaciíón, esto nos va a permitir un mejor ajuste a modelos paramétricos. En el segundo caso, linealización, nos va a permitir aplicar unas regresión lineal multiparamétrica sencilla para poder encontar los factores <span class="math notranslate nohighlight">\(k\)</span>, <span class="math notranslate nohighlight">\(a\)</span> y <span class="math notranslate nohighlight">\(b\)</span> que definen el modelo alométrico de la ecuación <a class="reference internal" href="Coeficientes.html#equation-eq-peso-longitud-anchura">(5.4)</a>.</p>
+<p>Nuestro siguiente paso es detectar los <em>outliers</em> por los tres métodos usados con anterioridad (IRQ, Z-Scores e Isolation Forest) con los dtaos transformados.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ---------------------------------------------------------------</span>
+<span class="c1"># 4.  Detección de outliers en escala log</span>
+<span class="c1"># ---------------------------------------------------------------</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy</span><span class="w"> </span><span class="kn">import</span> <span class="n">stats</span>
+
+<span class="c1"># Método IQR</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">detect_outliers_iqr</span><span class="p">(</span><span class="n">col</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mf">1.5</span><span class="p">):</span>
+    <span class="n">q1</span><span class="p">,</span> <span class="n">q3</span> <span class="o">=</span> <span class="n">col</span><span class="o">.</span><span class="n">quantile</span><span class="p">([</span><span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">])</span>
+    <span class="n">iqr</span> <span class="o">=</span> <span class="n">q3</span> <span class="o">-</span> <span class="n">q1</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">col</span> <span class="o">&lt;</span> <span class="n">q1</span> <span class="o">-</span> <span class="n">k</span><span class="o">*</span><span class="n">iqr</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">col</span> <span class="o">&gt;</span> <span class="n">q3</span> <span class="o">+</span> <span class="n">k</span><span class="o">*</span><span class="n">iqr</span><span class="p">)</span>
+
+<span class="n">mask_iqr_log</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">detect_outliers_iqr</span><span class="p">(</span><span class="n">df_log</span><span class="p">[</span><span class="s1">&#39;log_Peso&#39;</span><span class="p">])</span> <span class="o">|</span>
+    <span class="n">detect_outliers_iqr</span><span class="p">(</span><span class="n">df_log</span><span class="p">[</span><span class="s1">&#39;log_Longitud&#39;</span><span class="p">])</span> <span class="o">|</span>
+    <span class="n">detect_outliers_iqr</span><span class="p">(</span><span class="n">df_log</span><span class="p">[</span><span class="s1">&#39;log_Anchura&#39;</span><span class="p">])</span>
+<span class="p">)</span>
+
+<span class="c1"># Método Z-score</span>
+<span class="n">z_scores</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">stats</span><span class="o">.</span><span class="n">zscore</span><span class="p">(</span><span class="n">df_log</span><span class="p">[[</span><span class="s1">&#39;log_Peso&#39;</span><span class="p">,</span> <span class="s1">&#39;log_Longitud&#39;</span><span class="p">,</span> <span class="s1">&#39;log_Anchura&#39;</span><span class="p">]]))</span>
+<span class="n">mask_z_log</span> <span class="o">=</span> <span class="p">(</span><span class="n">z_scores</span> <span class="o">&gt;</span> <span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Método Isolation Forest</span>
+<span class="n">X_scaled_log</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">df_log</span><span class="p">[[</span><span class="s1">&#39;log_Longitud&#39;</span><span class="p">,</span> <span class="s1">&#39;log_Anchura&#39;</span><span class="p">,</span> <span class="s1">&#39;log_Peso&#39;</span><span class="p">]])</span>
+<span class="n">iso_forest</span> <span class="o">=</span> <span class="n">IsolationForest</span><span class="p">(</span><span class="n">contamination</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">,</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">mask_if_log</span> <span class="o">=</span> <span class="n">iso_forest</span><span class="o">.</span><span class="n">fit_predict</span><span class="p">(</span><span class="n">X_scaled_log</span><span class="p">)</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span>
+
+<span class="c1"># Mostrar resultados</span>
+<span class="n">df_log</span><span class="p">[</span><span class="s1">&#39;out_IQR_log&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">mask_iqr_log</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Outliers método IQR&quot;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">df_log</span><span class="p">[</span><span class="n">df_log</span><span class="p">[</span><span class="s1">&#39;out_IQR_log&#39;</span><span class="p">]])</span>
+
+<span class="n">df_log</span><span class="p">[</span><span class="s1">&#39;out_Z_log&#39;</span><span class="p">]</span>   <span class="o">=</span> <span class="n">mask_z_log</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Outliers método Z-Score&quot;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">df_log</span><span class="p">[</span><span class="n">df_log</span><span class="p">[</span><span class="s1">&#39;out_Z_log&#39;</span><span class="p">]])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Outliers método Isolation Forest&quot;</span><span class="p">)</span>
+<span class="n">df_log</span><span class="p">[</span><span class="s1">&#39;out_IF_log&#39;</span><span class="p">]</span>  <span class="o">=</span> <span class="n">mask_if_log</span>
+<span class="n">display</span><span class="p">(</span><span class="n">df_log</span><span class="p">[</span><span class="n">df_log</span><span class="p">[</span><span class="s1">&#39;out_IF_log&#39;</span><span class="p">]])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Outliers método IQR
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Peso (g)</th>
+      <th>Longitud (cm)</th>
+      <th>Anchura (cm)</th>
+      <th>log_Peso</th>
+      <th>log_Longitud</th>
+      <th>log_Anchura</th>
+      <th>out_IQR_log</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.46</td>
+      <td>3.3</td>
+      <td>1.3</td>
+      <td>-0.776529</td>
+      <td>1.193922</td>
+      <td>0.262364</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1.08</td>
+      <td>4.5</td>
+      <td>1.1</td>
+      <td>0.076961</td>
+      <td>1.504077</td>
+      <td>0.095310</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.67</td>
+      <td>3.9</td>
+      <td>1.5</td>
+      <td>-0.400478</td>
+      <td>1.360977</td>
+      <td>0.405465</td>
+      <td>True</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Outliers método Z-Score
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Peso (g)</th>
+      <th>Longitud (cm)</th>
+      <th>Anchura (cm)</th>
+      <th>log_Peso</th>
+      <th>log_Longitud</th>
+      <th>log_Anchura</th>
+      <th>out_IQR_log</th>
+      <th>out_Z_log</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.46</td>
+      <td>3.3</td>
+      <td>1.3</td>
+      <td>-0.776529</td>
+      <td>1.193922</td>
+      <td>0.262364</td>
+      <td>True</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1.08</td>
+      <td>4.5</td>
+      <td>1.1</td>
+      <td>0.076961</td>
+      <td>1.504077</td>
+      <td>0.095310</td>
+      <td>True</td>
+      <td>True</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Outliers método Isolation Forest
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Peso (g)</th>
+      <th>Longitud (cm)</th>
+      <th>Anchura (cm)</th>
+      <th>log_Peso</th>
+      <th>log_Longitud</th>
+      <th>log_Anchura</th>
+      <th>out_IQR_log</th>
+      <th>out_Z_log</th>
+      <th>out_IF_log</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.46</td>
+      <td>3.3</td>
+      <td>1.3</td>
+      <td>-0.776529</td>
+      <td>1.193922</td>
+      <td>0.262364</td>
+      <td>True</td>
+      <td>True</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1.08</td>
+      <td>4.5</td>
+      <td>1.1</td>
+      <td>0.076961</td>
+      <td>1.504077</td>
+      <td>0.095310</td>
+      <td>True</td>
+      <td>True</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.67</td>
+      <td>3.9</td>
+      <td>1.5</td>
+      <td>-0.400478</td>
+      <td>1.360977</td>
+      <td>0.405465</td>
+      <td>True</td>
+      <td>False</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.98</td>
+      <td>4.4</td>
+      <td>1.7</td>
+      <td>-0.020203</td>
+      <td>1.481605</td>
+      <td>0.530628</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.93</td>
+      <td>4.2</td>
+      <td>1.8</td>
+      <td>-0.072571</td>
+      <td>1.435085</td>
+      <td>0.587787</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>1.89</td>
+      <td>4.5</td>
+      <td>2.0</td>
+      <td>0.636577</td>
+      <td>1.504077</td>
+      <td>0.693147</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>1.60</td>
+      <td>5.1</td>
+      <td>1.8</td>
+      <td>0.470004</td>
+      <td>1.629241</td>
+      <td>0.587787</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>1.90</td>
+      <td>5.0</td>
+      <td>2.0</td>
+      <td>0.641854</td>
+      <td>1.609438</td>
+      <td>0.693147</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>1.59</td>
+      <td>5.4</td>
+      <td>1.9</td>
+      <td>0.463734</td>
+      <td>1.686399</td>
+      <td>0.641854</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>42</th>
+      <td>2.83</td>
+      <td>5.2</td>
+      <td>2.5</td>
+      <td>1.040277</td>
+      <td>1.648659</td>
+      <td>0.916291</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>62</th>
+      <td>4.29</td>
+      <td>7.0</td>
+      <td>2.1</td>
+      <td>1.456287</td>
+      <td>1.945910</td>
+      <td>0.741937</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>92</th>
+      <td>3.06</td>
+      <td>6.0</td>
+      <td>2.9</td>
+      <td>1.118415</td>
+      <td>1.791759</td>
+      <td>1.064711</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>153</th>
+      <td>3.40</td>
+      <td>6.8</td>
+      <td>3.9</td>
+      <td>1.223775</td>
+      <td>1.916923</td>
+      <td>1.360977</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>156</th>
+      <td>4.50</td>
+      <td>7.4</td>
+      <td>3.7</td>
+      <td>1.504077</td>
+      <td>2.001480</td>
+      <td>1.308333</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>183</th>
+      <td>10.08</td>
+      <td>7.8</td>
+      <td>4.2</td>
+      <td>2.310553</td>
+      <td>2.054124</td>
+      <td>1.435085</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>195</th>
+      <td>11.22</td>
+      <td>10.1</td>
+      <td>3.9</td>
+      <td>2.417698</td>
+      <td>2.312535</td>
+      <td>1.360977</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>200</th>
+      <td>14.13</td>
+      <td>10.1</td>
+      <td>4.1</td>
+      <td>2.648300</td>
+      <td>2.312535</td>
+      <td>1.410987</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>201</th>
+      <td>14.04</td>
+      <td>10.5</td>
+      <td>4.1</td>
+      <td>2.641910</td>
+      <td>2.351375</td>
+      <td>1.410987</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>202</th>
+      <td>14.67</td>
+      <td>10.7</td>
+      <td>4.2</td>
+      <td>2.685805</td>
+      <td>2.370244</td>
+      <td>1.435085</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>203</th>
+      <td>15.65</td>
+      <td>10.7</td>
+      <td>4.5</td>
+      <td>2.750471</td>
+      <td>2.370244</td>
+      <td>1.504077</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>204</th>
+      <td>14.50</td>
+      <td>10.8</td>
+      <td>4.5</td>
+      <td>2.674149</td>
+      <td>2.379546</td>
+      <td>1.504077</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>205</th>
+      <td>19.88</td>
+      <td>11.4</td>
+      <td>4.4</td>
+      <td>2.989714</td>
+      <td>2.433613</td>
+      <td>1.481605</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>206</th>
+      <td>16.47</td>
+      <td>11.0</td>
+      <td>4.6</td>
+      <td>2.801541</td>
+      <td>2.397895</td>
+      <td>1.526056</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>207</th>
+      <td>17.04</td>
+      <td>10.6</td>
+      <td>4.8</td>
+      <td>2.835564</td>
+      <td>2.360854</td>
+      <td>1.568616</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>208</th>
+      <td>21.98</td>
+      <td>10.6</td>
+      <td>5.2</td>
+      <td>3.090133</td>
+      <td>2.360854</td>
+      <td>1.648659</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ===============================================================</span>
+<span class="c1">#  Comparativa de intersecciones entre los tres métodos (log)</span>
+<span class="c1"># ===============================================================</span>
+
+<span class="c1"># --- Conjuntos de índices por método ---</span>
+<span class="n">set_iqr_log</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">df_log</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="n">df_log</span><span class="p">[</span><span class="s1">&#39;out_IQR_log&#39;</span><span class="p">]])</span>
+<span class="n">set_z_log</span>   <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">df_log</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="n">df_log</span><span class="p">[</span><span class="s1">&#39;out_Z_log&#39;</span><span class="p">]])</span>
+<span class="n">set_if_log</span>  <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">df_log</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="n">df_log</span><span class="p">[</span><span class="s1">&#39;out_IF_log&#39;</span><span class="p">]])</span>
+
+<span class="c1"># --- DataFrame que contiene únicamente los registros marcados por algún método ---</span>
+<span class="n">df_log</span><span class="p">[</span><span class="s1">&#39;out_any_log&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_log</span><span class="p">[[</span><span class="s1">&#39;out_IQR_log&#39;</span><span class="p">,</span><span class="s1">&#39;out_Z_log&#39;</span><span class="p">,</span><span class="s1">&#39;out_IF_log&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">df_outliers</span> <span class="o">=</span> <span class="n">df_log</span><span class="p">[</span><span class="n">df_log</span><span class="p">[</span><span class="s1">&#39;out_any_log&#39;</span><span class="p">]]</span>
+
+<span class="c1"># --- Construimos un array con las cuatro intersecciones ---</span>
+<span class="n">idx_common</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+    <span class="nb">sorted</span><span class="p">(</span><span class="n">set_iqr_log</span> <span class="o">&amp;</span> <span class="n">set_z_log</span><span class="p">),</span>                <span class="c1"># IQR ∩ Z-Score</span>
+    <span class="nb">sorted</span><span class="p">(</span><span class="n">set_iqr_log</span> <span class="o">&amp;</span> <span class="n">set_if_log</span><span class="p">),</span>               <span class="c1"># IQR ∩ IF</span>
+    <span class="nb">sorted</span><span class="p">(</span><span class="n">set_z_log</span>   <span class="o">&amp;</span> <span class="n">set_if_log</span><span class="p">),</span>               <span class="c1"># Z-Score ∩ IF</span>
+    <span class="nb">sorted</span><span class="p">(</span><span class="n">set_iqr_log</span> <span class="o">&amp;</span> <span class="n">set_z_log</span> <span class="o">&amp;</span> <span class="n">set_if_log</span><span class="p">)</span>    <span class="c1"># IQR ∩ Z-Score ∩ IF</span>
+<span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">object</span><span class="p">)</span>   <span class="c1"># dtype=object permite listas de longitud variable</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;─ Intersecciones (escala log) ─</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;IQR ∩ Z-Score              : </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">idx_common</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">df_outliers</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idx_common</span><span class="p">[</span><span class="mi">0</span><span class="p">]])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;IQR ∩ Isolation Forest     : </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">idx_common</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">df_outliers</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idx_common</span><span class="p">[</span><span class="mi">1</span><span class="p">]])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Z-Score ∩ Isolation Forest : </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">idx_common</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">df_outliers</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idx_common</span><span class="p">[</span><span class="mi">2</span><span class="p">]])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;IQR ∩ Z-Score ∩ IF         : </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">idx_common</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">df_outliers</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idx_common</span><span class="p">[</span><span class="mi">3</span><span class="p">]])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>─ Intersecciones (escala log) ─
+
+IQR ∩ Z-Score              : 2
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Peso (g)</th>
+      <th>Longitud (cm)</th>
+      <th>Anchura (cm)</th>
+      <th>log_Peso</th>
+      <th>log_Longitud</th>
+      <th>log_Anchura</th>
+      <th>out_IQR_log</th>
+      <th>out_Z_log</th>
+      <th>out_IF_log</th>
+      <th>out_any_log</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.46</td>
+      <td>3.3</td>
+      <td>1.3</td>
+      <td>-0.776529</td>
+      <td>1.193922</td>
+      <td>0.262364</td>
+      <td>True</td>
+      <td>True</td>
+      <td>True</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1.08</td>
+      <td>4.5</td>
+      <td>1.1</td>
+      <td>0.076961</td>
+      <td>1.504077</td>
+      <td>0.095310</td>
+      <td>True</td>
+      <td>True</td>
+      <td>True</td>
+      <td>True</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>IQR ∩ Isolation Forest     : 3
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Peso (g)</th>
+      <th>Longitud (cm)</th>
+      <th>Anchura (cm)</th>
+      <th>log_Peso</th>
+      <th>log_Longitud</th>
+      <th>log_Anchura</th>
+      <th>out_IQR_log</th>
+      <th>out_Z_log</th>
+      <th>out_IF_log</th>
+      <th>out_any_log</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.46</td>
+      <td>3.3</td>
+      <td>1.3</td>
+      <td>-0.776529</td>
+      <td>1.193922</td>
+      <td>0.262364</td>
+      <td>True</td>
+      <td>True</td>
+      <td>True</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1.08</td>
+      <td>4.5</td>
+      <td>1.1</td>
+      <td>0.076961</td>
+      <td>1.504077</td>
+      <td>0.095310</td>
+      <td>True</td>
+      <td>True</td>
+      <td>True</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.67</td>
+      <td>3.9</td>
+      <td>1.5</td>
+      <td>-0.400478</td>
+      <td>1.360977</td>
+      <td>0.405465</td>
+      <td>True</td>
+      <td>False</td>
+      <td>True</td>
+      <td>True</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Z-Score ∩ Isolation Forest : 2
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Peso (g)</th>
+      <th>Longitud (cm)</th>
+      <th>Anchura (cm)</th>
+      <th>log_Peso</th>
+      <th>log_Longitud</th>
+      <th>log_Anchura</th>
+      <th>out_IQR_log</th>
+      <th>out_Z_log</th>
+      <th>out_IF_log</th>
+      <th>out_any_log</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.46</td>
+      <td>3.3</td>
+      <td>1.3</td>
+      <td>-0.776529</td>
+      <td>1.193922</td>
+      <td>0.262364</td>
+      <td>True</td>
+      <td>True</td>
+      <td>True</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1.08</td>
+      <td>4.5</td>
+      <td>1.1</td>
+      <td>0.076961</td>
+      <td>1.504077</td>
+      <td>0.095310</td>
+      <td>True</td>
+      <td>True</td>
+      <td>True</td>
+      <td>True</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>IQR ∩ Z-Score ∩ IF         : 2
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Peso (g)</th>
+      <th>Longitud (cm)</th>
+      <th>Anchura (cm)</th>
+      <th>log_Peso</th>
+      <th>log_Longitud</th>
+      <th>log_Anchura</th>
+      <th>out_IQR_log</th>
+      <th>out_Z_log</th>
+      <th>out_IF_log</th>
+      <th>out_any_log</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.46</td>
+      <td>3.3</td>
+      <td>1.3</td>
+      <td>-0.776529</td>
+      <td>1.193922</td>
+      <td>0.262364</td>
+      <td>True</td>
+      <td>True</td>
+      <td>True</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1.08</td>
+      <td>4.5</td>
+      <td>1.1</td>
+      <td>0.076961</td>
+      <td>1.504077</td>
+      <td>0.095310</td>
+      <td>True</td>
+      <td>True</td>
+      <td>True</td>
+      <td>True</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Los tres métodos usados coinciden en marcar como <em>outliers</em> los registros con índice <span class="math notranslate nohighlight">\(0\)</span> y <span class="math notranslate nohighlight">\(1\)</span> coincidente, en gran parte, con la gráfica de distribucion de peso en la transformada logaritmica.</p>
+<p>Hay que tener en cuenta que en la deteccion de valores anómalos con los datos originales, el peso aumenta de manera multiplicativa con la longitud y la anchura: a medida que los peces crecen, la variabilidad absoluta de sus masas se dispara. Los métodos clásicos de detección (IQR, Z-score o Isolation Forest) se basan en distancias lineales; por eso señalan como atípicos a los cuatro ejemplares más pesados: su desviación, medida en gramos, es mucho mayor que la de cualquier juvenil.</p>
+<p>Al pasar los datos a escala logarítmica convertimos esa relación multiplicativa en una relación aditiva y hacemos que la varianza sea prácticamente constante en todo el rango de tallas. La compresión de la cola derecha y la expansión de la izquierda cambian el foco: los adultos dejan de parecer extremos, mientras que tres peces muy pequeños y sorprendentemente ligeros sobresalen ahora como los casos más raros. Ese cambio de perspectiva —bien descrito en la literatura sobre transformaciones varianza-estabilizadoras <a class="reference external" href="https://doi.org/10.1201/9780203738535">[Carroll et al., 1988]</a>
+y en estudios alométricos [<a class="reference external" href="https://doi.org/10.1016/j.fishres.2012.02.001">Torres et al., 2012</a>; <a class="reference external" href="https://doi.org/10.1111/j.1439-0426.2006.00805.x">Froese, 2006</a>; <a class="reference external" href="https://doi.org/10.1111/j.1439-0426.2003.00480.x">Borges et al., 2003</a>]— confirma que el log reduce los falsos positivos entre los grandes pero realza desvíos porcentuales en los pequeños.</p>
+<p><strong>¿Qué hacer con estos dos registros?</strong></p>
+<p>Su inclusion en una regresión log-log podría sesgar los parámetros <span class="math notranslate nohighlight">\(k\)</span>, <span class="math notranslate nohighlight">\(a\)</span> y <span class="math notranslate nohighlight">\(b\)</span> y ensanchar sus intervalos de confianza. En ausencia de evidencia biológica a favor de su inclusión, la práctica más segura para inferir un modelo alométrico por OLS es excluir esos puntos o, al menos, contrastar los coeficientes obtenidos con y sin ellos para demostrar que las conclusiones no dependen de casos extremos.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./content/03"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Coeficientes.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">5.2. </span>Estudio matemático de las relaciones entre las dimensiones morfológicas y el peso</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Modelo.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">5.4. </span>Algoritmo de inferencia del peso <span class="math notranslate nohighlight">\(W\)</span></p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preanalisis-exploratorio-eda">5.3.1. Preanálisis exploratorio (EDA)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizacion-de-outliers">5.3.2. Visualización de <em>outliers</em></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#metodos-univariados-deteccion-en-una-dimension">5.3.2.1. Métodos univariados (detección en una dimensión)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#metodos-multivariados">5.3.2.2. Métodos multivariados</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transformada-logaritmica">5.3.3. Transformada logarítmica</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Javier Álvarez Osuna
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright Feeding Systems S.L. - GNU General Public License 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

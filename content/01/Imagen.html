@@ -1,0 +1,474 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>2. Sistema de visión artificial &#8212; FLATCLASS - FLATfish Length and Thickness CLASification System by Artificial Intelligence</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]]}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/01/Imagen';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="2.2. M1 - Captura" href="Modulo-1.html" />
+    <link rel="prev" title="1. Especificación de requisitos" href="Requisitos.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/flatclass_logo.png" class="logo__image only-light" alt="FLATCLASS - FLATfish Length and Thickness CLASification System by Artificial Intelligence - Home"/>
+    <script>document.write(`<img src="../../_static/flatclass_logo.png" class="logo__image only-dark" alt="FLATCLASS - FLATfish Length and Thickness CLASification System by Artificial Intelligence - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">PT1 - Visión Artificial</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Requisitos.html">1. Especificación de requisitos</a></li>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">2. Sistema de visión artificial</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="Modulo-1.html">2.2. M1 - Captura</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Modulo-2.html">2.3. M2 - Calibración</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Modulo-3.html">2.4. M3 - Imagen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Modulo-4.html">2.5. M4 - Salida y persistencia</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">PT2 - Datasets</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../02/Dataset.html">3. Obtención y etiquetado del dataset</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../02/Generador.html">4. Generación de datos sintéticos</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../02/GaussianCopula.html">4.2. Gaussian Copula</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02/CTGAN.html">4.3. Conditional Tabular GAN (CTGAN)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02/TVAE.html">4.4. Tabular Variational Autoencoder (TVAE)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02/Conclusion.html">4.5. Conclusión</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">PT3 - Predicción del Peso</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../03/Peso.html">5. Desarrollo Experimental de un Modelo de IA para la Estimación del Peso</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../03/Coeficientes.html">5.2. Estudio matemático de las relaciones entre las dimensiones morfológicas y el peso</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03/Analisis.html">5.3. Análisis del modelo alométrico longitud-anchura</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03/Modelo.html">5.4. Algoritmo de inferencia del peso <span class="math notranslate nohighlight">\(W\)</span></a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Sistema de visión artificial</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduccion">2.1. Introducción</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="sistema-de-vision-artificial">
+<h1><span class="section-number">2. </span>Sistema de visión artificial<a class="headerlink" href="#sistema-de-vision-artificial" title="Link to this heading">#</a></h1>
+<div class="tip admonition">
+<p class="admonition-title">Resumen</p>
+<p>El presente documento recoge los trabajos relativos al módulo de visión artificial de <strong>FLATCLASS</strong>. Este módulo es el responsable de la adquisición, normalizado, segmentación y extracción de las características mormométricas de los alevines de lenguado.</p>
+<p><strong>Entregable</strong>: E1.2<br />
+<strong>Versión</strong>: 1.0<br />
+<strong>Autor</strong>: Javier Álvarez Osuna<br />
+<strong>Email</strong>: javier.osuna&#64;fishfarmfeeder.com<br />
+<strong>ORCID</strong>: <a class="reference external" href="https://orcid.org/0000-0001-7063-1279">0000-0001-7063-1279</a><br />
+<strong>Licencia</strong>: CC-BY-4.0<br />
+<strong>Código proyecto</strong>: IG408M.2025.000.000072</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../../_images/FLATCLASS_logo_publicidad.png"><img alt="../../_images/FLATCLASS_logo_publicidad.png" src="../../_images/FLATCLASS_logo_publicidad.png" style="width: 100%;" />
+</a>
+</figure>
+</div>
+<section id="introduccion">
+<h2><span class="section-number">2.1. </span>Introducción<a class="headerlink" href="#introduccion" title="Link to this heading">#</a></h2>
+<p>Uno de los objetivos técnicos plantedos en <strong>FLATCLASS</strong> se centra en el Desarrollo e integración de un sistema de visión artificial de alta resolución que permita la captura precisa de imágenes de los alevines en tiempo real, asegurando una segmentación eficaz y el cálculo automático del área de superficie, longitud y anchura de cada individuo. El sistema automático desarrollado permite la medición sin contacto de las características morfométricas de lenguados (<em>Solea solea</em>) tales como la longitud total (L), la anchura corporal (A) y la superficie real (S) a partir de las imágenes fotográficas, obtenidas con una cámara Datalogic P22C 600-000 ML, mediante un algoritmo de procesado. Este algoritmo permite realizar la medición incluso cuando la cola del pez plano está deformada o cuando el pez se encuentra orientado de manera aleatoria, informando del nivel de fiabilidad de las mediciones cuando los resultados puedan persentar dudas. Este último aspecto es especialmente importante si tenemos en cuenta que el proceso de clasificación de juveniles se suele producir en ambientes de baja luminosidad y alta concentración de humedad que introduce importantes restricciones en la calidad de las imágenes obtenidas.</p>
+<p>El núcleo del sistema se sustenta en <strong>GrabCut</strong>, un método de segmentación de imágenes interactivo basado en teoría de grafos y optimización de cortes mínimos en campos aleatorios de Markov (MRF) definido por primera vez por <a class="reference external" href="https://doi.org/10.1145/1015706.1015720">Rother et al.,</a> en 2004. El usuario define inicialmente un recuadro aproximado que contiene el pez, permitiendo al algoritmo estimar la distribución de color del primer plano y el fondo mediante modelos de mezcla gaussiana (Gaussian Mixture Models, GMM). Posteriormente, se plantea una función de energía que combina un término regional (basado en las probabilidades del GMM) y un término de continuidad espacial (prefiriendo regiones conectadas con etiquetas uniformes), la cual se minimiza mediante un corte en el grafo (graph cut). Este proceso se itera hasta converger en una segmentación refinada del pez frente al fondo [<a class="reference external" href="https://doi.org/10.1016/j.jksuci.2020.07.005">Alsmadi et al., 2022</a>].</p>
+<p>GrabCut ha sido objeto de mejoras continuas en los últimos años, incluyendo variantes que integran mapas de saliencia, superpíxeles o funciones de energía modificadas que permiten segmentaciones más precisas y automáticas [<a class="reference external" href="https://doi.org/10.3390/math11081965">Wang et al., 2023</a>]. En el contexto acuícola, diferentes trabajos han aplicado algoritmos derivados de GrabCut (como versiones adaptadas o iterativas) para refinar la segmentación en imágenes de peces. Por ejemplo, <a class="reference external" href="https://doi.org/10.11975/j.issn.1002-6819.2020.21.026">Huang et al., 2023</a> han desarrollado un sistema de visión binocular en acuicultura utilizó GrabCut adaptativo por contraste para segmentar peces bajo el agua, logrando un error porcentual medio en la medida de longitud de solo 0,9%. Asimismo, en el ámbito de la fenotipificación de peces de tilapia, GrabCut se ha empleado para afinar muestras en los bordes de segmentación, mejorando el IoU hasta un 81 % cuando se combina con redes profundas [<a class="reference external" href="https://doi.org/10.3390/app13179635">Feng et al., 2023</a>].</p>
+<p>Para la extracción de los parámetros morfométricos de alevines de lenguado a partir de imágenes digitales en vista dorsal, GrabCut es especialmente adecuado por varias razones clave. Primero, requiere mínima interacción (únicamente un recuadro inicial o ROI - <em>Region Of Interest</em>), lo cual es práctico en entornos productivos con alto flujo de muestras. Segundo, al basarse en modelos estadísticos de color y continuidad espacial, puede separar con precisión el pez del fondo uniforme de la cinta que lo transporta, incluso con variaciones de iluminación. Esto resulta esencial para cálculos fiables de longitud, anchura y superficie del pez. Finalmente, es computacionalmente eficiente y ya está implementado en bibliotecas comunes como OpenCV, lo que facilita su integración en un sistema automatizado de procesamiento de imágenes en planta.</p>
+<p>El flujograma del <strong>algoritmo de extracción de características morfométricas</strong> desarrollado se recoge en la siguiente figura:</p>
+<figure class="align-center" id="figura-wp1-imagen-1">
+<a class="reference internal image-reference" href="../../_images/Process_Img_Master_final.png"><img alt="Pipeline del sistema de extracción de características" src="../../_images/Process_Img_Master_final.png" style="width: 25%;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 2.1 </span><span class="caption-text">Pipeline del sistema de extracción de características</span><a class="headerlink" href="#figura-wp1-imagen-1" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Como se puede apreciar, el sistema está formado por cuatro módulos funcionales cada uno de ellos responsable de una función específica. En las siguientes secciones se estudia con mayor detalle cada uno de ellos y las tecnologías hardware-software usadas.</p>
+</section>
+<div class="toctree-wrapper compound">
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./content/01"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Requisitos.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">1. </span>Especificación de requisitos</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Modulo-1.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">2.2. </span>M1 - Captura</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduccion">2.1. Introducción</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Javier Álvarez Osuna
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright Feeding Systems S.L. - GNU General Public License 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

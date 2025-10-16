@@ -1,0 +1,760 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>4.3. Conditional Tabular GAN (CTGAN) &#8212; FLATCLASS - FLATfish Length and Thickness CLASification System by Artificial Intelligence</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]]}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/02/CTGAN';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="4.4. Tabular Variational Autoencoder (TVAE)" href="TVAE.html" />
+    <link rel="prev" title="4.2. Gaussian Copula" href="GaussianCopula.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/flatclass_logo.png" class="logo__image only-light" alt="FLATCLASS - FLATfish Length and Thickness CLASification System by Artificial Intelligence - Home"/>
+    <script>document.write(`<img src="../../_static/flatclass_logo.png" class="logo__image only-dark" alt="FLATCLASS - FLATfish Length and Thickness CLASification System by Artificial Intelligence - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">PT1 - Visión Artificial</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../01/Requisitos.html">1. Especificación de requisitos</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../01/Imagen.html">2. Sistema de visión artificial</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../01/Modulo-1.html">2.2. M1 - Captura</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01/Modulo-2.html">2.3. M2 - Calibración</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01/Modulo-3.html">2.4. M3 - Imagen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01/Modulo-4.html">2.5. M4 - Salida y persistencia</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">PT2 - Datasets</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Dataset.html">3. Obtención y etiquetado del dataset</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="Generador.html">4. Generación de datos sintéticos</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="GaussianCopula.html">4.2. Gaussian Copula</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">4.3. Conditional Tabular GAN (CTGAN)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TVAE.html">4.4. Tabular Variational Autoencoder (TVAE)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Conclusion.html">4.5. Conclusión</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">PT3 - Predicción del Peso</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../03/Peso.html">5. Desarrollo Experimental de un Modelo de IA para la Estimación del Peso</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../03/Coeficientes.html">5.2. Estudio matemático de las relaciones entre las dimensiones morfológicas y el peso</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03/Analisis.html">5.3. Análisis del modelo alométrico longitud-anchura</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03/Modelo.html">5.4. Algoritmo de inferencia del peso <span class="math notranslate nohighlight">\(W\)</span></a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Conditional Tabular GAN (CTGAN)</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="conditional-tabular-gan-ctgan">
+<h1><span class="section-number">4.3. </span>Conditional Tabular GAN (CTGAN)<a class="headerlink" href="#conditional-tabular-gan-ctgan" title="Link to this heading">#</a></h1>
+<p>CTGAN es una variación de las <strong>Redes Generativas Adversarias (GAN, por sus siglas en inglés)</strong> especialmente diseñado para conjuntos de datos tabulares, una categoría que históricamente ha planteado desafíos significativos en el campo del aprendizaje automático generativo. Las redes antagónicas generativas o redes adversarias generativas (GANs) son un método para la optimización competitivo entre dos redes neuronales, una llamada generadora y otra discriminadora, con el objetivo de conseguir generar nuevas instancias idealmente indistinguibles a las pertenecientes a la distribución de probabilidad de la que derivan los datos de entrenamiento.</p>
+<p>Las GANs, originalmente concebidas para tareas de síntesis de imágenes [<a class="reference external" href="https://doi.org/10.1145/3422622">Goodfellow et al., 2014</a>], han demostrado en los últimos años una notable capacidad para modelar distribuciones complejas en espacios tabulares multivariantes, especialmente en dominios donde los datos reales son escasos o costosos de obtener. El fundamento teórico general del que derivan, permite su utilización para la generación de cualquier tipo de datos, habiéndose demostrado efectiva en campos diversos como son la visión por computador [<a class="reference external" href="https://doi.org/10.48550/arXiv.1505.03906">Roy et al., 2015</a>, <a class="reference external" href="https://doi.org/10.48550/arXiv.1710.10196">Karras et al., 2017</a>], la segmentación semántica [<a class="reference external" href="https://doi.org/10.48550/arXiv.1711.03213">Hoffman et al., 2017</a>], la síntesis de series temporales [<a class="reference external" href="https://doi.org/10.48550/arXiv.1806.01875">Hartmann et al., 2018</a>], la edición de imagen [<a class="reference external" href="https://doi.org/10.1145/3447648">Abdal et al., 2020</a>], el procesamiento del lenguaje natural [<a class="reference external" href="https://doi.org/10.48550/arXiv.1801.07736">Fedus et al., 2018</a>], la generación de imagen a partir de texto [<a class="reference external" href="https://doi.org/10.48550/arXiv.2103.00020">Radford et al., 2021</a>] y más recientemente <a class="reference external" href="https://doi.org/10.1007/s00778-023-00807-y">Xu et al. (2023)</a> demuestran que las GANs superan a técnicas convencionales de síntesis en la preservación de estructuras de dependencia no lineal en variables tabulares reales de alta dimensión.</p>
+<p>Para cualquier conjunto de datos, podemos hipotetizar que es posible definir una distribución de probabilidad <span class="math notranslate nohighlight">\(P_{data}\)</span> representativa de la población representada por la muestra formada por el conjunto de datos. De ser esto posible, para cualquier valor de <span class="math notranslate nohighlight">\(x\)</span> será posible establecer un valor <span class="math notranslate nohighlight">\(P_{data}(x)\)</span> que determine la probabilidad de que <span class="math notranslate nohighlight">\(x\)</span> pertenezca a la población. De existir una función de este tipo, sería una función discriminativa que dada una instancia permitiría conocer la probabilidad de pertenencia a la población. Los modelos generativos modelizan la distribución de probabilidad mencionada pero no proporcionan un valor de probabilidad, sino que generan instancias nuevas que pertenecen a distribuciones de probabilidad próximas a la que pretenden asemejar. Las GANs definen un esquema de aprendizaje que facilita la codificación de los atributos definitorios de la distribución de probabilidad en una red neuronal de manera que la red incorpore la información esencial que le permite generar instancias pertenecientes a distribuciones de probabilidad próximas a la que el conjunto de datos que pretende representar.</p>
+<p>La arquitectura de las Redes Generativas Adversarias (GAN, por sus siglas en inglés) se basa en la interacción entre dos redes neuronales que trabajan de forma opuesta pero complementaria: una red generadora <span class="math notranslate nohighlight">\((G)\)</span> y una red discriminadora <span class="math notranslate nohighlight">\((D)\)</span>. La red generadora tiene como objetivo crear datos sintéticos que imiten con la mayor fidelidad posible los datos reales del conjunto original. Por su parte, la red discriminadora actúa como un detector, cuya tarea es evaluar si una determinada entrada procede del conjunto de datos reales o ha sido generada artificialmente por <span class="math notranslate nohighlight">\(G\)</span>.</p>
+<p>Durante el proceso de entrenamiento, ambas redes se enfrentan en un proceso competitivo. La generadora intenta “engañar” a la discriminadora creando datos cada vez más realistas, mientras que la discriminadora se entrena para detectar con mayor precisión las falsificaciones. Este enfoque adversarial permite que ambas redes mejoren progresivamente: <span class="math notranslate nohighlight">\(G\)</span> produce datos sintéticos más convincentes y <span class="math notranslate nohighlight">\(D\)</span> refina sus capacidades de detección. Esta dinámica se puede entender como un juego de suma cero, donde el éxito de una red implica el fracaso de la otra, y que teóricamente puede llevar a un punto en el que ninguna de las redes puede mejorar su rendimiento sin afectar negativamente a la otra (equilibrio de Nash).</p>
+<figure class="align-center" id="figura-2-1">
+<a class="reference internal image-reference" href="../../_images/Modelo_GAN.png"><img alt="Diagrama del proceso de entrenamiento de las redes adversarias generativas" src="../../_images/Modelo_GAN.png" style="width: 100%;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 4.1 </span><span class="caption-text">Modelo funcional de una red GAN</span><a class="headerlink" href="#figura-2-1" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>En la figura se muestra un diagrama representativo del proceso de optimización de las GAN. La <strong>red generadora</strong> <span class="math notranslate nohighlight">\(G(z)\)</span> recibe como entrada un vector de ruido aleatorio <span class="math notranslate nohighlight">\(z\)</span>, generado a partir de una distribución conocida <span class="math notranslate nohighlight">\(p_z\)</span>, y produce como salida un dato sintético <span class="math notranslate nohighlight">\(x_{fake}\)</span> que intenta imitar los datos reales. La <strong>red discriminadora</strong> <span class="math notranslate nohighlight">\(D(x)\)</span> recibe como entrada un dato <span class="math notranslate nohighlight">\(x_{real}\)</span>  o <span class="math notranslate nohighlight">\(x_{fake}\)</span> (generado) y devuelve una probabilidad <code class="docutils literal notranslate"><span class="pre">D(x)</span></code> entre <span class="math notranslate nohighlight">\(0\)</span> y <span class="math notranslate nohighlight">\(1\)</span> que indica cuán probable es que <span class="math notranslate nohighlight">\(x\)</span> provenga del conjunto real de datos.</p>
+<p>Amabas redes se consideran antagónicas dado que sus objetivos son opuestos:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(D\)</span> quiere <strong>maximizar</strong> la probabilidad de detectar correctamente los datos reales y rechazar los sintéticos.</p></li>
+<li><p><span class="math notranslate nohighlight">\(G\)</span> quiere <strong>minimizar</strong> la probabilidad de que <span class="math notranslate nohighlight">\(D\)</span> detecte que sus datos son falsos.</p></li>
+</ul>
+<p>El proceso se modela como un <strong>juego de suma cero</strong> mediante la siguiente función objetivo:</p>
+<div class="math notranslate nohighlight">
+\[
+\min_G \max_D V(D, G) = \mathbb{E}_{x \sim p_{\text{datos}}(x)}[\log D(x)] + \mathbb{E}_{z \sim p_z(z)}[\log(1 - D(G(z)))]
+\]</div>
+<ul class="simple">
+<li><p>El primer término recompensa a <span class="math notranslate nohighlight">\(D\)</span> por identificar correctamente datos reales.</p></li>
+<li><p>El segundo término recompensa a <span class="math notranslate nohighlight">\(D\)</span> por detectar correctamente los datos generados por <span class="math notranslate nohighlight">\(G\)</span>.</p></li>
+</ul>
+<p>Mientras tanto, <span class="math notranslate nohighlight">\(G\)</span> intenta minimizar esta función engañando a <span class="math notranslate nohighlight">\(D\)</span>, es decir, haciendo que <span class="math notranslate nohighlight">\(D(G(z))\)</span> sea lo más cercano posible a 1.</p>
+<p>Durante el entrenamiento, ambas redes mejoran iterativamente. Teóricamente, el proceso puede converger a un <strong>equilibrio de Nash</strong>, en el que <span class="math notranslate nohighlight">\(G\)</span> genera datos tan similares a los reales que <span class="math notranslate nohighlight">\(D\)</span> no puede distinguir entre ellos, y devuelve aproximadamente:</p>
+<div class="math notranslate nohighlight">
+\[
+D(x) \approx 0.5
+\]</div>
+<p>En ese punto, el sistema ha alcanzado un equilibrio: ni <span class="math notranslate nohighlight">\(G\)</span> ni <span class="math notranslate nohighlight">\(D\)</span> pueden mejorar sin perjudicar a la otra red.</p>
+<p>El modelo CTGAN (Conditional Tabular GAN) representa un enfoque avanzado de generación de datos sintéticos específicamente diseñado para conjuntos de datos tabulares, una categoría que históricamente ha planteado desafíos significativos en el campo del aprendizaje automático generativo. A diferencia de las GANs tradicionales, orientadas principalmente a la síntesis de datos en dominios estructurados como imágenes o secuencias temporales, los datos tabulares presentan heterogeneidad tipológica (variables continuas, categóricas y ordinales) y complejas dependencias estadísticas interatributo. CTGAN resuelve esta complejidad mediante una arquitectura condicional que permite preservar la distribución marginal y condicional de cada atributo, logrando generar muestras sintéticas estadísticamente similares y coherentes con los datos originales.</p>
+<p>Al igual que las GAN, su diseño se basa en un esquema adversarial compuesto por dos redes neuronales: el generador, que crea datos sintéticos a partir de ruido aleatorio y vectores condicionales, y el discriminador, que evalúa la autenticidad de los datos. Una innovación clave de CTGAN es el uso estratégico de funciones de activación, particularmente ReLU (Rectified Linear Unit) y LeakyReLU, que optimizan el flujo de gradientes durante el entrenamiento.</p>
+<p>En el <strong>generador</strong> se emplea ReLU, para promover una activación fuerte y directa.</p>
+<div class="admonition-relu-rectified-linear-unit admonition">
+<p class="admonition-title">ReLU ((Rectified Linear Unit)</p>
+<p>La <strong>función de activación <code class="docutils literal notranslate"><span class="pre">ReLU</span></code> (Rectified Linear Unit)</strong> es una de las funciones no lineales más utilizadas en redes neuronales profundas debido a su simplicidad y eficacia computacional. Se define como <span class="math notranslate nohighlight">\(\text{ReLU}(x) = \max(0, x)\)</span>, lo que implica que las salidas negativas se eliminan (se convierten en cero) mientras que las positivas se mantienen sin alteración. Esta propiedad introduce no linealidad en la red neuronal, permite que las neuronas se activen solo cuando es necesario y, al mismo tiempo, evita problemas de saturación que se presentan en otras funciones. Sin embargo, <code class="docutils literal notranslate"><span class="pre">ReLU</span></code> puede presentar el problema del “apagado de neuronas” (dead neurons), cuando los valores de entrada son negativos de forma persistente, impidiendo que esas neuronas contribuyan al aprendizaje.</p>
+</div>
+<p>Por otro lado, el <strong>discriminador</strong> utiliza Leaky ReLU (que anula los valores negarios) para evitar el colapso de unidades activas y asegurar una mejor capacidad de detección de patrones tanto en regiones positivas como negativas del espacio de entrada.</p>
+<div class="admonition-leaky-relu admonition">
+<p class="admonition-title">Leaky ReLU</p>
+<p>Leaky ReLU es una evolución de la función de activación ReLU especialmente orientada a solventar el problema de “apagado de neuronas” (dead neurons), cuando los valores de entrada son negativos de forma persistente, impidiendo que esas neuronas contribuyan al aprendizaje. Esta función introduce una variante al considerar una pequeña pendiente negativa para los valores menores que cero. Su definición es:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\text{LeakyReLU}(x) =
+\begin{cases}
+x &amp; \text{si } x \geq 0 \\
+\alpha x &amp; \text{si } x &lt; 0
+\end{cases}
+\end{split}\]</div>
+<p>donde <span class="math notranslate nohighlight">\(\alpha\)</span> es un pequeño valor positivo, típicamente <span class="math notranslate nohighlight">\(0.01\)</span>. Esta modificación permite que las neuronas continúen actualizando sus pesos incluso cuando sus entradas son negativas, lo que favorece una mejor propagación del gradiente durante el entrenamiento y mejora la robustez de la red.</p>
+</div>
+<p>Tanto el generador como el discriminador de la red CTGAN están compuestos por <strong>cuatro capas ocultas densamente conectadas</strong> (<em>fully connected layers</em>) con <strong>64 neuronass</strong> que responden a un compromiso técnico entre capacidad representacional, estabilidad del entrenamiento y eficiencia computacional, especialmente en el contexto de modelos generativos aplicados a datos tabulares de baja dimensionalidad, como es el caso de las variables morfométricas (longitud, anchura, altura y peso) de juveniles de peces.</p>
+<p>Desde un punto de vista práctico, 64 unidades por capa ofrecen una capacidad suficiente para capturar relaciones no lineales complejas entre las variables del espacio latente y las características morfológicas de salida, sin llegar a una sobreparametrización excesiva que pueda inducir sobreajuste o inestabilidad adversarial durante el entrenamiento de la GAN. Esta elección proporciona un número razonable de parámetros entrenables, lo cual resulta adecuado cuando se trabaja con conjuntos de datos de tamaño moderado, como ocurre en nuestro caso.</p>
+<p>A este respecto, estudios recientes sobre GANs para datos tabulares —como CTAB-GAN+ [<a class="reference external" href="https://doi.org/10.3389/fdata.2023.1296508">Zao et al., 2024</a>] y CTGAN [<a class="reference external" href="https://doi.org/10.1007/s00778-023-00807-y">Liu et al., 2023</a>]— concluyen que arquitecturas con capas ocultas de entre 64 y 128 neuronas suelen alcanzar un buen equilibrio entre precisión, velocidad de convergencia y estabilidad del discriminador. Por debajo de este umbral (p.e., 16 o 32 neuronas), se puede observar pérdida de capacidad expresiva, mientras que valores superiores (p.e., 256) pueden ser innecesarios para problemas con pocos atributos y generar ruido o fluctuaciones en el aprendizaje entre adversarios.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Importar librerías necesarias</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">scipy</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">sdv.single_table</span><span class="w"> </span><span class="kn">import</span> <span class="n">CTGANSynthesizer</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sdv.metadata</span><span class="w"> </span><span class="kn">import</span> <span class="n">Metadata</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">myst_nb</span><span class="w"> </span><span class="kn">import</span> <span class="n">glue</span>
+
+<span class="n">num_synthetic</span> <span class="o">=</span> <span class="mi">500</span> <span class="c1">#variable para definir el número de registros sintéticos</span>
+
+<span class="c1"># 1. Cargar datos reales</span>
+<span class="c1">#--------------------------</span>
+<span class="n">path_realData</span> <span class="o">=</span> <span class="s1">&#39;.././data/Dimensiones_lenguado.xlsx&#39;</span>  
+<span class="n">real_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="n">path_realData</span><span class="p">)</span>
+
+<span class="c1"># 2. Obtener los metadata del dataset</span>
+<span class="c1">#--------------------------------------</span>
+
+<span class="n">metadata_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;.././data/metadata_lenguado.json&#39;</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">metadata_path</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+    <span class="c1"># Cargar metadatos desde el JSON (evita el warning)</span>
+    <span class="n">metadata</span> <span class="o">=</span> <span class="n">Metadata</span><span class="o">.</span><span class="n">load_from_json</span><span class="p">(</span><span class="n">metadata_path</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Metadatos cargados desde JSON.&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="c1"># Detectar metadatos y guardarlos en JSON para futuras ejecuciones</span>
+    <span class="n">metadata</span> <span class="o">=</span> <span class="n">Metadata</span><span class="o">.</span><span class="n">detect_from_dataframe</span><span class="p">(</span><span class="n">real_data</span><span class="p">)</span>
+    <span class="n">metadata</span><span class="o">.</span><span class="n">save_to_json</span><span class="p">(</span><span class="n">metadata_path</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Metadatos detectados y guardados en JSON.&quot;</span><span class="p">)</span>
+
+<span class="c1"># 3. Entrenar la red CTGAN</span>
+<span class="c1">#---------------------------</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Iniciando CTGAN...&quot;</span><span class="p">)</span>
+
+<span class="n">synthesizer</span> <span class="o">=</span> <span class="n">CTGANSynthesizer</span><span class="p">(</span>
+    <span class="n">metadata</span> <span class="o">=</span> <span class="n">metadata</span><span class="p">,</span>
+    <span class="n">enforce_min_max_values</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="c1"># Forzar datos realísticos</span>
+    <span class="n">enforce_rounding</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="c1"># Redondeos automáticos</span>
+    <span class="n">epochs</span> <span class="o">=</span> <span class="mi">500</span><span class="p">,</span>
+    <span class="n">verbose</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="p">);</span>
+
+<span class="c1"># 4. Generar datos sintéticos</span>
+<span class="c1">#---------------------------</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">contextlib</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">io</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Entrenando CTGAN (esto puede tardar varios minutos)...&quot;</span><span class="p">)</span>
+
+<span class="c1"># Suprimir toda la salida estándar para que no se vea al compilar</span>
+<span class="k">with</span> <span class="n">contextlib</span><span class="o">.</span><span class="n">redirect_stdout</span><span class="p">(</span><span class="n">io</span><span class="o">.</span><span class="n">StringIO</span><span class="p">()):</span>
+    <span class="k">with</span> <span class="n">contextlib</span><span class="o">.</span><span class="n">redirect_stderr</span><span class="p">(</span><span class="n">io</span><span class="o">.</span><span class="n">StringIO</span><span class="p">()):</span>
+        <span class="n">synthesizer</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">real_data</span><span class="p">);</span>
+
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Generando datos sintéticos&quot;</span><span class="p">)</span>
+<span class="n">syntheticGAN_data</span> <span class="o">=</span> <span class="n">synthesizer</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">num_rows</span><span class="o">=</span><span class="n">num_synthetic</span><span class="p">);</span>
+<span class="n">display</span><span class="p">(</span><span class="n">syntheticGAN_data</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Se muestran 10 primeros registros sintéticos CTGAN de un total de </span><span class="si">{</span><span class="n">num_synthetic</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># 5. Guardar satos sintéticos</span>
+<span class="c1">#---------------------------</span>
+
+<span class="n">path_syntheticCTGANData</span> <span class="o">=</span> <span class="s2">&quot;.././data/SyntheticCTGAN.xlsx&quot;</span>
+<span class="n">syntheticGAN_data</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="n">path_syntheticCTGANData</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">engine</span><span class="o">=</span><span class="s1">&#39;openpyxl&#39;</span><span class="p">)</span>
+
+<span class="c1"># 6. Validación calidad datos sintéticos</span>
+<span class="c1">#---------------------------</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">sdv.evaluation.single_table</span><span class="w"> </span><span class="kn">import</span> <span class="n">run_diagnostic</span><span class="p">,</span> <span class="n">evaluate_quality</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sdv.evaluation.single_table</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_column_plot</span>
+
+<span class="c1">## Diagnóstico básico</span>
+<span class="n">diagnostic</span> <span class="o">=</span> <span class="n">run_diagnostic</span><span class="p">(</span><span class="n">real_data</span><span class="p">,</span> <span class="n">syntheticGAN_data</span><span class="p">,</span> <span class="n">metadata</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">DIAGNÓSTICO BÁSICO CALIDAD DATOS</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">diagnostic</span><span class="o">.</span><span class="n">get_details</span><span class="p">(</span><span class="n">property_name</span><span class="o">=</span><span class="s1">&#39;Data Validity&#39;</span><span class="p">))</span>
+
+<span class="c1">## Visualización de datos</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sdv.evaluation.single_table</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_column_plot</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+
+<span class="n">columnas</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Peso (g)&quot;</span><span class="p">,</span> <span class="s2">&quot;Longitud (cm)&quot;</span><span class="p">,</span> <span class="s2">&quot;Anchura (cm)&quot;</span><span class="p">,</span> <span class="s2">&quot;Altura (cm)&quot;</span><span class="p">]</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">col</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">columnas</span><span class="p">):</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="o">//</span><span class="mi">2</span><span class="p">,</span> <span class="n">i</span><span class="o">%</span><span class="k">2</span>]
+    <span class="n">sns</span><span class="o">.</span><span class="n">kdeplot</span><span class="p">(</span><span class="n">real_data</span><span class="p">[</span><span class="n">col</span><span class="p">],</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#1f77b4&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Real&quot;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+    <span class="n">sns</span><span class="o">.</span><span class="n">kdeplot</span><span class="p">(</span><span class="n">syntheticGAN_data</span><span class="p">[</span><span class="n">col</span><span class="p">],</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#d62728&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;CTGAN&quot;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Distribución de </span><span class="si">{</span><span class="n">col</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;Comparación de datos reales vs. sintéticos (CTGAN)&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">1.02</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1">## Medidas de similiud estadística</span>
+
+<span class="n">quality_reportGAN</span> <span class="o">=</span> <span class="n">evaluate_quality</span><span class="p">(</span><span class="n">real_data</span><span class="p">,</span> <span class="n">syntheticGAN_data</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">real_data</span><span class="p">),</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">),</span> <span class="n">metadata</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+
+<span class="c1">## Obtenemos el valor promedio de la similitud</span>
+<span class="n">overall_scoreGAN</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">quality_reportGAN</span><span class="o">.</span><span class="n">get_score</span><span class="p">()</span><span class="o">*</span><span class="mi">100</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">%&quot;</span>
+<span class="n">glue</span><span class="p">(</span><span class="s2">&quot;scoreGAN&quot;</span><span class="p">,</span> <span class="n">overall_scoreGAN</span><span class="p">,</span> <span class="n">display</span><span class="o">=</span><span class="kc">False</span><span class="p">);</span> <span class="c1"># Definimos una variable para usar en el texto markdown</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">SIMILITUD ESTADÍSTICA</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Overall score: </span><span class="si">{</span><span class="n">overall_scoreGAN</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Metadatos cargados desde JSON.
+Iniciando CTGAN...
+Entrenando CTGAN (esto puede tardar varios minutos)...
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Generando datos sintéticos
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Peso (g)</th>
+      <th>Longitud (cm)</th>
+      <th>Anchura (cm)</th>
+      <th>Altura (cm)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>4.13</td>
+      <td>6.9</td>
+      <td>2.9</td>
+      <td>0.5</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>6.92</td>
+      <td>11.3</td>
+      <td>2.3</td>
+      <td>0.6</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.46</td>
+      <td>5.3</td>
+      <td>1.6</td>
+      <td>0.5</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>8.23</td>
+      <td>8.2</td>
+      <td>3.7</td>
+      <td>0.4</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>9.22</td>
+      <td>4.0</td>
+      <td>4.5</td>
+      <td>0.4</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>16.80</td>
+      <td>5.0</td>
+      <td>5.2</td>
+      <td>0.4</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>10.85</td>
+      <td>7.9</td>
+      <td>3.4</td>
+      <td>0.3</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>3.42</td>
+      <td>7.0</td>
+      <td>4.3</td>
+      <td>0.6</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>17.09</td>
+      <td>5.0</td>
+      <td>5.1</td>
+      <td>0.4</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>5.55</td>
+      <td>8.2</td>
+      <td>2.4</td>
+      <td>0.4</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Se muestran 10 primeros registros sintéticos CTGAN de un total de 500
+
+DIAGNÓSTICO BÁSICO CALIDAD DATOS
+
+          Column             Metric  Score
+0       Peso (g)  BoundaryAdherence    1.0
+1  Longitud (cm)  BoundaryAdherence    1.0
+2   Anchura (cm)  BoundaryAdherence    1.0
+3    Altura (cm)  BoundaryAdherence    1.0
+</pre></div>
+</div>
+<img alt="../../_images/1adba2ece10ee515aaa99a91ca0b42f2dda7e920117ff26fe8f9ff5929a19d93.png" src="../../_images/1adba2ece10ee515aaa99a91ca0b42f2dda7e920117ff26fe8f9ff5929a19d93.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>SIMILITUD ESTADÍSTICA
+
+Overall score: 72.43%
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2"> Distribuciones individuales real vs. sintética</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">quality_reportGAN</span><span class="o">.</span><span class="n">get_details</span><span class="p">(</span><span class="s1">&#39;Column Shapes&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> Distribuciones individuales real vs. sintética
+
+          Column        Metric     Score
+0       Peso (g)  KSComplement  0.827751
+1  Longitud (cm)  KSComplement  0.842105
+2   Anchura (cm)  KSComplement  0.842105
+3    Altura (cm)  KSComplement  0.961722
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2"> Correlaciones entre variables real vs. sintética</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">quality_reportGAN</span><span class="o">.</span><span class="n">get_details</span><span class="p">(</span><span class="s1">&#39;Column Pair Trends&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> Correlaciones entre variables real vs. sintética
+
+        Column 1       Column 2                 Metric     Score  \
+0       Peso (g)  Longitud (cm)  CorrelationSimilarity  0.577296   
+1       Peso (g)   Anchura (cm)  CorrelationSimilarity  0.581744   
+2       Peso (g)    Altura (cm)  CorrelationSimilarity  0.643105   
+3  Longitud (cm)   Anchura (cm)  CorrelationSimilarity  0.561732   
+4  Longitud (cm)    Altura (cm)  CorrelationSimilarity  0.562479   
+5   Anchura (cm)    Altura (cm)  CorrelationSimilarity  0.554189   
+
+   Real Correlation  Synthetic Correlation  
+0          0.932951               0.087544  
+1          0.942354               0.105843  
+2          0.861768               0.147978  
+3          0.936674               0.060138  
+4          0.870165              -0.004878  
+5          0.842673              -0.048950  
+</pre></div>
+</div>
+</div>
+</div>
+<p>Como se puede deducir de las tablas anteriores, la generación de datos sintéticos mediante <strong>CTGAN proporciona unas métricas mucho más pobres</strong> que las obtenidas con el método Gaussian Copula, con una baja correlación con los datos reales y en consecuencia <strong>invalidando los registros sintéticos obtenidos</strong> de peso, longitud, anchura y altura.</p>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./content/02"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="GaussianCopula.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">4.2. </span>Gaussian Copula</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="TVAE.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">4.4. </span>Tabular Variational Autoencoder (TVAE)</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Javier Álvarez Osuna
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright Feeding Systems S.L. - GNU General Public License 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
