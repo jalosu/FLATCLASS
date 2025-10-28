@@ -19,8 +19,9 @@ build:
 
 latex:
   latex_documents:
-    targetname: IAbook.tex
+    targetname: FLATCLASS.tex
   latex_engine: pdflatex
+  remove_code_solution: true
 
 bibtex_bibfiles:
   - references.bib
@@ -59,6 +60,10 @@ sphinx:
     bibtex_reference_style: author_year  # Fuerza el formato "Autor et al., Año"
     bibtex_default_style: plain
     numfig: true
+    numfig_format:
+      figure: 'Figura %s'
+      table: 'Tabla %s'
+      code-block: 'Listado %s'   
     source_suffix: [".md", ".ipynb"]
     mathjax3_config:
       tex:
