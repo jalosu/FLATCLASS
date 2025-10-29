@@ -1,0 +1,481 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>4. Generación de datos sintéticos &#8212; FLATCLASS - FLATfish Length and Thickness CLASification System by Artificial Intelligence</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]]}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/02/Generador';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="4.2. Gaussian Copula" href="GaussianCopula.html" />
+    <link rel="prev" title="3. Obtención y etiquetado del dataset" href="Dataset.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/flatclass_logo.png" class="logo__image only-light" alt="FLATCLASS - FLATfish Length and Thickness CLASification System by Artificial Intelligence - Home"/>
+    <script>document.write(`<img src="../../_static/flatclass_logo.png" class="logo__image only-dark" alt="FLATCLASS - FLATfish Length and Thickness CLASification System by Artificial Intelligence - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">PT1 - Visión Artificial</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../01/Requisitos.html">1. Especificación de requisitos</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../01/Imagen.html">2. Sistema de visión artificial</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../01/Modulo-1.html">2.2. M1 - Captura</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01/Modulo-2.html">2.3. M2 - Calibración</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01/Modulo-3.html">2.4. M3 - Imagen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01/Modulo-4.html">2.5. M4 - Salida y persistencia</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">PT2 - Datasets</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Dataset.html">3. Obtención y etiquetado del dataset</a></li>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">4. Generación de datos sintéticos</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="GaussianCopula.html">4.2. Gaussian Copula</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CTGAN.html">4.3. Conditional Tabular GAN (CTGAN)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TVAE.html">4.4. Tabular Variational Autoencoder (TVAE)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Conclusion.html">4.5. Conclusión</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">PT3 - Predicción del Peso</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../03/Peso.html">5. Desarrollo Experimental de un Modelo de IA para la Estimación del Peso</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../03/Coeficientes.html">5.2. Estudio matemático de las relaciones entre las dimensiones morfológicas y el peso</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03/Analisis.html">5.3. Análisis del modelo alométrico longitud-anchura</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03/Modelo.html">5.4. Algoritmo de inferencia del peso <span class="math notranslate nohighlight">\(W\)</span></a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">PT4 - Sistema de clasificación automática</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../04/Mecatronica.html">6. Sistema mecatrónico de separación</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Generación de datos sintéticos</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduccion">4.1. Introducción</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="generacion-de-datos-sinteticos">
+<h1><span class="section-number">4. </span>Generación de datos sintéticos<a class="headerlink" href="#generacion-de-datos-sinteticos" title="Link to this heading">#</a></h1>
+<div class="tip admonition">
+<p class="admonition-title">Resumen</p>
+<p>Este artículo presenta las líneas de trabajo desarrolladas para la generación de un dataset sintético de tamaño y peso de lenguados, con el objetivo de proporcionar una base de datos suficientemente amplia y representativa para el entrenamiento, validación y mejora de modelos predictivos. Se recogen las metodologías utilizadas en la generación de datos sintéticos, incluyendo la modelización estadística de distribuciones empíricas, técnicas de simulación basadas en procesos de crecimiento biológico y enfoques de aprendizaje automático para la síntesis de datos realistas. Además, se analizan los criterios de validación empleados para garantizar que los datos generados reflejen fielmente las tendencias y variabilidad observadas en poblaciones reales de lenguado (<em>Solea solea</em>), asegurando así su utilidad en el desarrollo de algoritmos precisos y generalizables para la predicción del peso a partir de variables alometricas.</p>
+<p><strong>Entregable</strong>: E2.2<br />
+<strong>Versión</strong>: 1.0<br />
+<strong>Autor</strong>: Javier Álvarez Osuna<br />
+<strong>Email</strong>: javier.osuna&#64;fishfarmfeeder.com<br />
+<strong>ORCID</strong>: <a class="reference external" href="https://orcid.org/0000-0001-7063-1279">0000-0001-7063-1279</a><br />
+<strong>Licencia</strong>: CC-BY-4.0<br />
+<strong>Código proyecto</strong>: IG408M.2025.000.000072</p>
+<a class="reference internal image-reference" href="../../_images/FLATCLASS_logo_publicidad.png"><img alt="../../_images/FLATCLASS_logo_publicidad.png" class="align-center" src="../../_images/FLATCLASS_logo_publicidad.png" style="width: 100%;" />
+</a>
+</div>
+<section id="introduccion">
+<h2><span class="section-number">4.1. </span>Introducción<a class="headerlink" href="#introduccion" title="Link to this heading">#</a></h2>
+<p>En el ámbito de la acuicultura de precisión, la caracterización morfométrica de los peces y su relación con el peso corporal constituye un eje central para la optimización de procesos como la clasificación automática, el control de crecimiento y la dosificación alimentaria. En el caso particular de los peces planos en fase de alevinaje —como el lenguado (Solea solea) o el rodaballo (Scophthalmus maximus)—, las variables morfométricas fundamentales incluyen la longitud corporal, la anchura transversal y la altura dorso-ventral, parámetros que definen la geometría del individuo y que se presumen relacionados de forma sistemática con la biomasa individual.</p>
+<p>La necesidad de disponer de un dataset suficientemente amplio, representativo y multivariado, que relacione estas variables morfométricas con el peso corporal correspondiente, responde a múltiples consideraciones de carácter estadístico, biológico y computacional. Aun en ausencia de un modelo alométrico explícito que relacione de forma determinista dichas variables, es posible anticipar que cualquier estrategia de inferencia o predicción del peso basada en dimensiones requerirá una densidad adecuada de datos en el espacio tridimensional definido por longitud, anchura y altura. Este requisito es crítico para garantizar tanto la fidelidad del ajuste como la capacidad de generalización del modelo aprendido.</p>
+<p>Cuando el volumen de datos disponibles es reducido, surgen una serie de limitaciones estructurales:</p>
+<ul class="simple">
+<li><p><strong>Alta varianza en la estimación de parámetros</strong>: La precisión de los modelos predictivos decae significativamente cuando las observaciones son escasas o están mal distribuidas en el dominio de entrada.</p></li>
+<li><p><strong>Riesgo de sobreajuste</strong>: En entornos de datos reducidos, los modelos tienden a capturar ruido en lugar de relaciones funcionales genuinas, lo cual compromete la validez externa.</p></li>
+<li><p><strong>Cobertura insuficiente del espacio morfométrico</strong>: Se produce una pérdida de representatividad en las regiones marginales del dominio, lo que reduce la capacidad del sistema para extrapolar o interpolar en condiciones reales de producción.</p></li>
+<li><p><strong>Sesgos estructurales</strong>: Las muestras pequeñas pueden reflejar sesgos en las condiciones de cría, genética o instrumentación, induciendo patrones espurios no generalizables.</p></li>
+</ul>
+<p>Desde la perspectiva de la matemática probabilística, esta problemática puede entenderse mediante el marco de la inferencia bayesiana. En este enfoque, el conocimiento sobre los parámetros <span class="math notranslate nohighlight">\(\theta\)</span> (por ejemplo, la relación entre morfología y peso) se representa como una distribución posterior condicionada a los datos <span class="math notranslate nohighlight">\(D\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+p(\theta | D) \propto p(D | \theta) \cdot p(\theta)
+\]</div>
+<p>donde <span class="math notranslate nohighlight">\(D\)</span> representa los datos observados. Cuando el tamaño de <span class="math notranslate nohighlight">\(D\)</span> es reducido, la función de verosimilitud <span class="math notranslate nohighlight">\(p(D|a,b)\)</span> tiene una varianza alta, lo que genera estimaciones más inciertas. Al aumentar el tamaño de <span class="math notranslate nohighlight">\(D\)</span> con datos sintéticos plausibles, la estimación de <span class="math notranslate nohighlight">\(p(a,b|D)\)</span> se vuelve más precisa, reduciendo la varianza de los parámetros.</p>
+<p>En el contexto de la acuicultura, la recopilación masiva de medidas biométricas de precisión en alevines presenta limitaciones logísticas y económicas significativas. Por tanto, el uso inteligencia artificial para permite simular observaciones adicionales coherentes con la distribución empírica observada, conservando las correlaciones entre las dimensiones corporales y el peso de los individuos.</p>
+<p>En este trabajo se abordó la generación de datos sintéticos mediante tres métodos complementarios: <strong>Gaussian Copula</strong>, <strong>CTGAN</strong> y <strong>TVAE</strong>. Esta aproximación multicriterio permite evaluar de manera comparativa la capacidad de cada técnica para replicar no solo las distribuciones marginales de los datos originales, sino también las dependencias no lineales propias de los modelos alométricos, típicos en biología de organismos. La selección final del método más adecuado se basará en un análisis cuantitativo que incluye: (1) métricas de evaluación de la calidad sintética (KS-test, divergencia KL), (2) precisión en la replicación de las ecuaciones alométricas (RMSE entre valores reales y predichos), y (3) viabilidad computacional. Esta comparación sistemática garantizará que los datos sintéticos amplificados mantengan validez ecológica y estadística, priorizando el método que mejor equilibre fidelidad biológica y escalabilidad, para ser usados en los modelos predictivos de peso.</p>
+<p>Los estudios sobre generación de datos sintéticos llevasoa a cabo en el marco de FLATCLASS responden por tanto, a una doble motivación: por un lado, <strong>ampliar artificialmente el conjunto de datos disponible</strong> para entrenar modelos predictivos del peso a partir de variables morfométricas; y por otro, <strong>mantener la coherencia estadística y biológica</strong> de los registros generados, minimizando los riesgos de sobreajuste y mejorando la capacidad de generalización de los modelos desarrollados.</p>
+</section>
+<div class="toctree-wrapper compound">
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./content/02"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Dataset.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">3. </span>Obtención y etiquetado del dataset</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="GaussianCopula.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">4.2. </span>Gaussian Copula</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduccion">4.1. Introducción</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Javier Álvarez Osuna
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright Feeding Systems S.L. - GNU General Public License 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

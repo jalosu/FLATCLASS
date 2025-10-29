@@ -1,0 +1,911 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>3. Obtención y etiquetado del dataset &#8212; FLATCLASS - FLATfish Length and Thickness CLASification System by Artificial Intelligence</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]]}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/02/Dataset';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="4. Generación de datos sintéticos" href="Generador.html" />
+    <link rel="prev" title="2.5. M4 - Salida y persistencia" href="../01/Modulo-4.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/flatclass_logo.png" class="logo__image only-light" alt="FLATCLASS - FLATfish Length and Thickness CLASification System by Artificial Intelligence - Home"/>
+    <script>document.write(`<img src="../../_static/flatclass_logo.png" class="logo__image only-dark" alt="FLATCLASS - FLATfish Length and Thickness CLASification System by Artificial Intelligence - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">PT1 - Visión Artificial</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../01/Requisitos.html">1. Especificación de requisitos</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../01/Imagen.html">2. Sistema de visión artificial</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../01/Modulo-1.html">2.2. M1 - Captura</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01/Modulo-2.html">2.3. M2 - Calibración</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01/Modulo-3.html">2.4. M3 - Imagen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01/Modulo-4.html">2.5. M4 - Salida y persistencia</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">PT2 - Datasets</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">3. Obtención y etiquetado del dataset</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="Generador.html">4. Generación de datos sintéticos</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="GaussianCopula.html">4.2. Gaussian Copula</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CTGAN.html">4.3. Conditional Tabular GAN (CTGAN)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TVAE.html">4.4. Tabular Variational Autoencoder (TVAE)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Conclusion.html">4.5. Conclusión</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">PT3 - Predicción del Peso</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../03/Peso.html">5. Desarrollo Experimental de un Modelo de IA para la Estimación del Peso</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../03/Coeficientes.html">5.2. Estudio matemático de las relaciones entre las dimensiones morfológicas y el peso</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03/Analisis.html">5.3. Análisis del modelo alométrico longitud-anchura</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03/Modelo.html">5.4. Algoritmo de inferencia del peso <span class="math notranslate nohighlight">\(W\)</span></a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">PT4 - Sistema de clasificación automática</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../04/Mecatronica.html">6. Sistema mecatrónico de separación</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Obtención y etiquetado del dataset</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduccion">3.1. Introducción</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#metodologia-para-la-adquisicion-de-datos-morfometricos">3.2. Métodología para la adquisición de datos morfométricos</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#preparacion-de-los-ejemplares">3.2.1. Preparación de los Ejemplares</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#protocolo-de-medicion">3.2.2. Protocolo de Medición</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#consideraciones-eticas-y-de-bienestar">3.2.3. Consideraciones Éticas y de Bienestar</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#estructura-de-los-datos">3.2.4. Estructura de los datos</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inspeccion-general-del-conjunto-de-datos">3.3. Inspección general del conjunto de datos</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#distribuciones-univariantes">3.3.1. Distribuciones univariantes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#distribuciones-bivariantes">3.3.2. Distribuciones bivariantes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matriz-de-correlacion">3.3.3. Matriz de correlación</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="obtencion-y-etiquetado-del-dataset">
+<h1><span class="section-number">3. </span>Obtención y etiquetado del dataset<a class="headerlink" href="#obtencion-y-etiquetado-del-dataset" title="Link to this heading">#</a></h1>
+<div class="tip admonition">
+<p class="admonition-title">Resumen</p>
+<p>Este artículo presenta la metodología utilizada en la recopilación de un conjunto de datos o <em>dataset</em>  representativo que relacione las dimensiones corporales de los lenguados con su peso real en condiciones controladas. Para ello se ha contado con la colaboración del equipo de producción de Safistela S.A (<a class="reference external" href="https://seaeight.eu/seaeight">Sea8</a>) para garantizar los controles de calidad estadísticas y el cumplimiento de los estándares éticos en investigación acuícola.</p>
+<p><strong>Entregable</strong>: E2.1<br />
+<strong>Versión</strong>: 1.0<br />
+<strong>Autor</strong>: Javier Álvarez Osuna<br />
+<strong>Email</strong>: javier.osuna&#64;fishfarmfeeder.com<br />
+<strong>ORCID</strong>: <a class="reference external" href="https://orcid.org/0000-0001-7063-1279">0000-0001-7063-1279</a><br />
+<strong>Licencia</strong>: CC-BY-4.0<br />
+<strong>Código proyecto</strong>: IG408M.2025.000.000072</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../../_images/FLATCLASS_logo_publicidad.png"><img alt="../../_images/FLATCLASS_logo_publicidad.png" src="../../_images/FLATCLASS_logo_publicidad.png" style="width: 100%;" />
+</a>
+</figure>
+</div>
+<section id="introduccion">
+<h2><span class="section-number">3.1. </span>Introducción<a class="headerlink" href="#introduccion" title="Link to this heading">#</a></h2>
+<p>El desarrollo de modelos precisos para la estimación de peso en peces planos, como el lenguado (Solea spp.), requiere de conjuntos de datos morfométricos robustos que capturen la relación entre las dimensiones corporales y el peso real en condiciones controladas. Estas relaciones son fundamentales para aplicaciones en acuicultura, donde la monitorización no invasiva del crecimiento optimiza el manejo productivo y reduce el estrés en los organismos [<a class="reference external" href="https://doi.org/10.1371/journal.pone.0157890">Takács et al., 2015</a>]. En particular, los juveniles entre 70 - 90 días representan una fase crítica del desarrollo, en la que variaciones en la longitud, altura y anchura pueden correlacionarse significativamente con cambios en la biomasa, siempre que las mediciones se realicen con precisión y minimizando perturbaciones [<a class="reference external" href="https://doi.org/10.1016/j.aquaculture.2011.03.011">Costas et al., 2013</a>].</p>
+<p>No obstante, la adquisición de estos datos enfrenta un desafío metodológico clave: equilibrar la exactitud de las mediciones con el bienestar animal. Estudios previos han demostrado que la manipulación repetida de ejemplares juveniles induce estrés agudo, afectando no solo su fisiología, sino también la fiabilidad de los datos morfométricos al alterar su postura natural [<a class="reference external" href="https://link.springer.com/article/10.1007/s10695-011-9518-8">Martins et al., 2012</a>]. Por ello, el protocolo para la obtención de los valores morfométricos necesarios se diseñó bajo el principio de <strong>“medida única estandarizada”</strong>, respaldado por controles de calidad estadísticos y técnicas de sedación suave, para garantizar tanto la representatividad de los datos como el cumplimiento de los estándares éticos en investigación acuícola [<a class="reference external" href="https://doi.org/10.1016/j.applanim.2004.02.003">Conte, 2004</a>]. La metodología descrita a continuación proporciona un marco reproducible para obtener datos reales confiables, esenciales para el desarrollo de algoritmos de estimación de peso en lenguados.</p>
+</section>
+<section id="metodologia-para-la-adquisicion-de-datos-morfometricos">
+<h2><span class="section-number">3.2. </span>Métodología para la adquisición de datos morfométricos<a class="headerlink" href="#metodologia-para-la-adquisicion-de-datos-morfometricos" title="Link to this heading">#</a></h2>
+<section id="preparacion-de-los-ejemplares">
+<h3><span class="section-number">3.2.1. </span>Preparación de los Ejemplares<a class="headerlink" href="#preparacion-de-los-ejemplares" title="Link to this heading">#</a></h3>
+<p>Los juveniles de lenguado (90 días post-eclosión) fueron previamente aclimatados durante 24 h en tanques de cuarentena con condiciones controladas (temperatura: 18 ± 1°C, salinidad: 35 ± 1 ppt, oxígeno disuelto: &gt;6 mg/L) para minimizar el estrés asociado al manejo [<a class="reference external" href="https://link.springer.com/article/10.1007/s10695-011-9518-8">Martins et al., 2012</a>]. Antes de las mediciones, se realizó un ayuno de 12 h para evitar variaciones en el peso corporal debido a la ingesta de alimento.</p>
+</section>
+<section id="protocolo-de-medicion">
+<h3><span class="section-number">3.2.2. </span>Protocolo de Medición<a class="headerlink" href="#protocolo-de-medicion" title="Link to this heading">#</a></h3>
+<p>Las mediciones morfométricas (peso, longitud total, altura y anchura) se realizaron siguiendo un enfoque de medida única por variable, fundamentado en criterios de bienestar animal y reproducibilidad estadística. Cada individuo fue manipulado por un único operador entrenado, utilizando instrumental calibrado (balanza digital de precisión ±0.01 g y calibrador digital ±0.01 cm). Para garantizar la estandarización, la longitud total se midió desde el rostro hasta el extremo del lóbulo caudal en posición natural, mientras que la altura y anchura se registraron en la región de máxima dimensión corporal [<a class="reference external" href="https://www.researchgate.net/publication/282421080_Advanced_Techniques_for_Morphometric_Analysis_in_Fish">Tonna 2015</a>].</p>
+<p>La decisión de no replicar las mediciones se basó en evidencias que demuestran que la manipulación repetida induce estrés agudo en estadios juveniles, afectando su homeostasis osmótica y aumentando la mortalidad post-manejo (Costas et al., 2013). Las réplicas requieren mayor tiempo fuera del agua, generando hipoxia y acidosis tisular. Estudios en <em>Solea senegalensis</em> muestran que exposiciones &gt; 30 segundos alteran el equilibrio osmótico [<a class="reference external" href="https://doi.org/10.1016/j.aquaculture.2011.03.011">Costas et al., 2013</a>]. Además, cada contacto adicional incrementa el riesgo de lesiones (ej. descamación, daño en aletas) y eleva los niveles de cortisol, afectando su fisiología y crecimiento posterior [<a class="reference external" href="https://doi.org/10.1016/j.applanim.2004.02.003">Conte, 2004</a>].</p>
+<p>Para mitigar riesgos, se empleó sedación suave, protocolo validado previamente por el personal facultativo de Safistela S.A (Sea8). Cada ejemplar fue medido en un tiempo máximo de 20 segundos fuera del agua, sobre una superficie húmeda para reducir la pérdida de mucus.</p>
+</section>
+<section id="consideraciones-eticas-y-de-bienestar">
+<h3><span class="section-number">3.2.3. </span>Consideraciones Éticas y de Bienestar<a class="headerlink" href="#consideraciones-eticas-y-de-bienestar" title="Link to this heading">#</a></h3>
+<p>El protocolo cumplió con las directrices de la UE (2010/63/EU) para la reducción del estrés en animales de experimentación. Se evitó la manipulación repetida y se monitorizaron signos de estrés post-manejo (ej. natación errática o falta de alimentación durante 2 h posteriores). Los ejemplares fueron reintegrados inmediatamente a tanques de recuperación con flujo de agua continuo y sombreado para minimizar perturbaciones.</p>
+</section>
+<section id="estructura-de-los-datos">
+<h3><span class="section-number">3.2.4. </span>Estructura de los datos<a class="headerlink" href="#estructura-de-los-datos" title="Link to this heading">#</a></h3>
+<p>La base de datos se organizó en una hoja de Excel con 209 registros y 5 variables (columnas)</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Variable</p></th>
+<th class="head"><p>Tipo de Dato</p></th>
+<th class="head"><p>Unidad</p></th>
+<th class="head"><p>Descripción</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>ID_Ejemplar</p></td>
+<td><p>Numérico</p></td>
+<td><p>-</p></td>
+<td><p>Número entero correlativo.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Peso</p></td>
+<td><p>Numérico</p></td>
+<td><p>gramos (g)</p></td>
+<td><p>Peso corporal.</p></td>
+</tr>
+<tr class="row-even"><td><p>Longitud</p></td>
+<td><p>Numérico</p></td>
+<td><p>cm</p></td>
+<td><p>Longitud total.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Altura</p></td>
+<td><p>Numérico</p></td>
+<td><p>cm</p></td>
+<td><p>Altura máxima del cuerpo.</p></td>
+</tr>
+<tr class="row-even"><td><p>Anchura</p></td>
+<td><p>Numérico</p></td>
+<td><p>cm</p></td>
+<td><p>Anchura máxima del cuerpo.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<section id="inspeccion-general-del-conjunto-de-datos">
+<h2><span class="section-number">3.3. </span>Inspección general del conjunto de datos<a class="headerlink" href="#inspeccion-general-del-conjunto-de-datos" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+
+<span class="c1"># Leer el dataset</span>
+<span class="n">file_path</span> <span class="o">=</span> <span class="s1">&#39;.././data/Dimensiones_lenguado.xlsx&#39;</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Forma:&quot;</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2"> Visualización de los 15 primeros registros&quot;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">15</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2"> Estadística básica&quot;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span><span class="o">.</span><span class="n">transpose</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Forma: (209, 4)
+
+ Visualización de los 15 primeros registros
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Peso (g)</th>
+      <th>Longitud (cm)</th>
+      <th>Anchura (cm)</th>
+      <th>Altura (cm)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.46</td>
+      <td>3.3</td>
+      <td>1.3</td>
+      <td>0.2</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1.08</td>
+      <td>4.5</td>
+      <td>1.1</td>
+      <td>0.3</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.67</td>
+      <td>3.9</td>
+      <td>1.5</td>
+      <td>0.2</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.98</td>
+      <td>4.4</td>
+      <td>1.7</td>
+      <td>0.3</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.93</td>
+      <td>4.2</td>
+      <td>1.8</td>
+      <td>0.3</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>1.89</td>
+      <td>4.5</td>
+      <td>2.0</td>
+      <td>0.4</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>1.60</td>
+      <td>5.1</td>
+      <td>1.8</td>
+      <td>0.3</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>1.90</td>
+      <td>5.0</td>
+      <td>2.0</td>
+      <td>0.3</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>1.59</td>
+      <td>5.4</td>
+      <td>1.9</td>
+      <td>0.3</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>1.67</td>
+      <td>5.4</td>
+      <td>1.9</td>
+      <td>0.3</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>1.91</td>
+      <td>5.4</td>
+      <td>1.9</td>
+      <td>0.3</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>1.94</td>
+      <td>5.4</td>
+      <td>1.9</td>
+      <td>0.3</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>2.08</td>
+      <td>5.5</td>
+      <td>1.9</td>
+      <td>0.3</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>1.72</td>
+      <td>5.4</td>
+      <td>2.0</td>
+      <td>0.3</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>1.77</td>
+      <td>5.4</td>
+      <td>2.0</td>
+      <td>0.3</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> Estadística básica
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>count</th>
+      <th>mean</th>
+      <th>std</th>
+      <th>min</th>
+      <th>25%</th>
+      <th>50%</th>
+      <th>75%</th>
+      <th>max</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Peso (g)</th>
+      <td>209.0</td>
+      <td>5.344641</td>
+      <td>3.635514</td>
+      <td>0.46</td>
+      <td>2.82</td>
+      <td>4.29</td>
+      <td>6.96</td>
+      <td>21.98</td>
+    </tr>
+    <tr>
+      <th>Longitud (cm)</th>
+      <td>209.0</td>
+      <td>7.244498</td>
+      <td>1.505369</td>
+      <td>3.30</td>
+      <td>6.10</td>
+      <td>7.00</td>
+      <td>8.30</td>
+      <td>11.40</td>
+    </tr>
+    <tr>
+      <th>Anchura (cm)</th>
+      <td>209.0</td>
+      <td>2.788995</td>
+      <td>0.698297</td>
+      <td>1.10</td>
+      <td>2.30</td>
+      <td>2.70</td>
+      <td>3.30</td>
+      <td>5.20</td>
+    </tr>
+    <tr>
+      <th>Altura (cm)</th>
+      <td>209.0</td>
+      <td>0.462679</td>
+      <td>0.117033</td>
+      <td>0.20</td>
+      <td>0.40</td>
+      <td>0.50</td>
+      <td>0.50</td>
+      <td>0.90</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<section id="distribuciones-univariantes">
+<h3><span class="section-number">3.3.1. </span>Distribuciones univariantes<a class="headerlink" href="#distribuciones-univariantes" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># DISTRIBUCIONES UNIVARIANTES</span>
+<span class="c1"># ---------------------------</span>
+<span class="n">numeric_cols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Peso (g)&#39;</span><span class="p">,</span> <span class="s1">&#39;Longitud (cm)&#39;</span><span class="p">,</span> <span class="s1">&#39;Anchura (cm)&#39;</span><span class="p">,</span> <span class="s1">&#39;Altura (cm)&#39;</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">numeric_cols</span><span class="p">:</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+    <span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">],</span> <span class="n">kde</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#3EADB0&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Histograma - </span><span class="si">{</span><span class="n">col</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">sns</span><span class="o">.</span><span class="n">violinplot</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">],</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">inner</span><span class="o">=</span><span class="s2">&quot;quartile&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Violinplot - </span><span class="si">{</span><span class="n">col</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/29f091101284ef62c5d231d7a315337ccab775948872b6a352589df0357d4fc9.png" src="../../_images/29f091101284ef62c5d231d7a315337ccab775948872b6a352589df0357d4fc9.png" />
+<img alt="../../_images/db49754d35cda963f15bfdd009b120023e7f2eeab3f5988cfcdd63076280721a.png" src="../../_images/db49754d35cda963f15bfdd009b120023e7f2eeab3f5988cfcdd63076280721a.png" />
+<img alt="../../_images/e74f9dfe4ba292f69bbb5b4937ad48352333efc2718f852a37a0d9aa22f57c18.png" src="../../_images/e74f9dfe4ba292f69bbb5b4937ad48352333efc2718f852a37a0d9aa22f57c18.png" />
+<img alt="../../_images/05c6c0e029f5d69f882ef355dbd4444192304df033584bf5330d600ab14f1f96.png" src="../../_images/05c6c0e029f5d69f882ef355dbd4444192304df033584bf5330d600ab14f1f96.png" />
+</div>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Variable</strong></p></th>
+<th class="head"><p><strong>Forma del violín</strong></p></th>
+<th class="head"><p><strong>Interpretación</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Peso (g)</strong></p></td>
+<td><p>Ancho entre <strong>3 – 7 g</strong>, cola larga y estrecha hasta ≈ 22 g, varios puntos fuera del bigote superior.</p></td>
+<td><p>Distribución <strong>fuertemente asimétrica a la derecha</strong>: la mayoría son ejemplares pequeños‑medios y unos pocos muy pesados (outliers).</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Longitud (cm)</strong></p></td>
+<td><p>Violín casi simétrico, más ancho en 6 – 8 cm, cola superior corta, sin puntos fuera del bigote.</p></td>
+<td><p>Distribución <strong>unimodal y estable</strong>; no hay valores extremos claros, buena candidata a predictor base.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Anchura (cm)</strong></p></td>
+<td><p>Pico ancho en 2,5 – 3,5 cm, cola superior hasta 5,2 cm con muy poca densidad, 1‑2 puntos aislados.</p></td>
+<td><p>Forma similar a Longitud pero con <strong>cola alta leve</strong>; unos pocos peces muy anchos podrían ser anomalías o errores.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Altura (cm)</strong></p></td>
+<td><p>Violín estrecho (0,4 – 0,5 cm habituales), cola fina hasta 0,9 cm, varios puntos aislados arriba.</p></td>
+<td><p>Variable con <strong>rango pequeño</strong>; valores altos destacan como outliers y podrían indicar errores de medición o casos excepcionales.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="distribuciones-bivariantes">
+<h3><span class="section-number">3.3.2. </span>Distribuciones bivariantes<a class="headerlink" href="#distribuciones-bivariantes" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">numeric_cols</span><span class="p">],</span> <span class="n">diag_kind</span><span class="o">=</span><span class="s2">&quot;kde&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&quot;Pairplot variables morfológicas&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">1.02</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/e1794128a3ea607b3f6cc692797bafc7da284721bec5a2d3629a259496ee9182.png" src="../../_images/e1794128a3ea607b3f6cc692797bafc7da284721bec5a2d3629a259496ee9182.png" />
+</div>
+</div>
+<p>El análisis de las relaciones bivariantes muestra que el peso crece exponencialmente con la Longitud y la Anchura, dibujando nubes curvilíneas donde los puntos se vuelven más dispersos a medida que el pez gana tamaño; eso confirma que la relación no es estrictamente lineal. Longitud y Anchura mantienen entre sí una correlación positiva moderada los peces más largos tienden a ser más anchos mientras que Altura se agrupa fuertemente en torno a un intervalo estrecho y, salvo algunos valores altos anómalos, aporta poca variabilidad adicional. En todas las combinaciones que incluyen Peso se aprecian varios puntos solitarios por encima de la nube principal, lo que corrobora la presencia de <em>outliers</em>. No se observan clusters separados que sugieran sub-poblaciones distintas, sino una gradación continua, de modo que los valores extremos se interpretan mejor como individuos excepcionales (o posibles errores) que como grupos diferenciados.</p>
+</section>
+<section id="matriz-de-correlacion">
+<h3><span class="section-number">3.3.3. </span>Matriz de correlación<a class="headerlink" href="#matriz-de-correlacion" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 2. Calcular matriz de correlación (método de Pearson por defecto)</span>
+<span class="n">corr_matrix</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
+
+<span class="c1"># 3. Crear el gráfico</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">corr_matrix</span><span class="p">,</span> 
+            <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>       <span class="c1"># Muestra valores en cada celda</span>
+            <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;.2f&quot;</span><span class="p">,</span>       <span class="c1"># Formato de 2 decimales</span>
+            <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;plasma&#39;</span><span class="p">,</span>  <span class="c1"># Mapa de colores (rojo-negro-azul)</span>
+            <span class="n">vmin</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>  <span class="c1"># Rango de correlación [-1, 1]</span>
+            <span class="n">linewidths</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="c1"># Grosor de líneas entre celdas</span>
+            <span class="n">mask</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">triu</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">corr_matrix</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">))</span>  <span class="c1"># Mostrar solo triangular inferior</span>
+           <span class="p">)</span>
+
+<span class="c1"># 4. Personalizar</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Matriz de Correlación de Variables&#39;</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/2c4aae31201558669cc8bbb147a94140ba64c95393b4662c68b42d67d3129f71.png" src="../../_images/2c4aae31201558669cc8bbb147a94140ba64c95393b4662c68b42d67d3129f71.png" />
+</div>
+</div>
+<p>La matriz de correlación indica que, en el lenguado, el peso está fuertemente asociado con la longitud y la anchura (r≈0,94), mientras que su asociación con la altura (espesor corporal) es claramente menor (r≈0,86). En términos de varianza explicada, longitud y anchura individualmente capturan ~88% del comportamiento del peso (r²≈0,8836), frente a ~74% para la altura (r²≈0,7396). Esto es coherente con la biomecánica del pez plano: el peso depende del volumen, pero en especies deprimidas dorsoventralmente la variabilidad del área proyectada (aprox. longitud×anchura) domina sobre la variación del espesor. La correlación igualmente alta entre longitud y anchura (r≈0,94) sugiere una morfología con proporciones relativamente estables durante el crecimiento (isometría planiforme) o, al menos, una fuerte covariación de ambas dimensiones; en la práctica, esto implica multicolinealidad si se usan juntas en regresión. La correlación más baja de peso con la altura indica que el espesor es más variable entre individuos (condición corporal, estado nutricional, maduración gonadal), aportando información menos estable sobre el peso que las dimensiones planas. En conjunto, estas correlaciones significan que la masa del lenguado está principalmente determinada por su extensión superficial y que la altura añade variabilidad más idiosincrática.</p>
+<div class="admonition-varianza-explicada admonition">
+<p class="admonition-title">Varianza explicada</p>
+<p>Sea <span class="math notranslate nohighlight">\(Y=\text{Peso}\)</span> y <span class="math notranslate nohighlight">\(X\in\{\text{Longitud},\text{Anchura},\text{Altura}\}\)</span>.</p>
+<p>En regresión lineal simple se cumple:
+$<span class="math notranslate nohighlight">\(
+R^2 = r^2,
+\)</span><span class="math notranslate nohighlight">\(
+donde \)</span>r=\mathrm{corr}(X,Y)$.</p>
+<p>Con los valores obtenidos en la matriz de correlación tenemos que:
+$<span class="math notranslate nohighlight">\(
+r_{Y,\text{Longitud}}=0.94,\qquad
+r_{Y,\text{Anchura}}=0.94,\qquad
+r_{Y,\text{Altura}}=0.86.
+\)</span>$</p>
+<p>Por tanto,</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(R^2_{\text{Peso}\sim\text{Longitud}} = 0.94^2 = 0.8836 \approx 88.36\%\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(R^2_{\text{Peso}\sim\text{Ancgurad}} = 0.94^2 = 0.8836 \approx 88.36\%\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(R^2_{\text{Peso}\sim\text{Altura}} = 0.86^2 = 0.7396 \approx 74\%\)</span></p></li>
+</ul>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./content/02"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../01/Modulo-4.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">2.5. </span>M4 - Salida y persistencia</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Generador.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">4. </span>Generación de datos sintéticos</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduccion">3.1. Introducción</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#metodologia-para-la-adquisicion-de-datos-morfometricos">3.2. Métodología para la adquisición de datos morfométricos</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#preparacion-de-los-ejemplares">3.2.1. Preparación de los Ejemplares</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#protocolo-de-medicion">3.2.2. Protocolo de Medición</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#consideraciones-eticas-y-de-bienestar">3.2.3. Consideraciones Éticas y de Bienestar</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#estructura-de-los-datos">3.2.4. Estructura de los datos</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inspeccion-general-del-conjunto-de-datos">3.3. Inspección general del conjunto de datos</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#distribuciones-univariantes">3.3.1. Distribuciones univariantes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#distribuciones-bivariantes">3.3.2. Distribuciones bivariantes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matriz-de-correlacion">3.3.3. Matriz de correlación</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Javier Álvarez Osuna
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright Feeding Systems S.L. - GNU General Public License 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
