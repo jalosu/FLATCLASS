@@ -19,8 +19,10 @@ build:
 
 latex:
   latex_documents:
-    targetname: IAbook.tex
-  latex_engine: pdflatex
+    targetname: FLATCLASS.tex
+  latex_engine: xelatex
+  remove_code_solution: false
+  remove_code_outputs: false
 
 bibtex_bibfiles:
   - references.bib
@@ -54,11 +56,22 @@ sphinx:
     - sphinxcontrib.bibtex
     - myst_nb
   config:
+    languaje: es
+    numfig: true
+    numfig_format:
+      figure: "Figura %s"
+      table: "Tabla %s"
+      code-block: "Listado %s"
+      section: "Capítulo %s"
     html_theme_options:
       use_download_button: false
     bibtex_reference_style: author_year  # Fuerza el formato "Autor et al., Año"
     bibtex_default_style: plain
     numfig: true
+    numfig_format:
+      figure: 'Figura %s'
+      table: 'Tabla %s'
+      code-block: 'Listado %s'   
     source_suffix: [".md", ".ipynb"]
     mathjax3_config:
       tex:
