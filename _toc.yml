@@ -32,8 +32,12 @@ parts:
         - file: content/03/Coeficientes.ipynb
         - file: content/03/Analisis.ipynb
         - file: content/03/Modelo.ipynb
-- caption: PT4 - Sistema de clasificación automática
+- caption: PT4 - Sistema mecatrónico de clasificación
   numbered: true
   chapters:
     - file: content/04/Mecatronica.ipynb
+- caption: PT5 - Sistema de control y gestión
+  numbered: true
+  chapters:
+    - file: content/05/Software.ipynb
 

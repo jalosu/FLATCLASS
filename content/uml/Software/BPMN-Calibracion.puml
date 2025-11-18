@@ -1,0 +1,55 @@
+@startuml
+participant User
+participant "User Interface:\n (React)" as UI
+participant "Backend:\n (Node.js & Prisma)" as BE
+participant "MQTT Broker:\n (Node-Red)" as MQTT
+participant "Vision Service\n(Python/OpenCV)" as Vision
+participant "Persistence\n(MongoDB)" as DB
+
+User -> UI : Click START
+UI -> BE : START_CALIBRATION
+BE -> MQTT : Subscribe(topic: measures)
+MQTT -> Vision: Take Image
+Vision -> MQTT : NEW_MEASUREMENT({long, wide, surface})
+MQTT -> BE : NEW_MEASUREMENT({long, wide, surface})
+BE -> UI : Update fish_count
+BE -> BE : Append({long, wide, surface})
+
+User -> UI : Click PAUSE
+UI -> BE : PAUSE
+BE -> MQTT : Unsubscribe temporary
+
+User -> UI : Click RESUME
+UI -> BE : RESUME
+BE -> MQTT : Re-subscribe(topic)
+
+User -> UI : Click STOP
+UI -> BE : STOP_CALIBRATION
+BE -> BE : Compute stats (mean, var, std)
+BE -> UI : send histogram + theoretical curve
+
+User -> UI : Enter RANGES
+User -> UI : Click Recalculate
+UI -> BE : RECALCULATE
+BE -> BE : Compute new stats (mean, var, std)
+BE -> UI : Updated distribution
+
+User -> UI : Click SAVE
+UI -> BE : SAVE_CALIBRATION
+BE -> DB : insert calibration record
+BE -> DB : insert measurements records
+BE --> UI : Confirmation
+
+@enduml
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,150 @@
+%% ================== PREÁMBULO CORPORATIVO FLATCLASS ==================
+%% Mantiene compatibilidad con JupyterBook y añade formato de artículo científico
+
+\def\sphinxdocclass{jupyterBook}
+\documentclass[a4paper,10pt]{jupyterBook}
+
+% ===============================================================
+%   Paquetes base y compatibilidad Sphinx
+% ===============================================================
+\ifdefined\pdfpxdimen
+   \let\sphinxpxdimen\pdfpxdimen\else\newdimen\sphinxpxdimen
+\fi \sphinxpxdimen=.75bp\relax
+\ifdefined\pdfimageresolution
+    \pdfimageresolution= \numexpr \dimexpr1in\relax/\sphinxpxdimen\relax
+\fi
+
+\PassOptionsToPackage{bookmarksdepth=5}{hyperref}
+\PassOptionsToPackage{hyperindex=false}{hyperref}
+\makeatletter\@ifclassloaded{memoir}
+{\ifdefined\memhyperindexfalse\memhyperindexfalse\fi}{}\makeatother
+\PassOptionsToPackage{booktabs}{sphinx}
+\PassOptionsToPackage{colorrows}{sphinx}
+\PassOptionsToPackage{warn}{textcomp}
+
+\catcode`^^^^00a0\active\protected\def^^^^00a0{\leavevmode\nobreak\ }
+\usepackage{cmap}
+\usepackage{fontspec}
+\defaultfontfeatures[\rmfamily,\sffamily,\ttfamily]{}
+\usepackage{amsmath,amssymb,amstext}
+
+% ===============================================================
+%   Idioma y fuentes
+% ===============================================================
+\usepackage{polyglossia}
+\setmainlanguage{spanish}
+
+\setmainfont{FreeSerif}[
+  Extension      = .otf,
+  UprightFont    = *,
+  ItalicFont     = *Italic,
+  BoldFont       = *Bold,
+  BoldItalicFont = *BoldItalic
+]
+\setsansfont{FreeSans}[
+  Extension      = .otf,
+  UprightFont    = *,
+  ItalicFont     = *Oblique,
+  BoldFont       = *Bold,
+  BoldItalicFont = *BoldOblique,
+]
+\setmonofont{FreeMono}[
+  Extension      = .otf,
+  UprightFont    = *,
+  ItalicFont     = *Oblique,
+  BoldFont       = *Bold,
+  BoldItalicFont = *BoldOblique,
+]
+
+\usepackage[Bjarne]{fncychap}
+\usepackage[,numfigreset=1,mathnumfig]{sphinx}
+
+% ===============================================================
+%   Ajustes visuales y corporativos
+% ===============================================================
+\fvset{fontsize=\footnotesize}
+\usepackage[a4paper,margin=25mm]{geometry}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{eso-pic}
+\AddToShipoutPictureBG*{%
+  \AtPageLowerLeft{\includegraphics[width=\paperwidth,height=\paperheight]{Fondo.png}}%
+}
+
+% ===============================================================
+%   Artículo científico: Abstract + 2 columnas
+% ===============================================================
+\usepackage{cuted}      % 'strip' para bloques de una columna
+\usepackage{abstract}   % entorno abstract
+\usepackage{balance}    % balancea columnas al final
+\renewcommand{\abstractname}{Resumen}
+\setlength{\columnsep}{6mm}
+
+% Texto del abstract (puedes sustituirlo por \input{abstract.tex})
+\newcommand{\PaperAbstract}{%
+Este trabajo presenta el sistema FLATCLASS, desarrollado para la clasificación morfológica de peces planos mediante visión artificial y aprendizaje automático.
+Se describe la arquitectura hardware–software, el modelo predictivo y la estrategia de validación experimental implementada.
+Los resultados muestran una precisión superior al 95 % en la detección de anomalías morfológicas y una reducción significativa del tiempo de clasificación.
+}
+
+% Activa abstract a ancho completo + resto en dos columnas
+\makeatletter
+\AtBeginDocument{%
+  \onecolumn
+  \begin{strip}
+    \centering
+    \ifdefined\sphinxmaketitle
+      \sphinxmaketitle
+    \else
+      \maketitle
+    \fi
+    \vspace{-0.5em}
+    \begin{abstract}
+      \PaperAbstract
+    \end{abstract}
+    \vspace{1em}
+  \end{strip}
+  \twocolumn
+}
+\makeatother
+
+% ===============================================================
+%   Configuración hiperenlaces y mensajes Sphinx
+% ===============================================================
+\usepackage{hyperref}
+\usepackage{hypcap}
+\urlstyle{same}
+\addto\captionsenglish{\renewcommand{\contentsname}{PT1 - Visión Artificial}}
+\usepackage{sphinxmessages}
+
+% ===============================================================
+%   Bloque añadido por sphinx-jupyterbook-latex
+% ===============================================================
+\usepackage[Latin,Greek]{ucharclasses}
+\usepackage{unicode-math}
+\setmathfont{Latin Modern Math}
+\addto\captionsenglish{\renewcommand{\contentsname}{Contents}}
+\hypersetup{
+    pdfencoding=auto,
+    psdextra
+}
+
+% ===============================================================
+%   Idioma, numeraciones y formato arábigo
+% ===============================================================
+\AtBeginDocument{%
+  \addto\captionsenglish{%
+    \renewcommand{\partname}{Paquete de Trabajo}%
+    \renewcommand{\chaptername}{Capítulo}%
+    \renewcommand{\figurename}{Figura}%
+    \renewcommand{\tablename}{Tabla}%
+  }%
+  \makeatletter
+  \providecommand{\sphinxnumstr}[1]{#1}%
+  \renewcommand{\sphinxnumstr}[1]{#1}%
+  \renewcommand{\thepart}{\arabic{part}}%
+  \renewcommand{\thechapter}{\arabic{chapter}}%
+  \renewcommand{\theHchapter}{\thechapter}%
+  \makeatother
+}
+%% ================== FIN PREÁMBULO FLATCLASS ==================
