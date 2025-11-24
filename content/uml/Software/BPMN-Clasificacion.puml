@@ -1,0 +1,82 @@
+@startuml
+participant User
+participant "User Interface\n(React)" as UI
+participant "Backend\n(Node.js & Prisma)" as BE
+participant "MQTT Broker\n(Node-Red)" as MQTT
+participant "OPC-UA Broker\n(Node-Red)" as OPC
+participant "Vision Service\n(Python/OpenCV)" as Vision
+participant "Weight Service\n(Python/IA)" as Weight
+participant "Persistence\n(MongoDB)" as DB
+
+' ==== Fase de configuracion de sesion ====
+
+User -> UI : Select origin tank\nSelect ranges\nSelect destination tanks
+UI -> BE : CONFIGURE_SESSION({origin, ranges, destinations})
+BE -> DB : Validate configuration
+DB --> BE : OK
+BE -> UI : SESSION_READY
+
+' ==== Inicio de la clasificacion ====
+
+User -> UI : Click START
+UI -> BE : START_CLASSIFICATION(session_id)
+BE -> MQTT : Subscribe(flatclass/vision/measurements)
+BE -> MQTT : Publish cmd\n{command:"start", session_id}
+
+' ==== Bucle principal: procesamiento de cada pez ====
+
+loop For each detected fish
+  Vision -> MQTT : NEW_MEASUREMENT\n{area_px, length_px, height_px, quality}
+  MQTT -> BE : NEW_MEASUREMENT\n{area_px, length_px, height_px, quality}
+
+  BE -> Weight : ESTIMATE_WEIGHT\n{L,H,A}
+  Weight --> BE : {weight}
+
+  BE -> BE : Classify C(weight)\nUpdate N_k, p_k, mean, biomass
+  BE -> MQTT : Publish result\n{session_id, fish_id, class, tank}
+  MQTT-> OPC : Mechanical Get Control 
+  BE -> UI : Update counters\nand statistics
+end
+
+' ==== Boton PAUSE ====
+
+User -> UI : Click PAUSE
+UI -> BE : PAUSE
+BE -> MQTT : Publish cmd\n{command:"pause", session_id}
+BE -> UI : SESSION_PAUSED
+
+' ==== Boton RESUME ====
+
+User -> UI : Click RESUME
+UI -> BE : RESUME
+BE -> MQTT : Publish cmd\n{command:"resume", session_id}
+BE -> UI : SESSION_RESUMED
+
+' ==== Boton STOP ====
+
+User -> UI : Click STOP
+UI -> BE : STOP
+BE -> MQTT : Publish cmd\n{command:"stop", session_id}
+BE -> MQTT : Unsubscribe(flatclass/vision/measurements)
+BE -> BE : Compute final stats\n(N_k, p_k, mean, biomass)
+BE -> UI : Show final results
+
+' ==== Boton SAVE ====
+
+User -> UI : Click SAVE
+UI -> BE : SAVE_SESSION
+BE -> DB : insert session record\n(summary, stats, config)
+BE -> DB : insert measurement records\n(per-fish data)
+BE --> UI : SAVE_CONFIRMED
+
+' ==== Heartbeats y gestion de errores ====
+
+BE -> MQTT : Publish state\n{session_id, status, N_tot}
+MQTT -> BE : Heartbeat from Vision/PLC
+
+alt Connection lost
+  MQTT -x BE : Heartbeat timeout
+  BE -> UI : ERROR\nConnectionLost -> auto-pause
+end
+
+@enduml
