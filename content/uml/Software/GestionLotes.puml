@@ -1,0 +1,97 @@
+@startuml GestionLotes
+
+!define PRIMARY_KEY #FFAAAA
+!define FOREIGN_KEY #FFFFAA
+!define INDEX #CCCCCC
+
+entity species {
+  ** species_id: INTEGER **
+  --
+  scientific_name: VARCHAR(100)
+  common_name: VARCHAR(100)
+  description: TEXT
+  created_at: TIMESTAMP
+  updated_at: TIMESTAMP
+}
+
+entity batch {
+  ** batch_id: INTEGER **
+  --
+  parent_batch_id: INTEGER <<FK>>
+  species_id: INTEGER <<FK>>
+  external_origin_id: INTEGER <<FK>>
+  batch_name: VARCHAR(100)
+  entry_date: DATE
+  individual_count: INTEGER
+  average_weight: DECIMAL(10,3)
+  birth_date: DATE
+  status: VARCHAR(20)
+  observations: TEXT
+  created_at: TIMESTAMP
+  updated_at: TIMESTAMP
+}
+
+entity batch_composition {
+  ** composition_id: INTEGER **
+  --
+  source_batch_id: INTEGER <<FK>>
+  target_batch_id: INTEGER <<FK>>
+  individuals_transferred: INTEGER
+  transfer_date: TIMESTAMP
+  transfer_type: VARCHAR(20)
+  notes: TEXT
+}
+
+entity external_origin {
+  ** origin_id: INTEGER **
+  --
+  origin_name: VARCHAR(100)
+  origin_type: VARCHAR(50)
+  contact_info: TEXT
+  description: TEXT
+}
+
+entity production_unit {
+  ** unit_id: INTEGER **
+  --
+  unit_name: VARCHAR(50)
+  unit_type: VARCHAR(20)
+  capacity: DECIMAL(10,2)
+  location: VARCHAR(100)
+  status: VARCHAR(20)
+  description: TEXT
+}
+
+entity unit_occupancy_history {
+  ** occupancy_id: INTEGER **
+  --
+  unit_id: INTEGER <<FK>>
+  batch_id: INTEGER <<FK>>
+  start_date: TIMESTAMP
+  end_date: TIMESTAMP
+  individual_count: INTEGER
+  notes: TEXT
+}
+
+entity batch_metrics {
+  ** metric_id: INTEGER **
+  --
+  batch_id: INTEGER <<FK>>
+  metric_date: DATE
+  total_biomass: DECIMAL(10,2)
+  average_weight: DECIMAL(10,3)
+  mortality_count: INTEGER
+  feed_quantity: DECIMAL(10,2)
+}
+
+' Relationships
+species ||--o{ batch : "has"
+batch }o--|| external_origin : "may have"
+batch ||--o{ batch_composition : "as_source"
+batch ||--o{ batch_composition : "as_target"
+batch ||--o{ batch : "parent_of"
+production_unit ||--o{ unit_occupancy_history : "occupied_by"
+batch ||--o{ unit_occupancy_history : "occupies"
+batch ||--o{ batch_metrics : "has_metrics"
+
+@enduml

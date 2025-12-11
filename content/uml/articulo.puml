@@ -1,0 +1,51 @@
+@startuml
+title Pipeline for automatic morphometric measurement of flatfish
+
+start
+
+partition "Image Adquisition" {
+  :Barrier/PLC shooting;
+  :Image capture + metadata;
+  if (Valid frame?) then (Yes)
+    :Image_raw;
+  else (No)
+    :Capture error;
+    stop
+  endif
+}
+
+partition "Preprocessing and Chromatic Stabilisation" {
+  :Noise reduction;
+  :Edge smoothing;
+  :Lighting normalisation (CLAHE);
+  :HSV Conversion;
+}
+
+partition "Segmentation" {
+  :ROI Detection via Chromatic Belt Identification;
+  :Automatic GrabCut Seed Construction;
+  :GrabCut Segmentation;
+
+}
+
+partition "Selection" {
+  :Post-processing and Contour Selection;
+
+}
+
+partition "Morphometric measurements" {
+  :PCA on contour points;
+  :Build PCA box and major axis;
+  :Overlay (contour + measurements);
+  :Obtain measurements;
+
+}
+
+partition "Output and persistence" {
+  :Persistence data ;
+  :Notify PLC/MQTT/REST;
+}
+
+
+stop
+@enduml
