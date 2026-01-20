@@ -40,4 +40,7 @@ parts:
   numbered: true
   chapters:
     - file: content/05/Software.ipynb
-
+- caption: PT6 - Validación
+  numbered: true
+  chapters:
+    - file: content/06/Validacion.ipynb
