@@ -1,0 +1,22 @@
+{
+  "notebook": "/mnt/data/Articulo_validacion_vision_lenguado_IMRaD.ipynb",
+  "figures": [
+    "/mnt/data/outputs/figures/Fig1a_scatter_L.png",
+    "/mnt/data/outputs/figures/Fig1b_scatter_A.png",
+    "/mnt/data/outputs/figures/Fig2_scatter_peso.png",
+    "/mnt/data/outputs/figures/Fig3_BA_longitud.png",
+    "/mnt/data/outputs/figures/Fig4_BA_peso.png",
+    "/mnt/data/outputs/figures/Fig5_box_err_rel_peso_por_exp.png",
+    "/mnt/data/outputs/figures/FigS1_box_errL_pct_por_exp.png",
+    "/mnt/data/outputs/figures/FigS2_box_errA_pct_por_exp.png"
+  ],
+  "tables": [
+    "/mnt/data/outputs/tables/Tabla1_descriptivos_por_experimento.csv",
+    "/mnt/data/outputs/tables/Tabla1_descriptivos_por_experimento.xlsx",
+    "/mnt/data/outputs/tables/Tabla2_metricas_global_y_por_experimento.csv",
+    "/mnt/data/outputs/tables/Tabla2_metricas_global_y_por_experimento.xlsx",
+    "/mnt/data/outputs/tables/Tabla3_bootstrap_IC95_metricas.csv",
+    "/mnt/data/outputs/tables/Tabla3_bootstrap_IC95_metricas.xlsx",
+    "/mnt/data/outputs/tables/resumen_estadistico.json"
+  ]
+}
